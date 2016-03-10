@@ -1,0 +1,16 @@
+.container :not(.subut)
+{
+    width:300px;
+    clear:both;
+
+}
+.container input
+{
+    width:100%;
+    clear:both;
+}
+textarea
+{
+    resize:none;
+    width:100%;
+}

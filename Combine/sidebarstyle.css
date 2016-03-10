@@ -1,0 +1,99 @@
+#greetings
+{
+	color:#ff9966;
+	opacity:0.5;
+	background:#333333;
+	text-align: center;
+	position:absolute;
+	top:20%;
+	left:37%;
+	padding:13px;
+
+
+}
+
+
+body{
+	margin: 0px;
+	padding :0px;
+	font-family:"Helvetica Neue",Helvetica,Arial;
+}
+#sidebar
+{
+	background : #333333;
+	width :200px;
+	height :100%;
+	display:block;
+	position :absolute;
+	left:-200px;
+	top:0px;
+	transition:left 0.3s linear;
+
+}
+#sidebar.visible{
+	left:0px;
+	transition:left 0.3s linear;
+}
+ul{
+	margin:0px;
+	padding:0px;
+}
+ul li
+{
+	list-style:none;
+	/*no bullet points at the side*/
+}
+ul li a{ /*for the links*/
+	background:#ff9966;
+	color :  #000000;
+	border-bottom:1px solid #111;
+	display:block;
+	width :180px;
+	padding :10px;
+	padding-top:10px ;
+	padding-bottom:10px ;
+	/*padding left and right*/
+	text-decoration: none;
+	/*no underlying line*/
+	font-family: "Segoe UI";
+	font-weight: 500;
+
+}
+#sidebar-btn{
+	display:inline-block;
+	vertical-align:middle;
+	width:20px;
+	height:15px;
+	padding:10px;
+	position : absolute;
+	top :0px;
+	right :-40px;
+
+}
+#sidebar-btn span {
+	height :1px;
+	background:#111;
+	margin-bottom:5px;
+	display:block;
+
+}
+#sidebar-btn span:nth-child(2) {
+	width:75%;
+
+}
+#sidebar-btn span:nth-child(3) {
+	width:50%;
+
+}
+
+
+
+html {
+
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	color:white;
+	background: url(background.jpg) no-repeat center center fixed;
+}
