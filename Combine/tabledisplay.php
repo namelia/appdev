@@ -15,6 +15,13 @@
 <body>
 <div class="container">
 <div id='cssmenu'>
+    <!--This is a copy paste from searchhp.php -->
+    <form action='search.php' method="POST">
+        <input type="text" name="search">
+        <input type="submit">
+    </form>
+    
+    
     <ul>
         <li class='active'><a href='#'><span>Home</span></a></li>
         <li class='has-sub'><a href='#'><span>Items</span></a>
