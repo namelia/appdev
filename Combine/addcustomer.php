@@ -23,7 +23,8 @@ if ($conn->connect_error)
     //I know there s only two entries, it looks weird but it s important
     //side note: i didn t have a look at the real actual database you made Nancy lol (but i will soon, promise!),
     //and that s why idk if those variable names actually match with those in the sql database (could u guys quickly check ?)
-    
+    //Oh, and maybe i forgot to add some variables
+    //I ll be more careful as soon as i get the database i promise guys :p (that s why i m so unsure of what i m currently doing  :/)
     if ($conn->query($sql) === TRUE)
     {
        echo 'Details have been added to the database!';
