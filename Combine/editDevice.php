@@ -21,6 +21,10 @@
   //Now that everything is set up (we have the connection + the variable values), let s put all of this in the database
   //idk what to write before the sql query, but I know what to write inside:
   //UPDATE deviceTable SET name=$newName , color=newColor,  details=newDetails, OS = newOS WHERE id=$deviceID
+  
+  
+  //Last thing:
+  //I don t remember how, but here, just add an automatic redirection to the displayTable page
 
 <php>
 
