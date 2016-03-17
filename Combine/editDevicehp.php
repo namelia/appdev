@@ -24,10 +24,10 @@ $servername="localhost";
 idDevice = $_GET['deviceID'] ; //is this how you do it though? :/
 
 <form action="editDevice.php" method="post"> //This form takes all the user wants to change in the object's details
-Name: <input type="text" name="Name"><br>
-Color: <input type="text" name="Color"><br>
+Name: <input type="text" name="name"><br>
+Color: <input type="text" name="color"><br>
 OS: <input type="text" name="OS"><br>
-Details: <input type="text" name="Details"><br>
+Details: <input type="text" name="details"><br>
 <input type="submit">
 </form> //Then those details are sent to editDevice.php thanks to the superglobal variable POST['blablbla']
 
