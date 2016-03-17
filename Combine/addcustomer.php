@@ -18,16 +18,22 @@ if ($conn->connect_error)
 
     $cust_name= $_POST['custename'];
     $email_ =$_POST['custemail'];
-    $category_=$_POST['OS'];
-    $details_ = $_POST['message'];
-    $sql = "INSERT INTO additem (name,id,color,OS,details) VALUES ('$device_name','$id_','$color_','$os_','$details_')";
-
+    
+    $sql = "INSERT INTO addcustomer (custename,custemail) VALUES ('$cust_name','$email_')";
+    //I know there s only two entries, it looks weird but it s important
+    //side note: i didn t have a look at the real actual database you made Nancy lol (but i will soon, promise!),
+    //and that s why idk if those variable names actually match with those in the sql database (could u guys quickly check ?)
+    
     if ($conn->query($sql) === TRUE)
     {
        echo 'Details have been added to the database!';
     } else {
       echo "Error: " . $sql . "<br>" . $conn->error;
     }
+    
+    //Here, since the guy has been added, we should load the displayCustomer table
+    //
+    //
 
 $conn->close();
 ?>
