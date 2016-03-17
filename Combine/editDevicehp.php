@@ -21,9 +21,10 @@ $servername="localhost";
 
 <?php> 
 //Get the object's ID with GET which holds the value of the parameter sent earlier (with the line editDevicehp.php?deviceID=$id in the file displaytable.php)
-idDevice = $_GET['deviceID'] ; //is this how you do it though? :/
+$deviceID = $_GET['deviceID'] ; //is this how you do it though? :/
 
-<form action="editDevice.php" method="post"> //This form takes all the user wants to change in the object's details
+<form action="editDevice.php?deviceID=$deviceID" method="post"> //This form takes all the user wants to change in the object's details
+//Idk if this works, but i did a form which also has a parameter in the "?.." at the same time lol
 Name: <input type="text" name="name"><br>
 Color: <input type="text" name="color"><br>
 OS: <input type="text" name="OS"><br>
