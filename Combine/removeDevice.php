@@ -31,6 +31,9 @@ $conn=New mysqli($servername,$username,$password,$database);
 //Idk how to do the exact query, bcs i learned the old syntax, but i know exactly what the actual sql code is:
 //DELETE FROM deviceTable WHERE id=$deviceID
 
+//Last thing to do:
+//I don t remember how, but here, just add an automatic redirection to the displayTable page
+
 
 </body>
 </html>
