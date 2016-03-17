@@ -78,7 +78,7 @@
             $color=$rows['color'];
             $os=$rows['OS'];
             $details=$rows['details'];
-            echo"<tr><td name='id'>$id</td> <td>$name</td> <td>$color</td> <td>$os</td> <td>$details</td> <td><a href="editDevice.php?deviceID=$id">Edit</a></td> <td><a href="deleteDevice.php?deviceID=$id">Delete</a></td></tr>" ;
+            echo"<tr><td name='id'>$id</td> <td>$name</td> <td>$color</td> <td>$os</td> <td>$details</td> <td><a href="editDevicehp.php?deviceID=$id">Edit</a></td> <td><a href="deleteDevice.php?deviceID=$id">Delete</a></td></tr>" ;
         }
         echo"</table>";
     }
