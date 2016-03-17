@@ -5,27 +5,31 @@ Get the id of the object we want to edit
 2nd
 Make a form of what you want to write for that object
 3nd
-Make an SQL connection to modify the database with the submitted form
-4th
-Go back to the displayDevice page, which is now updated
+Send that form to editDevice.php
+
 $servername="localhost";
     $username="root";
     $password="";
     $database="MOBILEDEVICELENDINGPROJECT";
     $conn=New mysqli($servername,$username,$password,$database);
     
-    //Get the object's ID
-    idDevice = $_GET['deviceID'] ; //is this how you do it? :/
+    
 -->
 <!DOCTYPE HTML>
 <html> 
 <body>
 
-<form action="welcome.php" method="post">
-Name: <input type="text" name="name"><br>
-E-mail: <input type="text" name="email"><br>
+<?php> 
+//Get the object's ID with GET which holds the value of the parameter sent earlier (with the line editDevicehp.php?deviceID=$id in the file displaytable.php)
+idDevice = $_GET['deviceID'] ; //is this how you do it though? :/
+
+<form action="editDevice.php" method="post"> //This form takes all the user wants to change in the object's details
+Name: <input type="text" name="Name"><br>
+Color: <input type="text" name="Color"><br>
+OS: <input type="text" name="OS"><br>
+Details: <input type="text" name="Details"><br>
 <input type="submit">
-</form>
+</form> //Then those details are sent to editDevice.php thanks to the superglobal variable POST['blablbla']
 
 </body>
 </html>
