@@ -53,9 +53,10 @@
     $password="";
     $database="MOBILEDEVICELENDINGPROJECT";
     $conn=New mysqli($servername,$username,$password,$database);
-    //query the databse
-    $resultSet= $conn->query("SELECT * FROM additem");
-    //returnted rows
+    $searchq=$_POST['search']; //copied from search.php
+    //Instead of querrying everything from the database, shows only the relevant info of the table
+    $resultSet= $conn->query("SELECT * FROM additem WHERE name like ('%$searchq%') OR color like ('%$searchq%')or  details like ('%$searchq%')");;
+    //returned rows
 
     if ($resultSet-> num_rows!=0)
     {
@@ -64,6 +65,14 @@
         while ( $rows= $resultSet->fetch_assoc())
         {
             //result turns it into associative array
+            //Hmmmm i have a problem:
+            /* This is the code in search.php to get the table's info..
+            $name= $row['name'];
+            $id=$row['id'];
+            $color=$row['color'];
+            $details=$row['details'];
+            ... but the thing is, this block is different from what s down here. Which one is correct?
+            */
             $id=$rows['id'];
             $name=$rows['name'];
             $color=$rows['color'];
