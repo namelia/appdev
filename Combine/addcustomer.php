@@ -16,11 +16,11 @@ if ($conn->connect_error)
 }
 
 
-    $cust_name= $_POST['custename'];
+    $cust_name= $_POST['custname'];
     $email_ =$_POST['custemail'];
-    $category_=$_POST['OS'];
-    $details_ = $_POST['message'];
-    $sql = "INSERT INTO additem (name,id,color,OS,details) VALUES ('$device_name','$id_','$color_','$os_','$details_')";
+    $category_=$_POST['category'];
+    $details_ = $_POST['details'];
+    $sql = "INSERT INTO addcustomers (name,email,category,details) VALUES ('$cust_name','$email_','$category_','$details_')";
 
     if ($conn->query($sql) === TRUE)
     {

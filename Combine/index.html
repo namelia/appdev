@@ -1,44 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>SideBar Menu </title>
-	<link rel="stylesheet" type="text/css" href= "sidebarstyle.css">
+	<title>Mobile Device Lending System </title>
+	<link rel="stylesheet" type="text/css" href= "../Combine/sidebarstyle.css">
 </head>
 <body>
 
-	<div id ="sidebar" >
+	<div id ="sidebar" class="visible" >
 		<ul>
 			<li><a href ="additemhp.php">Add item </a></li>
 			<li><a href ="searchhp.php">Search item </a></li>
 			<li><a href ="tabledisplay.php">Display Table </a></li>
 			<li><a href ="addcustomerhp.php">Add Customer </a></li>
-			<li><a href ="#">Link 5 </a></li>
-		</ul>
+			<li><a href ="download.php">Download Table </a></li>
 
+			</li>
+		</ul>
+		<ul >
+			<li style="vertical-align: bottom"><a href ="index.php?ac=logout">Logout</a><li>
+		</ul>
+		<!--
 		<div id = "sidebar-btn">
 			<span></span>
 			<span></span>
 			<span></span>
 		</div>
-
+-->
 	</div>
-	<div id = greetings>
-		<h1>Welcome!</h1>
-		<p>Mobile Device Lending System<br>
-			UCL First Year Computer Science Project
-		</p>
-		</p>
+	<div id =g>
+		<!-- <h1>Welcome!</h1>-- reetings>
+		<!--<div id="form-content">-->
+			<div class>
 
+			</div>
+		</div>
+		</p>
+		</p>
 	</div>
 	<div>
-		<?php include='searchhp.php'; ?>
 	</div>
 
 	
 	<!-- for hamburger looking lines -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-
-	<script> 
+<!--
+	<script>
 	$(document).ready(function() 
 	{
 		$('#sidebar-btn').click(function()
@@ -46,6 +52,6 @@
 			$('#sidebar').toggleClass('visible');
 		});
 	});
-	</script>
+	</script>-->
 </body>
 </html>

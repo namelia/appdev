@@ -5,7 +5,12 @@
     <title>add item</title>
     <link href="additemstyle.css" type="text/css" rel="stylesheet">
 </head>
+<div id =sidebar class="visible">
+    <?php include("index.html"); ?>
+</div>
 <body>
+
+
 <div class="container">
 <form action="additem.php" method="post">
     Device Name: <input  type="text" name="devicename" required><br><br>

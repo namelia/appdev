@@ -28,6 +28,7 @@ body{
 	left:-200px;
 	top:0px;
 	transition:left 0.3s linear;
+	position:fixed;
 
 }
 #sidebar.visible{
@@ -44,8 +45,8 @@ ul li
 	/*no bullet points at the side*/
 }
 ul li a{ /*for the links*/
-	background:#ff9966;
-	color :  #000000;
+	background:#0080ff/*#ff9966*/;
+	color :#e6e6e6;
 	border-bottom:1px solid #111;
 	display:block;
 	width :180px;
@@ -90,10 +91,10 @@ ul li a{ /*for the links*/
 
 html {
 
-	-webkit-background-size: cover;
+	/*-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
 	color:white;
-	background: url(background.jpg) no-repeat center center fixed;
+	background: url(background.jpg) no-repeat center center fixed;*/
 }
