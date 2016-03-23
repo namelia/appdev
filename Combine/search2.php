@@ -28,7 +28,8 @@ Released: 2012-03-18
 ###########################################################
 
 error_reporting(0);
-include("confignew.php");
+include("config.php");
+$table='additem';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -36,7 +37,7 @@ include("confignew.php");
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>MySQL table search</title>
 
-	<link href="search2.css" rel="stylesheet" type="text/css">
+	<link href="search.css" rel="stylesheet" type="text/css">
 	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
 	<!--<style>
 BODY, TD:not(id=sidebar) {
@@ -57,7 +58,7 @@ BODY, TD:not(id=sidebar) {
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
 <script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 <div id="table" class="container" style="overflow-x:auto;">
-<form id="form1" name="form1" method="post" action="search2.php">
+<form id="form2" name="form2" method="post" action="search2.php">
 <label for="from">From</label>
 <input name="from" type="text" id="from" size="10" value="<?php echo $_REQUEST["from"]; ?>" />
 <label for="to">to</label>
@@ -82,11 +83,12 @@ BODY, TD:not(id=sidebar) {
 <br /><br />
 <table width="700" border="1" cellspacing="0" cellpadding="4">
   <tr>
-    <td width="90" bgcolor="#CCCCCC"><strong>From date</strong></td>
-    <td width="95" bgcolor="#CCCCCC"><strong>To date</strong></td>
-    <td width="159" bgcolor="#CCCCCC"><strong>Name</strong></td>
+      <td width="90" bgcolor="#CCCCCC"><strong>From date</strong></td>
+      <td width="95" bgcolor="#CCCCCC"><strong>To date</strong></td>
+      <td width="159" bgcolor="#CCCCCC"><strong>Name</strong></td>
     <td width="191" bgcolor="#CCCCCC"><strong>Description</strong></td>
-    <td width="113" bgcolor="#CCCCCC"><strong>Color</strong></td>
+      <td width="113" bgcolor="#CCCCCC"><strong>Color</strong></td>
+	  <td colspan="2" width="159" bgcolor="#CCCCCC"><strong>Manage</strong></td>
   </tr>
 <?php
 
@@ -117,6 +119,8 @@ if (mysqli_num_rows($sql_result)>0) {
     <td><?php echo $row["name"]; ?></td>
     <td><?php echo $row["details"]; ?></td>
     <td><?php echo $row["color"]; ?></td>
+	  <td> <a href="editItem.php?id=<?php echo $row["id"] ?> "  >Edit</a> </td>
+	  <td> <a href="removeItem.php?id=<?php echo $row["id"] ?>">Remove</a> </td>
   </tr>
 <?php
 	}

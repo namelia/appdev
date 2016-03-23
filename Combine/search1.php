@@ -28,7 +28,8 @@ Released: 2012-03-18
 ###########################################################
 
 error_reporting(0);
-include("confignew.php");
+include("config.php");
+$table='addcustomers';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -36,7 +37,7 @@ include("confignew.php");
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>MySQL table search</title>
 
-	<link href="search2.css" rel="stylesheet" type="text/css">
+	<link href="search.css" rel="stylesheet" type="text/css">
 	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
 	<!--<style>
 BODY, TD:not(id=sidebar) {
@@ -57,54 +58,57 @@ BODY, TD:not(id=sidebar) {
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
 <script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 <div id="table" class="container" style="overflow-x:auto;">
-<form id="form1" name="form1" method="post" action="search2.php">
-<label for="from">From</label>
+<form id="form1" name="form1" method="post" action="search1.php">
+<!--<label for="from">From</label>
 <input name="from" type="text" id="from" size="10" value="<?php echo $_REQUEST["from"]; ?>" />
 <label for="to">to</label>
-<input name="to" type="text" id="to" size="10" value="<?php cCom echo $_REQUEST["to"]; ?>"/>
- <label>Items:</label>
+<input name="to" type="text" id="to" size="10" value="<?php echo $_REQUEST["to"]; ?>"/> -->
+ <label>Search:</label>
 <input type="text" name="string" id="string" value="<?php echo stripcslashes($_REQUEST["string"]); ?>" />
-<label>Color</label>
-<select name="color">
+<label>Category</label>
+<select name="category">
 <option value="">--</option>
 <?php
-	$query= $conn->query("SELECT * FROM $table GROUP BY color ORDER BY color")or die ('request "Could not execute SQL query" '.$sql);
+	$query= $conn->query("SELECT * FROM $table GROUP BY category ORDER BY name")or die ('request "Could not execute SQL query here" '.$sql);
 	while ($row = $query->fetch_assoc()) {
-		echo "<option value='".$row["color"]."'".($row["color"]==$_REQUEST["color"] ? " selected" : "").">".$row["color"]."</option>";
+		echo "<option value='".$row["category"]."'".($row["category"]==$_REQUEST["category"] ? " selected" : "").">".$row["category"]."</option>";
 	}
 ?>
 </select>
 <input type="submit" name="button" id="button" value="Filter" />
   </label>
-  <a href="search2.php">
+  <a href="search1.php">
   reset</a>
 </form>
 <br /><br />
 <table width="700" border="1" cellspacing="0" cellpadding="4">
   <tr>
-    <td width="90" bgcolor="#CCCCCC"><strong>From date</strong></td>
-    <td width="95" bgcolor="#CCCCCC"><strong>To date</strong></td>
-    <td width="159" bgcolor="#CCCCCC"><strong>Name</strong></td>
-    <td width="191" bgcolor="#CCCCCC"><strong>Description</strong></td>
-    <td width="113" bgcolor="#CCCCCC"><strong>Color</strong></td>
+    <!--<td width="90" bgcolor="#CCCCCC"><strong>From date</strong></td>
+    <td width="95" bgcolor="#CCCCCC"><strong>To date</strong></td>-->
+	  <td width="50" bgcolor="#CCCCCC"><strong>Id</strong></td>
+	  <td width="191" bgcolor="#CCCCCC"><strong>Category</strong></td>
+      <td width="159" bgcolor="#CCCCCC"><strong>Name</strong></td>
+	  <td width="159" bgcolor="#CCCCCC"><strong>Email</strong></td>
+      <td width="191" bgcolor="#CCCCCC"><strong>Description</strong></td>
+
   </tr>
 <?php
 
 if ($_REQUEST["string"]<>'') {
-	$search_string = " AND (name LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR details LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%')";
+	$search_string = " AND (custname LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR details LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%')";
 }
-if ($_REQUEST["color"]<>'') {
-	$search_color = " AND color='".mysqli_real_escape_string($conn,$_REQUEST["color"])."'";
+if ($_REQUEST["category"]<>'') {
+	$search_category = " AND category='".mysqli_real_escape_string($conn,$_REQUEST["category"])."'";
 }
 
-if ($_REQUEST["from"]<>'' and $_REQUEST["to"]<>'') {
-	$sql = "SELECT * FROM $table WHERE from_date >= '".mysqli_real_escape_string($conn,$_REQUEST["from"])."' AND to_date <= '".mysqli_real_escape_string($conn,$_REQUEST["to"])."'".$search_string.$search_color;
+else /*($_REQUEST["from"]<>'' and $_REQUEST["to"]<>'')*/ {
+/* $sql = "SELECT * FROM $table WHERE from_date >= '".mysqli_real_escape_string($conn,$_REQUEST["from"])."' AND to_date <= '".mysqli_real_escape_string($conn,$_REQUEST["to"])."'".$search_string.$search_category;
 } else if ($_REQUEST["from"]<>'') {
-	$sql = "SELECT * FROM $table WHERE from_date >= '".mysqli_real_escape_string($conn,$_REQUEST["from"])."'".$search_string.$search_color;
+	$sql = "SELECT * FROM $table WHERE from_date >= '".mysqli_real_escape_string($conn,$_REQUEST["from"])."'".$search_string.$search_category;
 } else if ($_REQUEST["to"]<>'') {
-	$sql = "SELECT * FROM $table WHERE to_date <= '".mysqli_real_escape_string($conn,$_REQUEST["to"])."'".$search_string.$search_color;
-} else {
-	$sql = "SELECT * FROM $table WHERE id>0".$search_string.$search_color;
+	$sql = "SELECT * FROM $table WHERE to_date <= '".mysqli_real_escape_string($conn,$_REQUEST["to"])."'".$search_string.$search_category;
+} else {*/
+	$sql = "SELECT * FROM $table WHERE id>0".$search_string.$search_category;
 }
 
 $sql_result =$conn->query($sql) or die ('request "Could not execute SQL query" '.$sql);
@@ -112,11 +116,12 @@ if (mysqli_num_rows($sql_result)>0) {
 	while ($row=$sql_result->fetch_assoc()) {
 ?>
   <tr>
-    <td><?php echo $row["from_date"]; ?></td>
-    <td><?php echo $row["to_date"]; ?></td>
-    <td><?php echo $row["name"]; ?></td>
-    <td><?php echo $row["details"]; ?></td>
-    <td><?php echo $row["color"]; ?></td>
+	  <td><?php echo $row["id"]; ?></td>
+	  <td><?php echo $row["category"]; ?></td>
+	  <td><?php echo $row["name"]; ?></td>
+	  <td><?php echo $row["email"]; ?></td>
+	  <td><?php echo $row["details"]; ?></td>
+
   </tr>
 <?php
 	}

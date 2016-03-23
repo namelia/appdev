@@ -19,9 +19,9 @@
         Email address: <input  type="text" name="custemail" class="form-control required" type="email" required><br><br>
         Category:
         <select  name="category">
-            <option value="0">Internal customer</option>
-            <option value="1">External UCL customer</option>
-            <option value="2">External other customers</option>
+            <option value="Internal customer">Internal customer</option>
+            <option value="External UCL customer">External UCL customer</option>
+            <option value="External other customers">External other customers</option>
         </select>
         <br><br>
         <!--data from wikipedia-->
