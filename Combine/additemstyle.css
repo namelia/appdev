@@ -19,3 +19,12 @@ textarea
     float: right;
     margin-top: 30px;
 }
+
+#responsecust,#responseitem
+{
+    display: block;
+    position: relative;
+    left: 300px;
+    top: 500px;
+    text-align: center;
+}
