@@ -1,4 +1,4 @@
-<?php
+ <?php
 // Written by Pierce.
 
 // Data base connection hyper force GO!
