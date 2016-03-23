@@ -1,0 +1,13 @@
+#table
+{
+    overflow-x:auto;
+    position: relative;
+    left: 220px;
+    top: 30px;
+
+}
+#form1 {
+    position: relative;
+    left: 140px;
+    width: 1000px;
+}
