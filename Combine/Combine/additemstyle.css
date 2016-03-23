@@ -1,0 +1,30 @@
+.container :not(.subut)
+{
+    width:300px;
+    clear:both;
+
+}
+.container input
+{
+    width:100%;
+    clear:both;
+}
+textarea
+{
+    resize:none;
+    width:100%;
+}
+.container {
+    width: 80%;
+    float: right;
+    margin-top: 30px;
+}
+
+#responsecust,#responseitem
+{
+    display: block;
+    position: relative;
+    left: 300px;
+    top: 500px;
+    text-align: center;
+}
