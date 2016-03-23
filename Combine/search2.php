@@ -35,24 +35,27 @@ include("confignew.php");
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>MySQL table search</title>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
-<!--<style>
+
+	<link href="search2.css" rel="stylesheet" type="text/css">
+	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+	<!--<style>
 BODY, TD:not(id=sidebar) {
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:12px;
 }
 </style>-->
-	<link href="table2.css" rel="stylesheet" type="text/css">
+
+
+
 </head>
 
 
 <body>
 <div id ="sidebar" class="container">
 	<?php include("index.html"); ?>
-
 </div>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+<script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 <div id="table" class="container" style="overflow-x:auto;">
 <form id="form1" name="form1" method="post" action="search2.php">
 <label for="from">From</label>
@@ -144,7 +147,8 @@ if (mysqli_num_rows($sql_result)>0) {
 			}
 		});
 	});
-	</script>
+</script>
 </div>
+
 </body>
 </html>
