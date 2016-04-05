@@ -94,12 +94,12 @@ BODY, TD:not(id=sidebar) {
 
   </tr>
 <?php
-
+include(config.php);
 if ($_REQUEST["string"]<>'') {
 	$search_string = " AND (name LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR details LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%')";
 }
 if ($_REQUEST["category"]<>'') {
-	$search_category = " AND category='".mysqli_real_escape_string($conn,$_REQUEST["category"])."'";
+	$search_category = " AND category= '".mysqli_real_escape_string($conn,$_REQUEST["category"])."'";
 }
 
 else /*($_REQUEST["from"]<>'' and $_REQUEST["to"]<>'')*/ {
@@ -109,10 +109,10 @@ else /*($_REQUEST["from"]<>'' and $_REQUEST["to"]<>'')*/ {
 } else if ($_REQUEST["to"]<>'') {
 	$sql = "SELECT * FROM $table WHERE to_date <= '".mysqli_real_escape_string($conn,$_REQUEST["to"])."'".$search_string.$search_category;
 } else {*/
-	$sql = "SELECT * FROM $table WHERE id>0".$search_string.$search_category;
+	$sql = "SELECT * FROM $table WHERE id>0".$search_string .$search_category;
 }
 
-$sql_result =$conn->query($sql) or die ('request "Could not execute SQL query" '.$sql);
+$sql_result =$conn->query($sql) or die ('request "Could notw execute SQL query" '.$sql);
 if (mysqli_num_rows($sql_result)>0) {
 	while ($row=$sql_result->fetch_assoc()) {
 ?>
@@ -128,7 +128,7 @@ if (mysqli_num_rows($sql_result)>0) {
 	}
 } else {
 ?>
-<tr><td colspan="5">No results found.</td>
+<tr><td colspan="8">No results found.</td>
 <?php	
 }
 ?>

@@ -123,7 +123,7 @@ if (mysqli_num_rows($sql_result)>0) {
     <td><?php echo $row["name"]; ?></td>
     <td><?php echo $row["details"]; ?></td>
     <td><?php echo $row["color"]; ?></td>
-	  <td> <a href="editItem.php?id=<?php echo $row["id"] ?>" class="group1"  >Edit</a> </td>
+	  <td> <a href="editItem.php?id=<?php echo $row["id"]?>&name=<?php echo $row["name"]?>&details=<?php echo $row["details"]?>&color=<?php echo $row["color"]?>&OS=<?php echo $row["OS"]?>" class="group1"  >Edit</a> </td>
 	  <td> <a href="removeItem.php?id=<?php echo $row["id"] ?>">Remove</a> </td>
 	  <td> <form $row  id ='checkbox $i' action="" method="post">
 			  <input type="checkbox" name=<?php echo "box "+$row["id"]?> value="Available" class="group1" >
@@ -189,6 +189,8 @@ if (mysqli_num_rows($sql_result)>0) {
 	});
 	</script>
 </div>
+
+<div id = resp>
 
 </div>
 

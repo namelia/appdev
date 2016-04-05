@@ -12,11 +12,11 @@
 
 
 <div class="container">
-    <form action="editItem.php?id=<?php echo $_GET['id'] ?>" method="post">
-        Device Name: <input  type="text" name="devicename" required><br><br>
+    <form action="editItem.php?id=<?php echo $_GET['id']?>&name=<?php echo $_GET['name']?>&details=<?php echo $_GET['details']?>&color=<?php echo $_GET['color']?>&OS=<?php echo $_GET['OS']?>" method="post">
+        Device Name: <input  type="text" name="devicename" required" value =<?php echo $_GET['name']?> ><br><br>
         Color:
         <select  name="color">
-            <option value="none"></option>
+            <option value="<?php echo $_GET['color']?>"> <?php echo $_GET["color"]; ?></option>
             <option value="Black">Black</option>
             <option value="White">White</option>
             <option value="Gray">Gray</option>
@@ -28,7 +28,8 @@
         </select>
         <br><br>
         Operating System:
-        <select  name="OS">
+        <select  name="OS" >
+            <option value="<?php echo $_GET['OS']?>"><?php echo $_GET['OS']?></option>
             <option value="IOS">IOS</option>
             <option value="Android">Android</option>
             <option value="Firefox OS">Firefox OS</option>
@@ -44,9 +45,9 @@
 
         Description:
         <br>
-        <textarea name="message"rows="10"cols="20"></textarea>
+        <textarea name="message"rows="10"cols="20"><?php echo $_GET['details']?></textarea>
         <br><br>
-        <input type= "submit" value="Submit" name="submitt">
+        <input type= "submit" value="Update" name="Update">
     </form>
 
 </div>
@@ -54,7 +55,7 @@
 <div id ="responseitem">
     <?php
     include("config.php");
-    if(isset($_POST['submitt']))
+    if(isset($_POST['update']))
      {
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
@@ -81,4 +82,5 @@
     }
     ?>
 </div>
+
 </html>
