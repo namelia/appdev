@@ -37,11 +37,11 @@ $table='additem';
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>MySQL table search</title>
 
-<<<<<<< HEAD:Combine/tableItem.php
+
 	<link href="table.css" rel="stylesheet" type="text/css">
-=======
+
 	<link href="search.css" rel="stylesheet" type="text/css">
->>>>>>> 6d0df67a8f31deb51b89980c3b2c5cb8d6c52ef1:Combine/search2.php
+
 	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
 	<!--<style>
 BODY, TD:not(id=sidebar) {
@@ -62,11 +62,9 @@ BODY, TD:not(id=sidebar) {
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
 <script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 <div id="table" class="container" style="overflow-x:auto;">
-<<<<<<< HEAD:Combine/tableItem.php
 <form id="form1" name="form1" method="post" action="tableItem.php">
-=======
-<form id="form2" name="form2" method="post" action="search2.php">
->>>>>>> 6d0df67a8f31deb51b89980c3b2c5cb8d6c52ef1:Combine/search2.php
+<form id="form2" name="form2" method="post" action="tablecust.php">
+
 <label for="from">From</label>
 <input name="from" type="text" id="from" size="10" value="<?php echo $_REQUEST["from"]; ?>" />
 <label for="to">to</label>
@@ -130,16 +128,14 @@ if (mysqli_num_rows($sql_result)>0) {
     <td><?php echo $row["name"]; ?></td>
     <td><?php echo $row["details"]; ?></td>
     <td><?php echo $row["color"]; ?></td>
-<<<<<<< HEAD:Combine/tableItem.php
+
 	  <td> <a href="editItem.php?id=<?php echo $row["id"] ?>" class="group1"  >Edit</a> </td>
 	  <td> <a href="removeItem.php?id=<?php echo $row["id"] ?>">Remove</a> </td>
 	  <td> <form $row  id ='checkbox $i' action="" method="post">
 			  <input type="checkbox" name=<?php echo "box "+$row["id"]?> value="Available" class="group1" >
 			  </td>
-=======
-	  <td> <a href="editItem.php?id=<?php echo $row["id"] ?> "  >Edit</a> </td>
-	  <td> <a href="removeItem.php?id=<?php echo $row["id"] ?>">Remove</a> </td>
->>>>>>> 6d0df67a8f31deb51b89980c3b2c5cb8d6c52ef1:Combine/search2.php
+
+
   </tr>
 <?php
 	}
