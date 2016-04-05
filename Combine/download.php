@@ -1,12 +1,7 @@
-<?php
+ <?php
 // Written by Pierce.
-
+include("config.php");
 // Data base connection hyper force GO!
-$servername="localhost";
-$username="root";
-$password="";
-$database="MOBILEDEVICELENDINGPROJECT";
-$conn=New mysqli($servername,$username,$password,$database);
 // Query...
 $resultSet= $conn->query("SELECT name,id,color,os,details FROM additem");
 
