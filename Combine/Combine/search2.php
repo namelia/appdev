@@ -28,20 +28,15 @@ Released: 2012-03-18
 ###########################################################
 
 error_reporting(0);
-include("config.php");
-$table='additem';
+include("confignew.php");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>MySQL table search</title>
 
-<<<<<<< HEAD:Combine/tableItem.php
-	<link href="table.css" rel="stylesheet" type="text/css">
-=======
-	<link href="search.css" rel="stylesheet" type="text/css">
->>>>>>> 6d0df67a8f31deb51b89980c3b2c5cb8d6c52ef1:Combine/search2.php
+	<link href="search2.css" rel="stylesheet" type="text/css">
 	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
 	<!--<style>
 BODY, TD:not(id=sidebar) {
@@ -62,11 +57,7 @@ BODY, TD:not(id=sidebar) {
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
 <script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 <div id="table" class="container" style="overflow-x:auto;">
-<<<<<<< HEAD:Combine/tableItem.php
-<form id="form1" name="form1" method="post" action="tableItem.php">
-=======
-<form id="form2" name="form2" method="post" action="search2.php">
->>>>>>> 6d0df67a8f31deb51b89980c3b2c5cb8d6c52ef1:Combine/search2.php
+<form id="form1" name="form1" method="post" action="search2.php">
 <label for="from">From</label>
 <input name="from" type="text" id="from" size="10" value="<?php echo $_REQUEST["from"]; ?>" />
 <label for="to">to</label>
@@ -85,18 +76,17 @@ BODY, TD:not(id=sidebar) {
 </select>
 <input type="submit" name="button" id="button" value="Filter" />
   </label>
-  <a href="tableItem.php">
+  <a href="search2.php">
   reset</a>
 </form>
 <br /><br />
 <table width="700" border="1" cellspacing="0" cellpadding="4">
   <tr>
-      <td width="90" bgcolor="#CCCCCC"><strong>From date</strong></td>
-      <td width="95" bgcolor="#CCCCCC"><strong>To date</strong></td>
-      <td width="159" bgcolor="#CCCCCC"><strong>Name</strong></td>
+    <td width="90" bgcolor="#CCCCCC"><strong>From date</strong></td>
+    <td width="95" bgcolor="#CCCCCC"><strong>To date</strong></td>
+    <td width="159" bgcolor="#CCCCCC"><strong>Name</strong></td>
     <td width="191" bgcolor="#CCCCCC"><strong>Description</strong></td>
-      <td width="113" bgcolor="#CCCCCC"><strong>Color</strong></td>
-	  <td colspan="2" width="159" bgcolor="#CCCCCC"><strong>Manage</strong></td>
+    <td width="113" bgcolor="#CCCCCC"><strong>Color</strong></td>
   </tr>
 <?php
 
@@ -107,14 +97,11 @@ if ($_REQUEST["color"]<>'') {
 	$search_color = " AND color='".mysqli_real_escape_string($conn,$_REQUEST["color"])."'";
 }
 
-if ($_REQUEST["from"]<>'' and $_REQUEST["to"]<>'')
-{
+if ($_REQUEST["from"]<>'' and $_REQUEST["to"]<>'') {
 	$sql = "SELECT * FROM $table WHERE from_date >= '".mysqli_real_escape_string($conn,$_REQUEST["from"])."' AND to_date <= '".mysqli_real_escape_string($conn,$_REQUEST["to"])."'".$search_string.$search_color;
-} else if ($_REQUEST["from"]<>'')
-{
+} else if ($_REQUEST["from"]<>'') {
 	$sql = "SELECT * FROM $table WHERE from_date >= '".mysqli_real_escape_string($conn,$_REQUEST["from"])."'".$search_string.$search_color;
-} else if ($_REQUEST["to"]<>'')
-{
+} else if ($_REQUEST["to"]<>'') {
 	$sql = "SELECT * FROM $table WHERE to_date <= '".mysqli_real_escape_string($conn,$_REQUEST["to"])."'".$search_string.$search_color;
 } else {
 	$sql = "SELECT * FROM $table WHERE id>0".$search_string.$search_color;
@@ -124,22 +111,16 @@ $sql_result =$conn->query($sql) or die ('request "Could not execute SQL query" '
 if (mysqli_num_rows($sql_result)>0) {
 	while ($row=$sql_result->fetch_assoc()) {
 ?>
+  <?php $deviceid=$row["id"]; ?>
+  
   <tr>
     <td><?php echo $row["from_date"]; ?></td>
     <td><?php echo $row["to_date"]; ?></td>
     <td><?php echo $row["name"]; ?></td>
     <td><?php echo $row["details"]; ?></td>
     <td><?php echo $row["color"]; ?></td>
-<<<<<<< HEAD:Combine/tableItem.php
-	  <td> <a href="editItem.php?id=<?php echo $row["id"] ?>" class="group1"  >Edit</a> </td>
-	  <td> <a href="removeItem.php?id=<?php echo $row["id"] ?>">Remove</a> </td>
-	  <td> <form $row  id ='checkbox $i' action="" method="post">
-			  <input type="checkbox" name=<?php echo "box "+$row["id"]?> value="Available" class="group1" >
-			  </td>
-=======
-	  <td> <a href="editItem.php?id=<?php echo $row["id"] ?> "  >Edit</a> </td>
-	  <td> <a href="removeItem.php?id=<?php echo $row["id"] ?>">Remove</a> </td>
->>>>>>> 6d0df67a8f31deb51b89980c3b2c5cb8d6c52ef1:Combine/search2.php
+    <td> <a href="editItem.php?id=<?php echo $row["id"] ?> "  >Edit</a> </td>
+    <td> <a href="removeItem.php?id=<?php echo $row["id"] ?>">Remove</a> </td>
   </tr>
 <?php
 	}
@@ -171,37 +152,6 @@ if (mysqli_num_rows($sql_result)>0) {
 		});
 	});
 </script>
-	<script>
-	$(function() {
-	enable_cb();
-	$("#group1").click(enable_cb);
-	});
-
-	function enable_cb() {
-	if (this.click) {
-	$("input.group1").removeAttr("disabled");
-	} else {
-	$("input.group1").attr("disabled", true);
-	}
-	}
-	</script>
-
-	<script>
-	$("#delete").on("click", function (e) {
-	var checkbox = $(this);
-	if (checkbox.is(":checked") {
-		var r = confirm("Are you sure you want to delete this?");
-		if (r == true) {
-			if(isset($_POST['submitt']))
-		} else {
-		}
-	e.preventDefault();
-	return false;
-	}
-	});
-	</script>
-</div>
-
 </div>
 
 </body>
