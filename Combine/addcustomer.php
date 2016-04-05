@@ -13,12 +13,12 @@
 </head>
 <body>
 <?php include ("index.html") ?>
-<div class="container">
+<div class="container" id ="custcont">
     <form action="addcustomer.php" method="post">
-        Customers Name: <input  type="text" name="custname" required><br><br>
-        Email address: <input  type="text" name="custemail" class="form-control required" type="email" required><br><br>
+        Customers Name: <input  class ="tb5" type="text" name="custname" required><br><br>
+        Email address: <input  class ="tb5" type="text" name="custemail" class="form-control required" type="email" required><br><br>
         Category:
-        <select  name="category">
+        <select class ="tb5"  name="category">
             <option value="Internal customer">Internal customer</option>
             <option value="External UCL customer">External UCL customer</option>
             <option value="External other customers">External other customers</option>
@@ -27,9 +27,9 @@
         <!--data from wikipedia-->
         Other Details:
         <br>
-        <textarea name="details" rows="10" cols="20"></textarea>
+        <textarea  class ="tb6" name="details" rows="10" cols="20"></textarea>
         <br><br>
-        <input type= "submit" value="Submit" name="submit">
+        <input class ="tb5"  type= "submit" value="Submit" name="submit">
     </form>
 
 </div>

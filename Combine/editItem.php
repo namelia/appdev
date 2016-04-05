@@ -55,7 +55,7 @@
 <div id ="responseitem">
     <?php
     include("config.php");
-    if(isset($_POST['update']))
+    if(isset($_POST['Update']))
      {
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);

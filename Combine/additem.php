@@ -11,12 +11,12 @@
 <body>
 
 
-<div class="container">
+<div class="container"id ="itemcont">
 <form action="additem.php" method="post">
-    Device Name: <input  type="text" name="devicename" required><br><br>
-    ID: <input  type="text" name="ID" required><br><br>
+    Device Name: <input   class ="tb5" type="text" name="devicename" required value=" " ><br><br>
+    ID: <input  class ="tb5"  type="text" name="ID" required  value=" " ><br><br>
     Color:
-    <select  name="color">
+    <select  class ="tb5"name="color">
         <option value="none"></option>
         <option value="Black">Black</option>
         <option value="White">White</option>
@@ -29,15 +29,15 @@
     </select>
     <br><br>
     Operating System:
-    <select  name="OS">
-        <option value="IOS">IOS</option>
-        <option value="Android">Android</option>
-        <option value="Firefox OS">Firefox OS</option>
-        <option value="Windows Phone">Windows Phone</option>
-        <option value="Blackberry">Blackberry</option>
-        <option value="Tizen">Tizen</option>
-        <option value="Sailfish OS">Sailfish OS</option>
-        <option value="Ubuntu Touch OS">Ubuntu Touch OS</option>
+    <select class ="tb5"   name="OS">
+        <option value="IOS">  IOS</option>
+        <option value="Android">  Android</option>
+        <option value="Firefox OS">  Firefox OS</option>
+        <option value="Windows Phone">  Windows Phone</option>
+        <option value="Blackberry">  Blackberry</option>
+        <option value="Tizen">  Tizen</option>
+        <option value="Sailfish OS">  Sailfish OS</option>
+        <option value="Ubuntu Touch OS">  Ubuntu Touch OS</option>
         <option value="None">None</option>
         <option value="Others">Others</option>
     </select>
@@ -45,9 +45,9 @@
     <!--data from wikipedia-->
     Description:
     <br>
-    <textarea name="message"rows="10"cols="20"></textarea>
+    <textarea  class ="tb6" name="message"rows="10"cols="20"></textarea>
     <br><br>
-    <input type= "submit" value="Submit" name="submitt">
+    <input class ="tb5"  type= "submit" value="Submit" name='submitt'>
 </form>
 
 </div>
