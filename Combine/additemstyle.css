@@ -19,7 +19,6 @@ textarea
     float: right;
     margin-top: 30px;
 }
-<<<<<<< HEAD
 div#responseitem {
     position: fixed;
     width: 300px;
@@ -27,14 +26,3 @@ div#responseitem {
     left: 300px;
     bottom: 100px;
 }
-=======
-
-#responsecust,#responseitem
-{
-    display: block;
-    position: relative;
-    left: 300px;
-    top: 500px;
-    text-align: center;
-}
->>>>>>> 6d0df67a8f31deb51b89980c3b2c5cb8d6c52ef1

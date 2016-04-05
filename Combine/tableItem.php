@@ -37,11 +37,7 @@ $table='additem';
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>MySQL table search</title>
 
-
 	<link href="table.css" rel="stylesheet" type="text/css">
-
-	<link href="search.css" rel="stylesheet" type="text/css">
-
 	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
 	<!--<style>
 BODY, TD:not(id=sidebar) {
@@ -63,8 +59,6 @@ BODY, TD:not(id=sidebar) {
 <script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 <div id="table" class="container" style="overflow-x:auto;">
 <form id="form1" name="form1" method="post" action="tableItem.php">
-<form id="form2" name="form2" method="post" action="tablecust.php">
-
 <label for="from">From</label>
 <input name="from" type="text" id="from" size="10" value="<?php echo $_REQUEST["from"]; ?>" />
 <label for="to">to</label>
@@ -89,12 +83,11 @@ BODY, TD:not(id=sidebar) {
 <br /><br />
 <table width="700" border="1" cellspacing="0" cellpadding="4">
   <tr>
-      <td width="90" bgcolor="#CCCCCC"><strong>From date</strong></td>
-      <td width="95" bgcolor="#CCCCCC"><strong>To date</strong></td>
-      <td width="159" bgcolor="#CCCCCC"><strong>Name</strong></td>
+    <td width="90" bgcolor="#CCCCCC"><strong>From date</strong></td>
+    <td width="95" bgcolor="#CCCCCC"><strong>To date</strong></td>
+    <td width="159" bgcolor="#CCCCCC"><strong>Name</strong></td>
     <td width="191" bgcolor="#CCCCCC"><strong>Description</strong></td>
-      <td width="113" bgcolor="#CCCCCC"><strong>Color</strong></td>
-	  <td colspan="2" width="159" bgcolor="#CCCCCC"><strong>Manage</strong></td>
+    <td width="113" bgcolor="#CCCCCC"><strong>Color</strong></td>
   </tr>
 <?php
 
@@ -128,14 +121,11 @@ if (mysqli_num_rows($sql_result)>0) {
     <td><?php echo $row["name"]; ?></td>
     <td><?php echo $row["details"]; ?></td>
     <td><?php echo $row["color"]; ?></td>
-
 	  <td> <a href="editItem.php?id=<?php echo $row["id"] ?>" class="group1"  >Edit</a> </td>
 	  <td> <a href="removeItem.php?id=<?php echo $row["id"] ?>">Remove</a> </td>
 	  <td> <form $row  id ='checkbox $i' action="" method="post">
 			  <input type="checkbox" name=<?php echo "box "+$row["id"]?> value="Available" class="group1" >
 			  </td>
-
-
   </tr>
 <?php
 	}

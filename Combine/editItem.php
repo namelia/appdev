@@ -48,37 +48,37 @@
         <br><br>
         <input type= "submit" value="Submit" name="submitt">
     </form>
+
 </div>
 </body>
 <div id ="responseitem">
-<?php
-include("config.php");
-if(isset($_POST['submitt']))
-{
+    <?php
+    include("config.php");
+    if(isset($_POST['submitt']))
+     {
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-
-
     $someID = $_GET['id'];
     $device_name = $_POST['devicename'];
     $color_ = $_POST['color'];
     $os_ = $_POST['OS'];
     $details_ = $_POST['message'];
-
+    // $device_name = "axemax213";
+    // $color_ = "Silver";
+    // $os_ = "IOS";
+    // $details_ = "someotherdetails";
     $sql = "UPDATE additem SET name = '$device_name',  color = '$color_' , OS ='$os_' , details = '$details_' WHERE id = $someID ";
     if ($conn->query($sql) === TRUE) {
         echo 'Details have been modified in the database! In the entry: ';
         echo $someID ;
 
-
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
         //echo "  ID: " . $someID;
     }
-
-    $conn->close();}
-?>
-
+    $conn->close();
+    }
+    ?>
 </div>
 </html>
