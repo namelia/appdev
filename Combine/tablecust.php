@@ -91,6 +91,7 @@ BODY, TD:not(id=sidebar) {
 	  <td width="159" bgcolor="#CCCCCC"><strong>Email</strong></td>
       <td width="191" bgcolor="#CCCCCC"><strong>Description</strong></td>
 
+
   </tr>
 <?php
 

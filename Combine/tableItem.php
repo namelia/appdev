@@ -88,6 +88,8 @@ BODY, TD:not(id=sidebar) {
     <td width="159" bgcolor="#CCCCCC"><strong>Name</strong></td>
     <td width="191" bgcolor="#CCCCCC"><strong>Description</strong></td>
     <td width="113" bgcolor="#CCCCCC"><strong>Color</strong></td>
+	  <td colspan="2" width="113" bgcolor="#CCCCCC"><strong>Manage</strong></td>
+	  <td width="50" bgcolor="#CCCCCC"><strong>Availability</strong></td>
   </tr>
 <?php
 
