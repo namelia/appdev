@@ -16,7 +16,7 @@
 </head>
 <h1> Table of Items </h1>
 <body>
-<?php include("index.html")?>
+<?php include("index.php") ?>
 
 
     <div id="searchbutton">

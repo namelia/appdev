@@ -53,7 +53,7 @@ BODY, TD:not(id=sidebar) {
 
 <body>
 <div id ="sidebar" class="container">
-	<?php include("index.html"); ?>
+	<?php include("index.php"); ?>
 </div>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
 <script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>

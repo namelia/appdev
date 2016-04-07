@@ -12,7 +12,7 @@
     <script src="js/main.js"></script>
 </head>
 <body>
-<?php include ("index.html") ?>
+<?php include("index.php") ?>
 <div class="container" id ="custcont">
     <form action="addcustomer.php" method="post">
         Customers Name: <input  class ="tb5" type="text" name="custname" required><br><br>

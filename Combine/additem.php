@@ -6,13 +6,26 @@
     <link href="additemstyle.css" type="text/css" rel="stylesheet">
 </head>
 <div id =sidebar class="visible">
-    <?php include("index.html"); ?>
+    <?php include("index.php"); ?>
 </div>
 <body>
 
 
 <div class="container"id ="itemcont">
 <form action="additem.php" method="post">
+    Category:
+    <select  class ="tb5"name="category">
+        <option value="none"></option>
+        <option value="Development Kit">Development Kit</option>
+        <option value="iBeacon">iBeacon</option>
+        <option value="iPod">iPod</option>
+        <option value="Phone">Phone</option>
+        <option value="Tablet">Tablet</option>
+        <option value="Smart Glasses">Smart Glasses</option>
+        <option value="Tv">Tv</option>
+        <option value="Others">Others</option>
+    </select>
+    <br><br>
     Device Name: <input   class ="tb5" type="text" name="devicename" required value=" " ><br><br>
     ID: <input  class ="tb5"  type="text" name="ID" required  value=" " ><br><br>
     Color:
@@ -60,13 +73,13 @@ if(isset($_POST['submitt']))
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-
+    $category_ = $_POST['category'];
     $device_name = $_POST['devicename'];
     $id_ = ($_POST['ID']);
     $color_ = $_POST['color'];
     $os_ = $_POST['OS'];
     $details_ = $_POST['message'];
-    $sql = "INSERT INTO additem (name,id,color,OS,details) VALUES ('$device_name','$id_','$color_','$os_','$details_')";
+    $sql = "INSERT INTO additem (name,id,color,OS,details,category) VALUES ('$device_name','$id_','$color_','$os_','$details_','$category_')";
 
     if ($conn->query($sql) === TRUE) {
         echo 'Details have been added to the database!';

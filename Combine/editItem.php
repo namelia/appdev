@@ -6,7 +6,7 @@
     <link href="additemstyle.css" type="text/css" rel="stylesheet">
 </head>
 <div id =sidebar class="visible">
-    <?php include("index.html"); ?>
+    <?php include("index.php"); ?>
 </div>
 <body>
 
