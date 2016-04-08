@@ -1,4 +1,4 @@
-<?php
+
 ###########################################################
 /*
 GuestBook Script
@@ -81,7 +81,6 @@ include("config.php");
 	
 	if(isset($_GET['ac']) && $_GET['ac'] == 'logout'){
 		session_start();
-		$_SESSION['test']= 1;
 		$_SESSION['user_info'] = null;
 		unset($_SESSION['user_info']);
 		header ('URL=logout.php');
@@ -91,7 +90,10 @@ include("config.php");
 	<?php if(isset($_SESSION['user_info']) && is_array($_SESSION['user_info'])) { ?>
 
 	    <form id="login-form" class="login-form" name="form1">
-			<?php header("Location:index.php"); exit(); ?>
+			<?php
+			$_SESSION['login'] = "1";
+			header("Location:index.php");
+			exit(); ?>
 	        <div id="form-content">
 	            <div class="welcome">
 					<?php echo $_SESSION['user_info']['name']  ?>, you are logged in. 
@@ -103,7 +105,7 @@ include("config.php");
 				</div>	
 	        </div>
 	
-	    <!--</form>-->
+	f    <!--</form>-->
         
 	<?php } else { ?>
 	    <form id="login-form" class="login-form" name="form1" method="post" action="logout.php">

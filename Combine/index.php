@@ -1,4 +1,8 @@
 
+<?php if(!isset($_SESSION['login'])==0) {
+	 header('Location: logout.php');}
+ 	?>
+
 
 <!DOCTYPE html>
 <html>
@@ -20,19 +24,19 @@
 
 </head>
 <body>
-
+<div class="row">
 	<div id ="sidebar" class="visible" >
 		<ul>
-			<li><a href ="additem.php"> <span class="glyphicon glyphicon-book" style="font-size:20px"></span> Add item </a></li>
-			<li><a href ="tableItem.php" class="fa fa-table" style="font-size:20px"> Search item </a></li>
-			<li><a href ="addcustomer.php"> <span class="glyphicon glyphicon-user"style="font-size:20px"> </span> Add Customer </a></li>
-			<li><a href ="tablecust.php"><span class="glyphicon glyphicon-user"style="font-size:20px"></span> Display Customers </a></li>
-			<li id ="download"><a href ="download.php" class="fa fa-floppy-o" style="font-size:20px"> Download Table </a></li>
+			<li><a href ="additem.php" style="font-size:16px;font-family: Segoe UI;"><span class="glyphicon glyphicon-book"></span> Add item </a></li>
+			<li><a href ="tableItem.php" style="font-size:16px;font-family: Segoe UI;"><span class="glyphicon glyphicon-search"></span> Search item </a></li>
+			<li><a href ="addcustomer.php"style="font-size:16px;  font-family: Segoe UI;"> <span class="glyphicon glyphicon-user"> </span> Add Customer </a></li>
+			<li><a href ="tablecust.php"style="font-size:16px; font-family: Segoe UI;"> <span class="glyphicon glyphicon-user"></span> Display Customers </a></li>
+			<li id ="download"><a href ="download.php"style="font-size:16px;font-family: Segoe UI;"> <span class="glyphicon glyphicon-download"></span> Download Table </a></li>
 
 			</li>
 
 
-			<li style="vertical-align: bottom"><a href ="logout.php?ac=logout"> <span class="glyphicon glyphicon-off" style="font-size:20px"></span>  Logout</a><li>
+			<li style="vertical-align: bottom"><a href ="logout.php?ac=logout"style="font-size:16px; font-family: Segoe UI;"> <span class="glyphicon glyphicon-off" style="font-size:20px"></span>  Logout</a><li>
 		</ul>
 		<!--
 		<div id = "sidebar-btn">
@@ -42,6 +46,7 @@
 		</div>
 -->
 	</div>
+	<div class="col-md-10">.col-md-10</div>
 	<div id =g>
 		<!-- <h1>Welcome!</h1>-- reetings>
 		<!--<div id="form-content">-->
@@ -68,7 +73,7 @@
 		});
 	});
 	</script>-->
-
+</div>
 </body>
 
 </html>

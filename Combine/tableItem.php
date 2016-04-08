@@ -52,11 +52,12 @@ BODY, TD:not(id=sidebar) {
 
 
 <body>
-<div id ="sidebar" class="container">
-	<?php include("index.php"); ?>
-</div>
+		<div id ="sidebar" class="container">
+			<?php include("index.php"); ?>
+		</div>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
 <script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+
 <div id="table" class="container" style="overflow-x:auto;">
 <form id="form1" name="form1" method="post" action="tableItem.php">
 <label for="from">From</label>

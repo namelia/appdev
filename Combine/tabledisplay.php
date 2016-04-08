@@ -38,7 +38,7 @@
     if ($resultSet-> num_rows!=0)
     {
 
-        echo "<table><tr><th>ID</th> <th>Name</th> <th>Color</th> <th>OS</th> <th> Details</th></tr>";
+        echo "<table  class='table table-striped'><tr><th>ID</th> <th>Name</th> <th>Color</th> <th>OS</th> <th> Details</th></tr>";
         while ( $rows= $resultSet->fetch_assoc())
         {
             //result turns it into associative array
