@@ -24,15 +24,16 @@
 
 </head>
 <body>
+<div
 <div class="row">
 	<div id ="sidebar" class="visible" >
 		<ul>
+			<li><a href ="addorder.php" style="font-size:16px;font-family: Segoe UI;" ><span class="glyphicon glyphicon-plus"></span> Add Order</a></li>
 			<li><a href ="additem.php" style="font-size:16px;font-family: Segoe UI;"><span class="glyphicon glyphicon-book"></span> Add item </a></li>
 			<li><a href ="tableItem.php" style="font-size:16px;font-family: Segoe UI;"><span class="glyphicon glyphicon-search"></span> Search item </a></li>
 			<li><a href ="addcustomer.php"style="font-size:16px;  font-family: Segoe UI;"> <span class="glyphicon glyphicon-user"> </span> Add Customer </a></li>
 			<li><a href ="tablecust.php"style="font-size:16px; font-family: Segoe UI;"> <span class="glyphicon glyphicon-user"></span> Display Customers </a></li>
 			<li id ="download"><a href ="download.php"style="font-size:16px;font-family: Segoe UI;"> <span class="glyphicon glyphicon-download"></span> Download Table </a></li>
-
 			</li>
 
 
