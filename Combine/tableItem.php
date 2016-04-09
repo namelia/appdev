@@ -52,44 +52,63 @@ BODY, TD:not(id=sidebar) {
 
 
 <body>
-		<div id ="sidebar" class="container">
-			<?php include("index.php"); ?>
-		</div>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-<script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+<div class="row">
 
-<div id="table" class="container" style="overflow-x:auto;">
-<form id="form1" name="form1" method="post" action="tableItem.php">
-<label for="from">From</label>
-<input name="from" type="text" id="from" size="10" value="<?php echo $_REQUEST["from"]; ?>" />
-<label for="to">to</label>
-<input name="to" type="text" id="to" size="10" value="<?php echo $_REQUEST["to"]; ?>"/>
- <label>Items:</label>
-<input type="text" name="string" id="string" value="<?php echo stripcslashes($_REQUEST["string"]); ?>" />
-<label>Color</label>
-<select name="color">
-<option value="">--</option>
-<?php
-	$query= $conn->query("SELECT * FROM $table GROUP BY color ORDER BY color")or die ('request "Could not execute SQL query" '.$sql);
-	while ($row = $query->fetch_assoc()) {
-		echo "<option value='".$row["color"]."'".($row["color"]==$_REQUEST["color"] ? " selected" : "").">".$row["color"]."</option>";
-	}
-?>
-</select>
-<input type="submit" name="button" id="button" value="Filter" />
-  </label>
-  <a href="tableItem.php">
-  reset</a>
-</form>
+		<div id ="sidebar" class="container">
+			<!--<div class=" col-sm-3 col-xs-3">-->
+			<?php include("index.php"); ?>
+			</div>
+		</div>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+		<script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+
+	<!-- <div class=" col-sm-9 col-xs-9">-->
+	<div id="table" class="container ">
+	<form id="form1" name="form1" method="post" action="tableItem.php">
+		<div class ="row">
+			<div class="col-xs-2">
+				<label for="from">From</label>
+				<input name="from" type="text" id="from" size="10" value="<?php echo $_REQUEST["from"]; ?>" />
+			</div>
+			<div class="col-xs-2">
+				<label for="to">to</label>
+				<input name="to" type="text" id="to" size="10" value="<?php echo $_REQUEST["to"]; ?>"/>
+			</div>
+			<div  class="col-xs-3">
+				<label>Items:</label>
+				<input type="text" name="string" id="string" value="<?php echo stripcslashes($_REQUEST["string"]); ?>" />
+			</div>
+			<div  class="col-xs-2">
+				<label>Color</label>
+				<select name="color">
+				<option value="">--</option>
+				<?php
+					$query= $conn->query("SELECT * FROM $table GROUP BY color ORDER BY color")or die ('request "Could not execute SQL query" '.$sql);
+					while ($row = $query->fetch_assoc()) {
+						echo "<option value='".$row["color"]."'".($row["color"]==$_REQUEST["color"] ? " selected" : "").">".$row["color"]."</option>";
+					}
+				?>
+				</select>
+			</div>
+			<div  class="col-xs-3">
+				<input type="submit" name="button" id="button" value="Filter" />
+				</label>
+				<a href="tableItem.php"> reset</a>
+			</div>
+
+		</form>
+		<!-- </div>
+	</div>-->
+
 <br /><br />
-<table width="700" border="1" cellspacing="0" cellpadding="4">
+<table width="600" border="1" cellspacing="0" cellpadding="4" class="table table-striped table-hover table-responsive">
   <tr>
     <td width="90" bgcolor="#CCCCCC"><strong>From date</strong></td>
     <td width="95" bgcolor="#CCCCCC"><strong>To date</strong></td>
     <td width="159" bgcolor="#CCCCCC"><strong>Name</strong></td>
     <td width="191" bgcolor="#CCCCCC"><strong>Description</strong></td>
     <td width="113" bgcolor="#CCCCCC"><strong>Color</strong></td>
-	  <td colspan="2" width="113" bgcolor="#CCCCCC"><strong>Manage</strong></td>
+	  <td colspan="2" width="70" bgcolor="#CCCCCC"><strong>Manage</strong></td>
 	  <td width="50" bgcolor="#CCCCCC"><strong>Availability</strong></td>
   </tr>
 <?php
@@ -138,6 +157,7 @@ if (mysqli_num_rows($sql_result)>0) {
 <?php	
 }
 ?>
+	</div>
 </table>
 
 
@@ -189,7 +209,7 @@ if (mysqli_num_rows($sql_result)>0) {
 	}
 	});
 	</script>
-</div>
+
 
 <div id = resp>
 

@@ -81,7 +81,7 @@ BODY, TD:not(id=sidebar) {
   reset</a>
 </form>
 <br /><br />
-<table width="700" border="1" cellspacing="0" cellpadding="4">
+<table width="700" border="1" cellspacing="0" cellpadding="4" class="table table-striped  table-hover">
   <tr>
     <!--<td width="90" bgcolor="#CCCCCC"><strong>From date</strong></td>
     <td width="95" bgcolor="#CCCCCC"><strong>To date</strong></td>-->
@@ -90,8 +90,6 @@ BODY, TD:not(id=sidebar) {
       <td width="159" bgcolor="#CCCCCC"><strong>Name</strong></td>
 	  <td width="159" bgcolor="#CCCCCC"><strong>Email</strong></td>
       <td width="191" bgcolor="#CCCCCC"><strong>Description</strong></td>
-
-
   </tr>
 <?php
 include(config.php);

@@ -29,7 +29,7 @@
     Device Name: <input   class ="tb5" type="text" name="devicename" required value=" " ><br><br>
     ID: <input  class ="tb5"  type="text" name="ID" required  value=" " ><br><br>
     Color:
-    <select  class ="tb5"name="color">
+    <select  class ="tb5"name="color" class="form-control">
         <option value="none"></option>
         <option value="Black">Black</option>
         <option value="White">White</option>
@@ -58,7 +58,7 @@
     <!--data from wikipedia-->
     Description:
     <br>
-    <textarea  class ="tb6" name="message"rows="10"cols="20"></textarea>
+    <textarea  class ="tb6" name="message"rows="10"cols="20" class="form-control" rows="10"></textarea>
     <br><br>
     <input class ="tb5"  type= "submit" value="Submit" name='submitt'>
 </form>
