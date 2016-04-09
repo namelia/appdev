@@ -5,6 +5,7 @@
     left:25px;
     top: 30px;
 
-    
-
+}
+select#cat {
+    height: 24px;
 }
