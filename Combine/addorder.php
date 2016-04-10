@@ -32,7 +32,7 @@ d
         <option value="Others">Others</option>
     </select>-->
     <br><br>
-    Device Name: <input   class ="tb5" type="text" name="orddevicename" required value=" " ><br><br>
+    Device Name: <input class ="tb5" type="text" name="orddevicename" required value=" " ><br><br>
     ID: <input  class ="tb5"  type="text" name="ordID" required  value=" " ><br><br>
     <label for="from">From Date :</label>
     <input class ="tb5" name="from" type="text" id="from" size="10" />

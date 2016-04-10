@@ -108,7 +108,6 @@ BODY, TD:not(id=sidebar) {
       <td width="95" bgcolor="#CCCCCC"><strong>To date</strong/td>
       <td width="159" bgcolor="#CCCCCC"><strong>Name</strong></td>
       <td width="191" bgcolor="#CCCCCC"><strong>Description</strong></td>
-
 	  <td colspan="2" width="20" bgcolor="#CCCCCC"><strong>Manage</strong></td>
 	  <td width="30" bgcolor="#CCCCCC"><strong>Availability</strong></td>
   </tr>
