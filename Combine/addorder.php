@@ -12,27 +12,18 @@
     <?php include("index.php"); ?>
 </div>
 <body>
-d
+
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
 <script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 
 <div class="container"id ="itemcont">
 <form action="additem.php" method="post">
 
-    <!--Category:
-    <select  class ="tb5"name="category">
-        <option value="none"></option>
-        <option value="Development Kit">Development Kit</option>
-        <option value="iBeacon">iBeacon</option>
-        <option value="iPod">iPod</option>
-        <option value="Phone">Phone</option>
-        <option value="Tablet">Tablet</option>
-        <option value="Smart Glasses">Smart Glasses</option>
-        <option value="Tv">Tv</option>
-        <option value="Others">Others</option>
-    </select>-->
     <br><br>
-    Device Name: <input class ="tb5" type="text" name="orddevicename" required value=" " ><br><br>
+    <div class="content">
+    Device Name: <input class ="search tb5" id ="searchitem" type="text" name="orddevicename" required  >&nbsp; &nbsp;<br>
+    <div id="resultlol"></div>
+    </div>
     ID: <input  class ="tb5"  type="text" name="ordID" required  value=" " ><br><br>
     <label for="from">From Date :</label>
     <input class ="tb5" name="from" type="text" id="from" size="10" />
@@ -41,35 +32,6 @@ d
     <input class ="tb5" name="to" type="text" id="to" size="10"/>
     <br><br>
     Customers Name: <input  class ="tb5" type="text" name="ordcustname" required><br><br>
-    <!--Email address: <input  class ="tb5" type="text" name="ordcustemail" class="form-control required" type="email" required><br><br>-->
-    <!--Color:
-    <select  class ="tb5"name="color" class="form-control">
-        <option value="none"></option>
-        <option value="Black">Black</option>
-        <option value="White">White</option>
-        <option value="Gray">Gray</option>
-        <option value="Silver">Silver</option>
-        <option value="Gold">Gold</option>
-        <option value="Blue">Blue</option>
-        <option value="Red">Red</option>
-        <option value="Others">Others</option>
-    </select>
-    <br><br>
-    Operating System:
-    <select class ="tb5"   name="OS">
-        <option value="IOS">  IOS</option>
-        <option value="Android">  Android</option>
-        <option value="Firefox OS">  Firefox OS</option>
-        <option value="Windows Phone">  Windows Phone</option>
-        <option value="Blackberry">  Blackberry</option>
-        <option value="Tizen">  Tizen</option>
-        <option value="Sailfish OS">  Sailfish OS</option>
-        <option value="Ubuntu Touch OS">  Ubuntu Touch OS</option>
-        <option value="None">None</option>
-        <option value="Others">Others</option>
-    </select>
-    <br><br>
-    <!--data from wikipedia-->
     Additional Details:
     <br>
     <textarea  class ="tb6" name="orderdetails"rows="10"cols="20" class="form-control" rows="10"></textarea>
@@ -124,6 +86,80 @@ if(isset($_POST['submitt']))
         });
     </script>
 
+
+    <script type="text/javascript">
+        $(function(){
+            $(".search").keyup(function()
+            {
+                var searchitem = $(this).val();
+                var dataString = 'search='+ searchitem;
+                if(searchitem!='')
+                {
+                    $.ajax({
+                        type: "POST",
+                        url: "result.php",
+                        data: dataString,
+                        cache: false,
+                        success: function(html)
+                        {
+                            $("#resultlol").html(html).show();
+                        }
+                    });
+                }return false;
+            });
+
+            jQuery("#resultlol").live("click",function(e){
+                var $clicked = $(e.target);
+                var $name = $clicked.find('.name').html();
+                var decoded = $("<div/>").html($name).text();
+                $('#searchitem').val(decoded);
+            });
+            jQuery(document).live("click", function(e) {
+                var $clicked = $(e.target);
+                if (! $clicked.hasClass("search")){
+                    jQuery("#resultlol").fadeOut();
+                }
+            });
+            $('#searchitem').click(function(){
+            jQuery("#resultlol").fadeIn();
+        });
+        });
+    </script>
+
 </div>
+
+<style type="text/css">
+
+    #searchitem
+    {
+        border:solid 1px #000;
+        padding:5px;
+        font-size:14px;
+    }
+    #resultlol
+    {
+        position:absolute;
+        padding:5px;
+        display:none;
+        margin-top:-36px;
+        border-top:0px;
+        overflow:hidden;
+        border:1px #CCC solid;
+        background-color: white;
+    }
+    .show
+    {
+        padding:10px;
+        border-bottom:1px #999 dashed;
+        font-size:15px;
+        height:50px;
+    }
+    .show:hover
+    {
+        background:#4c66a4;
+        color:#FFF;
+        cursor:pointer;
+    }
+</style>
 
 </html>
