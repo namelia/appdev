@@ -19,9 +19,21 @@
 <div class="container"id ="itemcont">
 <form action="additem.php" method="post">
 
+    <!--Category:
+    <select  class ="tb5"name="category">
+        <option value="none"></option>
+        <option value="Development Kit">Development Kit</option>
+        <option value="iBeacon">iBeacon</option>
+        <option value="iPod">iPod</option>
+        <option value="Phone">Phone</option>
+        <option value="Tablet">Tablet</option>
+        <option value="Smart Glasses">Smart Glasses</option>
+        <option value="Tv">Tv</option>
+        <option value="Others">Others</option>
+    </select>-->
     <br><br>
     <div class="content">
-    Device Name: <input class ="search tb5" id ="searchitem" type="text" name="orddevicename" required  >&nbsp; &nbsp;<br>
+    Device Name: <input class ="search tb5" id ="searchitem" type="text" name="orddevicename" required  >&nbsp; &nbsp;<br><br>
     <div id="resultlol"></div>
     </div>
     ID: <input  class ="tb5"  type="text" name="ordID" required  value=" " ><br><br>
@@ -97,7 +109,7 @@ if(isset($_POST['submitt']))
                 {
                     $.ajax({
                         type: "POST",
-                        url: "result.php",
+                        url: "resultitem.php",
                         data: dataString,
                         cache: false,
                         success: function(html)
