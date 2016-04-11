@@ -75,8 +75,8 @@ BODY, TD:not(id=sidebar) {
 				<input name="to" type="text" id="to" size="10" value="<?php echo $_REQUEST["to"]; ?>"/>
 			</div>
 			<div  class="col-xs-3">
-				<label>Items:</label>
-				<input type="text" name="string" id="string" value="<?php echo stripcslashes($_REQUEST["string"]); ?>" />
+				<label>Items:</label>&nbsp;
+				<input id ="searchitem"  type="text" name="string" id="string" value="<?php echo stripcslashes($_REQUEST["string"]); ?>" />
 			</div>
 			<div  class="col-xs-3">
 				<label>category</label>
@@ -215,6 +215,5 @@ if (mysqli_num_rows($sql_result)>0) {
 <div id = resp>
 
 </div>
-
 </body>
 </html>

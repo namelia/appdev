@@ -33,9 +33,8 @@
     </select>-->
     <br><br>
     <div class="content">
-    Device Name: <input class ="search tb5" id ="searchitem" type="text" name="orddevicename" required  >&nbsp; &nbsp;<br><br>
-    <div id="resultlol"></div>
-    </div>
+    Device Name: <input class ="search tb5" id ="searchitem" type="text" name="orddevicename" required  >&nbsp; <br><br>
+    </div><div id="resultlol"></div>
     ID: <input  class ="tb5"  type="text" name="ordID" required  value=" " ><br><br>
     <label for="from">From Date :</label>
     <input class ="tb5" name="from" type="text" id="from" size="10" />
@@ -43,7 +42,8 @@
     <label for="to">To Date :</label>
     <input class ="tb5" name="to" type="text" id="to" size="10"/>
     <br><br>
-    Customers Name: <input  class ="tb5" type="text" name="ordcustname" required><br><br>
+    Customers Name: <input  class ="searchC tb5"  id ="searchcust" type="text" name="ordcustname" required>&nbsp;<br><br>
+    <div id="resultcust"></div>
     Additional Details:
     <br>
     <textarea  class ="tb6" name="orderdetails"rows="10"cols="20" class="form-control" rows="10"></textarea>
@@ -138,17 +138,58 @@ if(isset($_POST['submitt']))
         });
     </script>
 
+
+
+    <script type="text/javascript">
+        $(function(){
+            $(".searchC").keyup(function()
+            {
+                var searchcust = $(this).val();
+                var dataString = 'search='+ searchcust;
+                if(searchcust!='')
+                {
+                    $.ajax({
+                        type: "POST",
+                        url: "resultcust.php",
+                        data: dataString,
+                        cache: false,
+                        success: function(html)
+                        {
+                            $("#resultcust").html(html).show();
+                        }
+                    });
+                }return false;
+            });
+
+            jQuery("#resultcust").live("click",function(e){
+                var $clicked = $(e.target);
+                var $name = $clicked.find('.name').html();
+                var decoded = $("<div/>").html($name).text();
+                $('#searchcust').val(decoded);
+            });
+            jQuery(document).live("click", function(e) {
+                var $clicked = $(e.target);
+                if (! $clicked.hasClass("searchC")){
+                    jQuery("#resultcust").fadeOut();
+                }
+            });
+            $('#searchcust').click(function(){
+                jQuery("#resultcust").fadeIn();
+            });
+        });
+    </script>
+
 </div>
 
 <style type="text/css">
 
-    #searchitem
+    #searchitem,#searchcust
     {
         border:solid 1px #000;
         padding:5px;
         font-size:14px;
     }
-    #resultlol
+    #resultlol,#resultcust
     {
         position:absolute;
         padding:5px;
