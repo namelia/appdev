@@ -29,7 +29,7 @@ Released: 2012-03-18
 
 error_reporting(0);
 include("config.php");
-$table='addcustomers';
+$table='clients';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -59,13 +59,9 @@ BODY, TD:not(id=sidebar) {
 <script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 <div id="table" class="container" style="overflow-x:auto;">
 <form id="form1" name="form1" method="post" action="tablecust.php">
-<!--<label for="from">From</label>
-<input name="from" type="text" id="from" size="10" value="<?php echo $_REQUEST["from"]; ?>" />
-<label for="to">to</label>
-<input name="to" type="text" id="to" size="10" value="<?php echo $_REQUEST["to"]; ?>"/> -->
  <label>Search:</label>
 <input type="text" name="string" id="string" value="<?php echo stripcslashes($_REQUEST["string"]); ?>" />
-<label>Category</label>
+<label>category</label>
 <select name="category">
 <option value="">--</option>
 <?php
@@ -89,28 +85,29 @@ BODY, TD:not(id=sidebar) {
 	  <td width="191" bgcolor="#CCCCCC"><strong>Category</strong></td>
       <td width="159" bgcolor="#CCCCCC"><strong>Name</strong></td>
 	  <td width="159" bgcolor="#CCCCCC"><strong>Email</strong></td>
+	  <td width="159" bgcolor="#CCCCCC"><strong>Phone</strong></td>
+	  <td width="159" bgcolor="#CCCCCC"><strong>Address</strong></td>
       <td width="191" bgcolor="#CCCCCC"><strong>Description</strong></td>
   </tr>
 <?php
-include(config.php);
+include("config.php");
 if ($_REQUEST["string"]<>'') {
 	$search_string = " AND (name LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR details LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%')";
 }
 if ($_REQUEST["category"]<>'') {
-	$search_category = " AND category= '".mysqli_real_escape_string($conn,$_REQUEST["category"])."'";
+	$search_category = " AND category= '".mysqli_real_escape_string($conn,$_REQUEST["category"])."'".$search_string.$search_category;
 }
 
 else /*($_REQUEST["from"]<>'' and $_REQUEST["to"]<>'')*/ {
 /* $sql = "SELECT * FROM $table WHERE from_date >= '".mysqli_real_escape_string($conn,$_REQUEST["from"])."' AND to_date <= '".mysqli_real_escape_string($conn,$_REQUEST["to"])."'".$search_string.$search_category;
-} else if ($_REQUEST["from"]<>'') {
-	$sql = "SELECT * FROM $table WHERE from_date >= '".mysqli_real_escape_string($conn,$_REQUEST["from"])."'".$search_string.$search_category;
+} else if ($_REQUEST["from"]<>'') {SE from_date >= '".mysqli_real_escape_string($conn,$_REQUEST["from"])."'".$search_string.$search_category;
 } else if ($_REQUEST["to"]<>'') {
 	$sql = "SELECT * FROM $table WHERE to_date <= '".mysqli_real_escape_string($conn,$_REQUEST["to"])."'".$search_string.$search_category;
 } else {*/
 	$sql = "SELECT * FROM $table WHERE id>0".$search_string .$search_category;
 }
 
-$sql_result =$conn->query($sql) or die ('request "Could notw execute SQL query" '.$sql);
+$sql_result =$conn->query($sql) or die ('request "Could not execute SQL query" '.$sql);
 if (mysqli_num_rows($sql_result)>0) {
 	while ($row=$sql_result->fetch_assoc()) {
 ?>
@@ -119,6 +116,8 @@ if (mysqli_num_rows($sql_result)>0) {
 	  <td><?php echo $row["category"]; ?></td>
 	  <td><?php echo $row["name"]; ?></td>
 	  <td><?php echo $row["email"]; ?></td>
+	  <td><?php echo $row["phone"]; ?></td>
+	  <td><?php echo $row["address"]; ?></td>
 	  <td><?php echo $row["details"]; ?></td>
 
   </tr>

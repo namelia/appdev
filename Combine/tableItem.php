@@ -29,7 +29,7 @@ Released: 2012-03-18
 
 error_reporting(0);
 include("config.php");
-$table='additem';
+$table='objects';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -79,7 +79,7 @@ BODY, TD:not(id=sidebar) {
 				<input id ="searchitem"  type="text" name="string" id="string" value="<?php echo stripcslashes($_REQUEST["string"]); ?>" />
 			</div>
 			<div  class="col-xs-3">
-				<label>category</label>
+				<label>Category</label>
 				<select name="category" id="cat">
 				<option value="">--</option>
 				<?php
@@ -101,12 +101,17 @@ BODY, TD:not(id=sidebar) {
 	</div>-->
 
 <br /><br />
-<table width="600" border="1" cellspacing="0" cellpadding="4" class="table table-striped table-hover table-responsive">
+<table width="660" border="1" cellspacing="0" cellpadding="4" class="table table-striped table-hover table-responsive">
   <tr>
 	  <td width="159" bgcolor="#CCCCCC"><strong>Category</strong></td>
-      <td width="90" bgcolor="#CCCCCC"><strong>From date</strong></td>
-      <td width="95" bgcolor="#CCCCCC"><strong>To date</strong/td>
+	  <td width="95" bgcolor="#CCCCCC"><strong>ID</strong/td>
+      <!--<td width="160" bgcolor="#CCCCCC"><strong>From date</strong></td>
+      <td width="160" bgcolor="#CCCCCC"><strong>To date</strong/td>-->
       <td width="159" bgcolor="#CCCCCC"><strong>Name</strong></td>
+	  <td width="95" bgcolor="#CCCCCC"><strong>OS</strong/td>
+	  <td width="95" bgcolor="#CCCCCC"><strong>UDID</strong/td>
+	  <td width="95" bgcolor="#CCCCCC"><strong>IMEI</strong/td>
+	  <td width="95" bgcolor="#CCCCCC"><strong>Serial</strong/td>
       <td width="191" bgcolor="#CCCCCC"><strong>Description</strong></td>
 	  <td colspan="2" width="20" bgcolor="#CCCCCC"><strong>Manage</strong></td>
 	  <td width="30" bgcolor="#CCCCCC"><strong>Availability</strong></td>
@@ -114,7 +119,7 @@ BODY, TD:not(id=sidebar) {
 <?php
 
 if ($_REQUEST["string"]<>'') {
-	$search_string = " AND (name LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR details LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%')";
+	$search_string = " AND (name LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR description LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%')";
 }
 if ($_REQUEST["category"]<>'') {
 	$search_category = " AND category='".mysqli_real_escape_string($conn,$_REQUEST["category"])."'";
@@ -139,12 +144,17 @@ if (mysqli_num_rows($sql_result)>0) {
 ?>
   <tr>
 	  <td><?php echo $row["category"]; ?></td>
-      <td><?php echo $row["from_date"]; ?></td>
-      <td><?php echo $row["to_date"]; ?></td>
+      <!--<td><!--?php echo $row["beginDate"]; ?></td>
+      <td><!--?php echo $row["endDate"]; ?></td>-->
+	  <td><?php echo $row["id"]; ?></td>
       <td><?php echo $row["name"]; ?></td>
-      <td><?php echo $row["details"]; ?></td>
+	  <td><?php echo $row["OS"]; ?></td>
+	  <td><?php echo $row["UDID"]; ?></td>
+	  <td><?php echo $row["IMEI"]; ?></td>
+	  <td><?php echo $row["serial"]; ?></td>
+      <td><?php echo $row["description"]; ?></td>
 
-	  <td> <a href="editItem.php?id=<?php echo $row["id"]?>&name=<?php echo $row["name"]?>&details=<?php echo $row["details"]?>&category=<?php echo $row["category"]?>&OS=<?php echo $row["OS"]?>" class="group1"  >Edit</a> </td>
+	  <td> <a href="editItem.php?id=<?php echo $row["id"]?>&name=<?php echo $row["name"]?>&description=<?php echo $row["description"]?>&category=<?php echo $row["category"]?>&OS=<?php echo $row["OS"]?>" class="group1"  >Edit</a> </td>
 	  <td> <a href="removeItem.php?id=<?php echo $row["id"] ?>">Remove</a> </td>
 	  <td> <form $row  id ='checkbox $i' action="" method="post">
 			  <input type="checkbox" name=<?php echo "box "+$row["id"]?> value="Available" class="group1" >
@@ -154,7 +164,7 @@ if (mysqli_num_rows($sql_result)>0) {
 	}
 } else {
 ?>
-<tr><td colspan="5">No results found.</td>
+<tr><td colspan="11">No results found.</td>
 <?php	
 }
 ?>

@@ -28,7 +28,7 @@
     // $color_ = "Silver";
     // $os_ = "IOS";
     // $details_ = "someotherdetails";
-    $sql = "DELETE FROM additem WHERE `additem`.`id` = $someID ";
+    $sql = "DELETE FROM objects WHERE `objects`.`id` = $someID ";
     if ($conn->query($sql) === TRUE) {
         echo 'This entry has been deleted !! ID: ';
         echo $someID ;

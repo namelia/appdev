@@ -3,7 +3,7 @@
 include("config.php");
 // Data base connection hyper force GO!
 // Query...
-$resultSet= $conn->query("SELECT name,id,color,os,details FROM additem");
+$resultSet= $conn->query("SELECT category,name,id,OS,manufacturer,description,UDID,IMEI,serial FROM objects");
 
 // Don't look... Download!
 header('Content-Type: text/csv; charset=utf-8');
@@ -13,7 +13,7 @@ header('Content-Disposition: attachment; filename=data.csv');
 $output = fopen('php://output', 'w');
 
 // Headings...
-fputcsv($output, array('name', 'id', 'color', 'os', 'details'));
+fputcsv($output, array('category','name', 'id', 'os','manufacturer', 'description','UDID','IMEI','serial'));
 
 // ...and rows!
 while ($rows = $resultSet->fetch_assoc()) fputcsv($output, $rows);
