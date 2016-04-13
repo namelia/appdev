@@ -108,6 +108,7 @@ BODY, TD:not(id=sidebar) {
       <!--<td width="160" bgcolor="#CCCCCC"><strong>From date</strong></td>
       <td width="160" bgcolor="#CCCCCC"><strong>To date</strong/td>-->
       <td width="159" bgcolor="#CCCCCC"><strong>Name</strong></td>
+	  <td width="159" bgcolor="#CCCCCC"><strong>Manufacturer</strong></td>
 	  <td width="95" bgcolor="#CCCCCC"><strong>OS</strong/td>
 	  <td width="95" bgcolor="#CCCCCC"><strong>UDID</strong/td>
 	  <td width="95" bgcolor="#CCCCCC"><strong>IMEI</strong/td>
@@ -148,13 +149,14 @@ if (mysqli_num_rows($sql_result)>0) {
       <td><!--?php echo $row["endDate"]; ?></td>-->
 	  <td><?php echo $row["id"]; ?></td>
       <td><?php echo $row["name"]; ?></td>
+	  <td><?php echo $row["manufacturer"]; ?></td>
 	  <td><?php echo $row["OS"]; ?></td>
 	  <td><?php echo $row["UDID"]; ?></td>
 	  <td><?php echo $row["IMEI"]; ?></td>
 	  <td><?php echo $row["serial"]; ?></td>
       <td><?php echo $row["description"]; ?></td>
 
-	  <td> <a href="editItem.php?id=<?php echo $row["id"]?>&name=<?php echo $row["name"]?>&description=<?php echo $row["description"]?>&category=<?php echo $row["category"]?>&OS=<?php echo $row["OS"]?>" class="group1"  >Edit</a> </td>
+	  <td> <a href="editItem.php?id=<?php echo $row["id"]?>&name=<?php echo $row["name"]?>&description=<?php echo $row["description"]?>&category=<?php echo $row["category"]?>&OS=<?php echo $row["OS"]?>&UDID=<?php echo $row["UDID"]?>&IMEI=<?php echo $row["IMEI"]?>&Serial=<?php echo $row["serial"]?>&Manufacturer=<?php echo $row["manufacturer"]?>" class="group1"  >Edit</a> </td>
 	  <td> <a href="removeItem.php?id=<?php echo $row["id"] ?>">Remove</a> </td>
 	  <td> <form $row  id ='checkbox $i' action="" method="post">
 			  <input type="checkbox" name=<?php echo "box "+$row["id"]?> value="Available" class="group1" >

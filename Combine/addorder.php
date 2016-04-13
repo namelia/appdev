@@ -50,13 +50,14 @@ if(isset($_POST['submitt']))
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-    $category_ = $_POST['category'];
     $device_name = $_POST['orddevicename'];
-    $id_ = ($_POST['ID']);
+    $id_ = $_POST['ordID'];
     $from_ = $_POST['from'];
     $to_ = $_POST['to'];
-    $details_ = $_POST['orderdetails'];
-    $sql = "UPDATE `additem` SET `availability`=1 where `id` =$id_";
+    $client_ = $_POST['ordcustname'];
+    $checkNonAvailable = $conn->query("SELECT * FROM objects WHERE name = '$device_name' AND owner IS NOT NULL  ");
+    if (!empty($checkNonAvailable)){
+    $sql = "UPDATE objects SET beginDate = '$from_' ,  endDate = '$to_' , client ='$client_'  WHERE name = '$device_name' ";
 
     if ($conn->query($sql) === TRUE) {
         echo 'Details have been added to the database!';
@@ -65,6 +66,9 @@ if(isset($_POST['submitt']))
     }
 
     $conn->close();
+    }else{
+         echo "This object is not available." ;
+    }
 }
 ?>
     <script>
