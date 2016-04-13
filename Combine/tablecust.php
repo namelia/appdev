@@ -98,14 +98,14 @@ if ($_REQUEST["category"]<>'') {
 	$search_category = " AND category= '".mysqli_real_escape_string($conn,$_REQUEST["category"])."'".$search_string.$search_category;
 }
 
-else /*($_REQUEST["from"]<>'' and $_REQUEST["to"]<>'')*/ {
+/*($_REQUEST["from"]<>'' and $_REQUEST["to"]<>'')*/
 /* $sql = "SELECT * FROM $table WHERE from_date >= '".mysqli_real_escape_string($conn,$_REQUEST["from"])."' AND to_date <= '".mysqli_real_escape_string($conn,$_REQUEST["to"])."'".$search_string.$search_category;
 } else if ($_REQUEST["from"]<>'') {SE from_date >= '".mysqli_real_escape_string($conn,$_REQUEST["from"])."'".$search_string.$search_category;
 } else if ($_REQUEST["to"]<>'') {
 	$sql = "SELECT * FROM $table WHERE to_date <= '".mysqli_real_escape_string($conn,$_REQUEST["to"])."'".$search_string.$search_category;
 } else {*/
 	$sql = "SELECT * FROM $table WHERE id>0".$search_string .$search_category;
-}
+
 
 $sql_result =$conn->query($sql) or die ('request "Could not execute SQL query" '.$sql);
 if (mysqli_num_rows($sql_result)>0) {
