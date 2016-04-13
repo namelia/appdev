@@ -19,12 +19,16 @@
         Email address: <input  class ="tb5" type="text" name="custemail" class="form-control required" type="email" required><br><br>
         Category:
         <select class ="tb5"  name="category">
-            <option value="Internal customer">Internal customer</option>
-            <option value="External UCL customer">External UCL customer</option>
-            <option value="External other customers">External other customers</option>
+            <option value="Internal Customer">Internal Customer</option>
+            <option value="External UCL Customer">External UCL Customer</option>
+            <option value="External Other Customer">External Other Customer</option>
         </select>
         <br><br>
-        <!--data from wikipedia-->
+        Phone: <input  class ="tb5" type="text" name="phoneno" ><br><br>
+        Address:
+        <br>
+        <textarea  class ="tb6" name="address" rows="3" cols="10"></textarea>
+        <br><br>
         Other Details:
         <br>
         <textarea  class ="tb6" name="details" rows="10" cols="20"></textarea>
@@ -55,7 +59,9 @@ if(isset($_POST['submit'])) {
     $email_ = $_POST['custemail'];
     $category_ = $_POST['category'];
     $details_ = $_POST['details'];
-    $sql = "INSERT INTO addcustomers (name,email,category,details) VALUES ('$cust_name','$email_','$category_','$details_')";
+    $phone_ =$_POST['phoneno'];
+    $address_ =$_POST['address'];
+    $sql = "INSERT INTO clients (name,email,category,details,phone,address) VALUES ('$cust_name','$email_','$category_','$details_','$phone_','$address_')";
 
     if ($conn->query($sql) === TRUE) {
         echo 'Details have been added to the database!';

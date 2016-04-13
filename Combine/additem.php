@@ -28,19 +28,23 @@
     <br><br>
     Device Name: <input   class ="tb5" type="text" name="devicename" required value=" " ><br><br>
     ID: <input  class ="tb5"  type="text" name="ID" required  value=" " ><br><br>
-    Color:
-    <select  class ="tb5"name="color" class="form-control">
-        <option value="none"></option>
-        <option value="Black">Black</option>
-        <option value="White">White</option>
-        <option value="Gray">Gray</option>
-        <option value="Silver">Silver</option>
-        <option value="Gold">Gold</option>
-        <option value="Blue">Blue</option>
-        <option value="Red">Red</option>
-        <option value="Others">Others</option>
-    </select>
+    Manufacturer: <input   class ="tb5" type="text" name="manufacturer" value=" " ><br><br>
+    Operating System : <input   class ="tb5" type="text" name="OS" value=" " ><br><br>
+    UDID: <input   class ="tb5" type="text" name="udid"  value=" " ><br><br>
+    Description:
+    <br>
+    <textarea  class ="tb6" name="message"rows="10"cols="20" class="form-control" rows="10"></textarea>
     <br><br>
+    <button type="button" style=" border-radius:10px;   border:2px solid #456879;" data-toggle="collapse" data-target="#more">
+        <span data-toggle="tooltip" data-placement="right" title="Add more Details"> Add More Details</span>
+    </button>
+    <br><br>
+    <div id="more" class="collapse" >
+    IMEI: <input   class ="tb5" type="text" name="imei"  value=" " ><br><br>
+    Serial Number: <input   class ="tb5" type="text" name="serialno" value=" " ><br><br>
+    </div>
+
+    <!--
     Operating System:
     <select class ="tb5"   name="OS">
         <option value="IOS">  IOS</option>
@@ -56,10 +60,7 @@
     </select>
     <br><br>
     <!--data from wikipedia-->
-    Description:
-    <br>
-    <textarea  class ="tb6" name="message"rows="10"cols="20" class="form-control" rows="10"></textarea>
-    <br><br>
+
     <input class ="tb5"  type= "submit" value="Submit" name='submitt'>
 </form>
 
@@ -76,10 +77,13 @@ if(isset($_POST['submitt']))
     $category_ = $_POST['category'];
     $device_name = $_POST['devicename'];
     $id_ = ($_POST['ID']);
-    $color_ = $_POST['color'];
+    $manu_ = $_POST['manufacturer'];
     $os_ = $_POST['OS'];
+    $udid_ = $_POST['udid'];
+    $serial_ = $_POST['serialno'];
     $details_ = $_POST['message'];
-    $sql = "INSERT INTO additem (name,id,color,OS,details,category) VALUES ('$device_name','$id_','$color_','$os_','$details_','$category_')";
+    $imei_ = $_POST['imei'];
+    $sql = "INSERT INTO objects (name,id,OS,description,category,UDID,IMEI,serial,manufacturer) VALUES ('$device_name','$id_','$os_','$details_','$category_','$udid_','$imei_','$serial_ ','$manu_ ')";
 
     if ($conn->query($sql) === TRUE) {
         echo 'Details have been added to the database!';

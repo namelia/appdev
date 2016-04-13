@@ -17,20 +17,9 @@
 <script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 
 <div class="container"id ="itemcont">
-<form action="additem.php" method="post">
+<form action="addorder.php" method="post">
 
-    <!--Category:
-    <select  class ="tb5"name="category">
-        <option value="none"></option>
-        <option value="Development Kit">Development Kit</option>
-        <option value="iBeacon">iBeacon</option>
-        <option value="iPod">iPod</option>
-        <option value="Phone">Phone</option>
-        <option value="Tablet">Tablet</option>
-        <option value="Smart Glasses">Smart Glasses</option>
-        <option value="Tv">Tv</option>
-        <option value="Others">Others</option>
-    </select>-->
+
     <br><br>
     <div class="content">
     Device Name: <input class ="search tb5" id ="searchitem" type="text" name="orddevicename" required  >&nbsp; <br><br>
@@ -62,12 +51,12 @@ if(isset($_POST['submitt']))
         die("Connection failed: " . $conn->connect_error);
     }
     $category_ = $_POST['category'];
-    $device_name = $_POST['devicename'];
+    $device_name = $_POST['orddevicename'];
     $id_ = ($_POST['ID']);
-    $color_ = $_POST['color'];
-    $os_ = $_POST['OS'];
-    $details_ = $_POST['message'];
-    $sql = "INSERT INTO additem (name,id,color,OS,details,category) VALUES ('$device_name','$id_','$color_','$os_','$details_','$category_')";
+    $from_ = $_POST['from'];
+    $to_ = $_POST['to'];
+    $details_ = $_POST['orderdetails'];
+    $sql = "UPDATE `additem` SET `availability`=1 where `id` =$id_";
 
     if ($conn->query($sql) === TRUE) {
         echo 'Details have been added to the database!';
