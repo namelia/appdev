@@ -55,17 +55,23 @@ if(isset($_POST['submitt']))
     $from_ = $_POST['from'];
     $to_ = $_POST['to'];
     $client_ = $_POST['ordcustname'];
-    $checkNonAvailable = $conn->query("SELECT * FROM objects WHERE name = '$device_name' AND owner IS NOT NULL  ");
-    if (!empty($checkNonAvailable)){
-    $sql = "UPDATE objects SET beginDate = '$from_' ,  endDate = '$to_' , client ='$client_'  WHERE name = '$device_name' ";
+    $checkAvailable = $conn->query("SELECT client FROM objects WHERE name = '$device_name' AND (client IS NOT NULL OR client != '')  ");
+    //if this is null, then the object is owned
+    //if this is not null, then the object is available
+    // if ($checkNonAvailable-> num_rows = 0){
+    if ( mysqli_num_rows($checkAvailable)==NULL){
+        // $details_ = $_POST['message'];
+        //include("config.php");
+        $sql = "UPDATE objects SET beginDate = '$from_' ,  endDate = '$to_' , client ='$client_'  WHERE name = ' $device_name'  ";
 
-    if ($conn->query($sql) === TRUE) {
-        echo 'Details have been added to the database!';
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
+        if ($conn->query($sql) === TRUE) {
+            echo 'Details have been added to the database!';
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
 
-    $conn->close();
+        $conn->close();
+
     }else{
          echo "This object is not available." ;
     }
