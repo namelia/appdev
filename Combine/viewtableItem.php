@@ -114,7 +114,7 @@ BODY, TD:not(id=sidebar) {
 	  <td width="95" bgcolor="#CCCCCC"><strong>IMEI</strong/td>
 	  <td width="95" bgcolor="#CCCCCC"><strong>Serial</strong/td>
       <td width="191" bgcolor="#CCCCCC"><strong>Description</strong></td>
-	  <td colspan="2" width="20" bgcolor="#CCCCCC"><strong>Manage</strong></td>
+	  <td width="30" bgcolor="#CCCCCC"><strong>Availability</strong></td>
   </tr>
 <?php
 
@@ -155,15 +155,15 @@ if (mysqli_num_rows($sql_result)>0) {
 	  <td><?php echo $row["serial"]; ?></td>
       <td><?php echo $row["description"]; ?></td>
 
-	  <td> <a href="editItem.php?id=<?php echo $row["id"]?>&name=<?php echo $row["name"]?>&description=<?php echo $row["description"]?>&category=<?php echo $row["category"]?>&OS=<?php echo $row["OS"]?>&UDID=<?php echo $row["UDID"]?>&IMEI=<?php echo $row["IMEI"]?>&Serial=<?php echo $row["serial"]?>&Manufacturer=<?php echo $row["manufacturer"]?>" class="group1"  >Edit</a> </td>
-	  <td> <a href="removeItem.php?id=<?php echo $row["id"] ?>">Remove</a> </td>
-
+	  <td> <form $row  id ='checkbox $i' action="" method="post">
+			  <input type="checkbox" name=<?php echo "box "+$row["id"]?> value="Available" class="group1" >
+			  </td>
   </tr>
 <?php
 	}
 } else {
 ?>
-<tr><td colspan="11">No results found.</td>
+<tr><td colspan="9">No results found.</td>
 <?php	
 }
 ?>

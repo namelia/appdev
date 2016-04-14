@@ -13,7 +13,8 @@
 .container {
     width: 80%;
     float: right;
-    margin-top: 30px;
+    margin-top: -5px;
+    margin-left:-300px;
 }
 div#responseitem {
     position: fixed;
@@ -31,7 +32,9 @@ div#responseitem {
 .tb6 {
     border:2px solid #456879;
     border-radius:10px;
-    height: 120px;
+    height: 80px;
     width: 230px;
 }
-.custconn
+.inner-block {
+    background: #fafafa;
+}

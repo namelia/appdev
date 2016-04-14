@@ -25,7 +25,7 @@
 </head>
 <body>
 <div class="row">
-	<div id ="sidebar" class="visible" >
+	<div id="sidebar" class="visible" >
 		<ul>
 			<li><a href ="addorder.php" style="font-size:16px;font-family: Segoe UI;" ><span class="glyphicon glyphicon-plus"></span> Add Order</a></li>
 			<li><a href ="additem.php" style="font-size:16px;font-family: Segoe UI;"><span class="glyphicon glyphicon-book"></span> Add item </a></li>

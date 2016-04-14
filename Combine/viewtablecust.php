@@ -88,7 +88,6 @@ BODY, TD:not(id=sidebar) {
 	  <td width="159" bgcolor="#CCCCCC"><strong>Phone</strong></td>
 	  <td width="159" bgcolor="#CCCCCC"><strong>Address</strong></td>
       <td width="191" bgcolor="#CCCCCC"><strong>Description</strong></td>
-	  <td colspan="2" width="20" bgcolor="#CCCCCC"><strong>Manage</strong></td>
   </tr>
 <?php
 include("config.php");
@@ -120,15 +119,12 @@ if (mysqli_num_rows($sql_result)>0) {
 	  <td><?php echo $row["phone"]; ?></td>
 	  <td><?php echo $row["address"]; ?></td>
 	  <td><?php echo $row["details"]; ?></td>
-	  <td> <a href="editItem.php?id=<?php echo $row["id"]?>&name=<?php echo $row["name"]?>&description=<?php echo $row["description"]?>&category=<?php echo $row["category"]?>&OS=<?php echo $row["OS"]?>&UDID=<?php echo $row["UDID"]?>&IMEI=<?php echo $row["IMEI"]?>&Serial=<?php echo $row["serial"]?>&Manufacturer=<?php echo $row["manufacturer"]?>" class="group1"  >Edit</a> </td>
-	  <td> <a href="removeItem.php?id=<?php echo $row["id"] ?>">Remove</a> </td>
-
   </tr>
 <?php
 	}
 } else {
 ?>
-<tr><td colspan="8">No results found.</td>
+<tr><td colspan="6">No results found.</td>
 <?php	
 }
 ?>

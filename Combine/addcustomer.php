@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <title>add item</title>
     <link href="additemstyle.css" type="text/css" rel="stylesheet">
@@ -12,8 +12,10 @@
     <script src="js/main.js"></script>
 </head>
 <body>
-<?php include("index.php") ?>
-<div class="container" id ="custcont">
+<?php include_once("sidebar.php") ?>
+<div class="inner-block container"id=custcont" >
+
+
     <form action="addcustomer.php" method="post">
         Customers Name: <input  class ="tb5" type="text" name="custname" required><br><br>
         Email address: <input  class ="tb5" type="text" name="custemail" class="form-control required" type="email" required><br><br>
@@ -35,11 +37,8 @@
         <br><br>
         <input class ="tb5"  type= "submit" value="Submit" name="submit">
     </form>
-
-</div>
-</body>
-
-</html>
+        <div class="clearfix"></div>
+    </div>
 
 <div id ="responseitem">
 <?php
@@ -73,3 +72,8 @@ if(isset($_POST['submit'])) {
 }
 ?>
 </div>
+
+</div>
+</body>
+
+</html>
