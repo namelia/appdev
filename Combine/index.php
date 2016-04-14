@@ -24,7 +24,6 @@
 
 </head>
 <body>
-<div
 <div class="row">
 	<div id ="sidebar" class="visible" >
 		<ul>
@@ -39,13 +38,9 @@
 
 			<li style="vertical-align: bottom"><a href ="logout.php?ac=logout"style="font-size:16px; font-family: Segoe UI;"> <span class="glyphicon glyphicon-off" style="font-size:20px"></span>  Logout</a><li>
 		</ul>
-		<!--
-		<div id = "sidebar-btn">
-			<span></span>
-			<span></span>
-			<span></span>
-		</div>
--->
+	</div>
+	<div id =title>
+		<h1>DashBoard</h1>
 	</div>
 	<div class="col-md-10">.col-md-10</div>
 	<div id =g>
