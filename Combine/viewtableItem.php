@@ -144,8 +144,6 @@ if (mysqli_num_rows($sql_result)>0) {
 ?>
   <tr>
 	  <td><?php echo $row["category"]; ?></td>
-      <!--<td><!--?php echo $row["beginDate"]; ?></td>
-      <td><!--?php echo $row["endDate"]; ?></td>-->
 	  <td><?php echo $row["id"]; ?></td>
       <td><?php echo $row["name"]; ?></td>
 	  <td><?php echo $row["manufacturer"]; ?></td>

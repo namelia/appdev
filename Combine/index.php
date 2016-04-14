@@ -1,8 +1,4 @@
-<!--Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -15,7 +11,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <link href="trial/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 <!-- Custom Theme files -->
-<link href="trial/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+	<link href="trial/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+	<link href="trial/css/clndr.css" rel="stylesheet" type="text/css" media="all"/>
 <!--js-->
 <script src="trial/js/jquery-2.1.1.min.js"></script>
 <!--icons-css-->
@@ -23,9 +20,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--Google Fonts-->
 <link href='//fonts.googleapis.com/css?family=Carrois+Gothic' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Work+Sans:400,500,600' rel='stylesheet' type='text/css'>
-<!--static chart-->
+<!--calendar-->
+<?php
+$tableobjects='objects';
+$tableclients='clients';
+?>
 <!--skycons-icons-->
-<script src="trial/js/skycons.js"></script>
+
 <!--//skycons-icons-->
 </head>
 <body>
@@ -36,7 +37,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="header-main">
 					<div class="header-left">
 							<div class="logo-name">
-									 <a href="index.php"> <h1 style="width:280px">UCL APPLAB</h1>
+									 <a href="index.php"> <h1 style="width:400px">UCL APPLAB <i class="fa fa-cubes"> </i></h1>
 									<!--<img id="logo" src="" alt="Logo"/>-->
 								  </a>
 							</div>
@@ -74,7 +75,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											   <div class="user_img"><img src="trial/images/p3.png" alt=""></div>
 											   <div class="notification_desc">
 												<p>Lorem ipsum dolor</p>
-												<p><span>1 hour ago</span></p>
+								a				<p><span>1 hour ago</span></p>
 												</div>
 											   <div class="clearfix"></div>
 											</a></li>
@@ -210,9 +211,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-4 market-update-gd">
 				<div class="market-update-block clr-block-1">
 					<div class="col-md-8 market-update-left">
-						<h3>83</h3>
-						<h4>Total Orders</h4>
-						<p>Other hand, we denounce</p>
+						<?php
+						include("config.php");
+						$sql2 ="SELECT * FROM objects WHERE beginDate=CURDATE()";
+						$sql  ="SELECT * FROM objects WHERE client IS NOT NULL";
+						$sql_result =$conn->query($sql) or die ('request "Could not execute SQL query" '.$sql);
+						$sql_result2 =$conn->query($sql2) or die ('request "Could not execute SQL query" '.$sql);
+						$totalorder=(mysqli_num_rows($sql_result));
+						$todayorder=(mysqli_num_rows($sql_result2))?>
+
+						<h3><?php echo $todayorder;?></h3>
+						<h4>Today's Orders</h4>
+						<p>Total Orders : <?php echo $totalorder;?>  </p>
 					</div>
 					<div class="col-md-4 market-update-right">
 						<i class="fa fa-file-text-o"> </i>
@@ -223,7 +233,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-4 market-update-gd">
 				<div class="market-update-block clr-block-2">
 				 <div class="col-md-8 market-update-left">
-					<h3>135</h3>
+					 <?php
+					 include("config.php");
+					 $sql = "SELECT * FROM $tableclients";
+					 $sql_result =$conn->query($sql) or die ('request "Could not execute SQL query" '.$sql);
+					 $numbercust=(mysqli_num_rows($sql_result))?>
+					<h3> <?php echo $numbercust;?> </h3>
 					<h4>Total Customers</h4>
 					<p>Other hand, we denounce</p>
 				  </div>
@@ -235,10 +250,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="col-md-4 market-update-gd">
 				<div class="market-update-block clr-block-3">
+					<?php
+					include("config.php");
+					$sql3 = "SELECT * FROM $tableobjects";
+					$sql = "SELECT * FROM $tableobjects WHERE client is NULL";
+					$sql_result =$conn->query($sql) or die ('request "Could not execute SQL query" '.$sql);
+					$sql_result3 =$conn->query($sql3) or die ('request "Could not execute SQL query" '.$sql);
+					$numberita=(mysqli_num_rows($sql_result));
+					$numberitems=(mysqli_num_rows($sql_result3))?>
 					<div class="col-md-8 market-update-left">
-						<h3>23</h3>
+						<h3><?php echo $numberita;?> </h3>
 						<h4>Items Available</h4>
-						<p>Other hand, we denounce</p>
+						<p>Out of <?php echo $numberitems;?> items </p>
 					</div>
 					<div class="col-md-4 market-update-right">
 						<i class="fa fa-cubes"> </i>
@@ -254,69 +277,57 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="col-md-6 chit-chat-layer1-left">
                <div class="work-progres">
                             <div class="chit-chat-heading">
-                                  Recent Orders
+                                  Orders
                             </div>
                             <div class="table-responsive">
                                 <table class="table table-hover">
                                   <thead>
                                     <tr>
-                                      <th>#</th>
-                                      <th>Item</th>
-                                      <th>Customers</th>
+                                        <th>ID</th>
+                                        <th>Item</th>
+                                        <th>Customers</th>
+										<th>End Date</th>
+										<th>Status</th>
 
-                                      <th>Status</th>
-                                      <th>Progress</th>
                                   </tr>
                               </thead>
                               <tbody>
-                                <tr>
-                                  <td>1</td>
-                                  <td>Iphone 6</td>
-                                  <td>Malorum</td>
 
-                                  <td><span class="label label-danger">Reserved</span></td>
-                                  <td><span class="badge badge-info">50%</span></td>
-                              </tr>
-                              <tr>
-                                  <td>2</td>
-                                  <td>Samsung Tablet</td>
-                                  <td>Evan</td>
+									<?php include("config.php");?>
+									<?php
+									$sql = "SELECT * FROM $tableobjects WHERE client IS NOT NULL ORDER BY endDate  LIMIT 5";
+									$sql_result =$conn->query($sql) or die ('request "Could not execute SQL query" '.$sql);
+									if ($sql_result-> num_rows!=0)
+									{
+										while ( $row= $sql_result->fetch_assoc())
+										{
+											$id=$row['id'];
+											$name=$row['name'];
+											$client=$row['client'];
+											$endDate=$row['endDate'];
+									        echo"
+											<tr>
+											<td>$id</td>
+											<td>$name</td>
+											<td>$client</td>
+											<td>$endDate</td>";
 
-                                  <td><span class="label label-success">Booked</span></td>
-                                  <td><span class="badge badge-success">100%</span></td>
-                              </tr>
-                              <tr>
-                                  <td>3</td>
-                                  <td>Google glass</td>
-                                  <td>John</td>
+											if( date("Y-m-d")>$endDate  )
+												{
+													echo"<td> <span class=\"label label-danger\">Overdue</span></td>";
+											}
+											else {
+												     echo "<td><span class=\"label label-success\">On Loan</span></td>";
+											}
 
-                                  <td><span class="label label-warning">in progress</span></td>
-                                  <td><span class="badge badge-warning">75%</span></td>
-                              </tr>
-                              <tr>
-                                  <td>4</td>
-                                  <td>Smart TV</td>
-                                  <td>Danial</td>
 
-                                  <td><span class="label label-info">in progress</span></td>
-                                  <td><span class="badge badge-info">65%</span></td>
-                              </tr>
-                              <tr>
-                                  <td>5</td>
-                                  <td>Tumblr</td>
-                                  <td>David</td>
+										}
+									}
+									?>
 
-                                  <td><span class="label label-warning">in progress</span></td>
-                                  <td><span class="badge badge-danger">95%</span></td>
-                              </tr>
-                              <tr>
-                                  <td>6</td>
-                                  <td>Ibeacon</td>
-                                  <td>Mickey</td>
 
-                                  <td><span class="label label-info">in progress</span></td>
-                                  <td><span class="badge badge-success">95%</span></td>
-                              </tr>
+
+
                           </tbody>
                       </table>
                   </div>
@@ -400,10 +411,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				    <div class="col geo_main">
 				         <h3 id="geoChartTitle">Calendar</h3>
 						<div class="row calender widget-shadow">
-							<h4 class="title">Calender</h4>
-							<div class="cal1"><div class="clndr"><div class="clndr-controls"><div class="clndr-control-button"><span class="clndr-previous-button">previous</span></div><div class="month">April 2016</div><div class="clndr-control-button rightalign"><span class="clndr-next-button">next</span></div></div><table class="clndr-table" border="0" cellspacing="0" cellpadding="0"><thead><tr class="header-days"><td class="header-day">S</td><td class="header-day">M</td><td class="header-day">T</td><td class="header-day">W</td><td class="header-day">T</td><td class="header-day">F</td><td class="header-day">S</td></tr></thead><tbody><tr><td class="day past adjacent-month last-month calendar-day-2016-03-27 calendar-dow-0"><div class="day-contents">27</div></td><td class="day past adjacent-month last-month calendar-day-2016-03-28 calendar-dow-1"><div class="day-contents">28</div></td><td class="day past adjacent-month last-month calendar-day-2016-03-29 calendar-dow-2"><div class="day-contents">29</div></td><td class="day past adjacent-month last-month calendar-day-2016-03-30 calendar-dow-3"><div class="day-contents">30</div></td><td class="day past adjacent-month last-month calendar-day-2016-03-31 calendar-dow-4"><div class="day-contents">31</div></td><td class="day past calendar-day-2016-04-01 calendar-dow-5"><div class="day-contents">1</div></td><td class="day past calendar-day-2016-04-02 calendar-dow-6"><div class="day-contents">2</div></td></tr><tr><td class="day past calendar-day-2016-04-03 calendar-dow-0"><div class="day-contents">3</div></td><td class="day past calendar-day-2016-04-04 calendar-dow-1"><div class="day-contents">4</div></td><td class="day past calendar-day-2016-04-05 calendar-dow-2"><div class="day-contents">5</div></td><td class="day past calendar-day-2016-04-06 calendar-dow-3"><div class="day-contents">6</div></td><td class="day past calendar-day-2016-04-07 calendar-dow-4"><div class="day-contents">7</div></td><td class="day past calendar-day-2016-04-08 calendar-dow-5"><div class="day-contents">8</div></td><td class="day past calendar-day-2016-04-09 calendar-dow-6"><div class="day-contents">9</div></td></tr><tr><td class="day past event calendar-day-2016-04-10 calendar-dow-0"><div class="day-contents">10</div></td><td class="day past event calendar-day-2016-04-11 calendar-dow-1"><div class="day-contents">11</div></td><td class="day past event calendar-day-2016-04-12 calendar-dow-2"><div class="day-contents">12</div></td><td class="day past event calendar-day-2016-04-13 calendar-dow-3"><div class="day-contents">13</div></td><td class="day today event calendar-day-2016-04-14 calendar-dow-4"><div class="day-contents">14</div></td><td class="day calendar-day-2016-04-15 calendar-dow-5"><div class="day-contents">15</div></td><td class="day calendar-day-2016-04-16 calendar-dow-6"><div class="day-contents">16</div></td></tr><tr><td class="day calendar-day-2016-04-17 calendar-dow-0"><div class="day-contents">17</div></td><td class="day calendar-day-2016-04-18 calendar-dow-1"><div class="day-contents">18</div></td><td class="day calendar-day-2016-04-19 calendar-dow-2"><div class="day-contents">19</div></td><td class="day calendar-day-2016-04-20 calendar-dow-3"><div class="day-contents">20</div></td><td class="day calendar-day-2016-04-21 calendar-dow-4"><div class="day-contents">21</div></td><td class="day calendar-day-2016-04-22 calendar-dow-5"><div class="day-contents">22</div></td><td class="day event calendar-day-2016-04-23 calendar-dow-6"><div class="day-contents">23</div></td></tr><tr><td class="day event calendar-day-2016-04-24 calendar-dow-0"><div class="day-contents">24</div></td><td class="day event calendar-day-2016-04-25 calendar-dow-1"><div class="day-contents">25</div></td><td class="day event calendar-day-2016-04-26 calendar-dow-2"><div class="day-contents">26</div></td><td class="day calendar-day-2016-04-27 calendar-dow-3"><div class="day-contents">27</div></td><td class="day calendar-day-2016-04-28 calendar-dow-4"><div class="day-contents">28</div></td><td class="day calendar-day-2016-04-29 calendar-dow-5"><div class="day-contents">29</div></td><td class="day calendar-day-2016-04-30 calendar-dow-6"><div class="day-contents">30</div></td></tr></tbody></table></div></div>
+
+							<div class="cal1">
+								<div class="clndr">
+									<div class="clndr-controls">
+										<div class="clndr-control-button"><span class="clndr-previous-button">previous</span></div><div class="month">April 2016</div><div class="clndr-control-button rightalign"><span class="clndr-next-button">next</span></div></div><table class="clndr-table" border="0" cellspacing="0" cellpadding="0"><thead><tr class="header-days"><td class="header-day">S</td><td class="header-day">M</td><td class="header-day">T</td><td class="header-day">W</td><td class="header-day">T</td><td class="header-day">F</td><td class="header-day">S</td></tr></thead><tbody><tr><td class="day past adjacent-month last-month calendar-day-2016-03-27 calendar-dow-0"><div class="day-contents">27</div></td><td class="day past adjacent-month last-month calendar-day-2016-03-28 calendar-dow-1"><div class="day-contents">28</div></td><td class="day past adjacent-month last-month calendar-day-2016-03-29 calendar-dow-2"><div class="day-contents">29</div></td><td class="day past adjacent-month last-month calendar-day-2016-03-30 calendar-dow-3"><div class="day-contents">30</div></td><td class="day past adjacent-month last-month calendar-day-2016-03-31 calendar-dow-4"><div class="day-contents">31</div></td><td class="day past calendar-day-2016-04-01 calendar-dow-5"><div class="day-contents">1</div></td><td class="day past calendar-day-2016-04-02 calendar-dow-6"><div class="day-contents">2</div></td></tr><tr><td class="day past calendar-day-2016-04-03 calendar-dow-0"><div class="day-contents">3</div></td><td class="day past calendar-day-2016-04-04 calendar-dow-1"><div class="day-contents">4</div></td><td class="day past calendar-day-2016-04-05 calendar-dow-2"><div class="day-contents">5</div></td><td class="day past calendar-day-2016-04-06 calendar-dow-3"><div class="day-contents">6</div></td><td class="day past calendar-day-2016-04-07 calendar-dow-4"><div class="day-contents">7</div></td><td class="day past calendar-day-2016-04-08 calendar-dow-5"><div class="day-contents">8</div></td><td class="day past calendar-day-2016-04-09 calendar-dow-6"><div class="day-contents">9</div></td></tr><tr><td class="day past event calendar-day-2016-04-10 calendar-dow-0"><div class="day-contents">10</div></td><td class="day past event calendar-day-2016-04-11 calendar-dow-1"><div class="day-contents">11</div></td><td class="day past event calendar-day-2016-04-12 calendar-dow-2"><div class="day-contents">12</div></td><td class="day past event calendar-day-2016-04-13 calendar-dow-3"><div class="day-contents">13</div></td><td class="day today event calendar-day-2016-04-14 calendar-dow-4"><div class="day-contents">14</div></td><td class="day calendar-day-2016-04-15 calendar-dow-5"><div class="day-contents">15</div></td><td class="day calendar-day-2016-04-16 calendar-dow-6"><div class="day-contents">16</div></td></tr><tr><td class="day calendar-day-2016-04-17 calendar-dow-0"><div class="day-contents">17</div></td><td class="day calendar-day-2016-04-18 calendar-dow-1"><div class="day-contents">18</div></td><td class="day calendar-day-2016-04-19 calendar-dow-2"><div class="day-contents">19</div></td><td class="day calendar-day-2016-04-20 calendar-dow-3"><div class="day-contents">20</div></td><td class="day calendar-day-2016-04-21 calendar-dow-4"><div class="day-contents">21</div></td><td class="day calendar-day-2016-04-22 calendar-dow-5"><div class="day-contents">22</div></td><td class="day event calendar-day-2016-04-23 calendar-dow-6"><div class="day-contents">23</div></td></tr><tr><td class="day event calendar-day-2016-04-24 calendar-dow-0"><div class="day-contents">24</div></td><td class="day event calendar-day-2016-04-25 calendar-dow-1"><div class="day-contents">25</div></td><td class="day event calendar-day-2016-04-26 calendar-dow-2"><div class="day-contents">26</div></td><td class="day calendar-day-2016-04-27 calendar-dow-3"><div class="day-contents">27</div></td><td class="day calendar-day-2016-04-28 calendar-dow-4"><div class="day-contents">28</div></td><td class="day calendar-day-2016-04-29 calendar-dow-5"><div class="day-contents">29</div></td><td class="day calendar-day-2016-04-30 calendar-dow-6"><div class="day-contents">30</div></td></tr></tbody></table></div></div>
 						</div>
 				    </div>
+
 
 
 				</div><!-- .wrapper-flex -->
@@ -452,7 +467,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                       </ul>
                   </li>
 
-		        <li><a href="charts.html"><i class="fa fa-bar-chart"></i><span>Table</span></span><span class="fa fa-angle-right" style="float: right"></span></a>
+		        <li><a href="#"><i class="fa fa-bar-chart"></i><span>Table</span></span><span class="fa fa-angle-right" style="float: right"></span></a>
                   <ul id="menu-academico-sub" >
                       <li id="menu-academico-avaliacoes" ><a href="viewtableItem.php">Products</a></li>
                       <li id="menu-academico-boletim" ><a href="viewtablecust.php">Customer</a></li>
@@ -497,6 +512,7 @@ $(".sidebar-icon").click(function() {
 		<script src="trial/js/jquery.nicescroll.js"></script>
 		<script src="trial/js/scripts.js"></script>
 		<!--//scrolling js-->
+
 <script src="trial/js/bootstrap.js"> </script>
 <!-- mother grid end here-->
 </body>

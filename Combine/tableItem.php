@@ -113,7 +113,7 @@ BODY, TD:not(id=sidebar) {
 	  <td width="95" bgcolor="#CCCCCC"><strong>UDID</strong/td>
 	  <td width="95" bgcolor="#CCCCCC"><strong>IMEI</strong/td>
 	  <td width="95" bgcolor="#CCCCCC"><strong>Serial</strong/td>
-      <td width="191" bgcolor="#CCCCCC"><strong>Description</strong></td>
+      <td width="100" bgcolor="#CCCCCC"><strong>Description</strong></td>
 	  <td colspan="2" width="20" bgcolor="#CCCCCC"><strong>Manage</strong></td>
   </tr>
 <?php

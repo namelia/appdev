@@ -59,7 +59,7 @@ if(isset($_POST['submitt']))
     //if this is null, then the object is owned
     //if this is not null, then the object is available
     // if ($checkNonAvailable-> num_rows = 0){
-    if ( mysqli_num_rows($checkAvailable)==NULL){
+    if ( mysqli_num_rows($checkAvailable)==0){
         // $details_ = $_POST['message'];
         //include("config.php");
         $sql = "UPDATE objects SET beginDate = '$from_' ,  endDate = '$to_' , client ='$client_'  WHERE name = ' $device_name'  ";
