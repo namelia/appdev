@@ -9,22 +9,14 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+<link href="trial/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 <!-- Custom Theme files -->
-	<link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
-	<link href="css/clndr.css" rel="stylesheet" type="text/css" media="all"/>
+	<link href="trial/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+	<link href="trial/css/clndr.css" rel="stylesheet" type="text/css" media="all"/>
 <!--js-->
-	<script type="text/javascript" src="js/clndr.js"></script>
-	<script type="text/javascript" src="js/underscore-min.js"></script>
-	<script type="text/javascript" src="js/moment-2.2.1.js"></script>
-	<script type="text/javascript" src="js/site.js"></script>
-	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-	<script type="text/javascript"  src="js/skycons.js"></script>
-	<script type="text/javascript"  src="js/jquery-2.1.1.min.js"></script>
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-
+<script src="trial/js/jquery-2.1.1.min.js"></script>
 <!--icons-css-->
-<link href="css/font-awesome.css" rel="stylesheet">
+<link href="trial/css/font-awesome.css" rel="stylesheet">
 <!--Google Fonts-->
 <link href='//fonts.googleapis.com/css?family=Carrois+Gothic' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Work+Sans:400,500,600' rel='stylesheet' type='text/css'>
@@ -346,16 +338,85 @@ $tableclients='clients';
 					<section id="charts1" class="charts">
 				<div class="wrapper-flex">
 
-					<script src="js/clndr.js"> </script>
+				    <table id="myTable" class="geoChart tableChart data-table col-table" style="display:none;">
+				        <caption>Student Nationalities Table</caption>
+				        <tr>
+				            <th scope="col" data-type="string">Country</th>
+				            <th scope="col" data-type="number">Number of Students</th>
+				            <th scope="col" data-role="annotation">Annotation</th>
+				        </tr>
+				        <tr>
+				            <td>China</td>
+				            <td align="right">20</td>
+				            <td align="right">20</td>
+				        </tr>
+				        <tr>
+				            <td>Colombia</td>
+				            <td align="right">5</td>
+				            <td align="right">5</td>
+				        </tr>
+				        <tr>
+				            <td>France</td>
+				            <td align="right">3</td>
+				            <td align="right">3</td>
+				        </tr>
+				        <tr>
+				            <td>Italy</td>
+				            <td align="right">1</td>
+				            <td align="right">1</td>
+				        </tr>
+				        <tr>
+				            <td>Japan</td>
+				            <td align="right">18</td>
+				            <td align="right">18</td>
+				        </tr>
+				        <tr>
+				            <td>Kazakhstan</td>
+				            <td align="right">1</td>
+				            <td align="right">1</td>
+				        </tr>
+				        <tr>
+				            <td>Mexico</td>
+				            <td align="right">1</td>
+				            <td align="right">1</td>
+				        </tr>
+				        <tr>
+				            <td>Poland</td>
+				            <td align="right">1</td>
+				            <td align="right">1</td>
+				        </tr>
+				        <tr>
+				            <td>Russia</td>
+				            <td align="right">11</td>
+				            <td align="right">11</td>
+				        </tr>
+				        <tr>
+				            <td>Spain</td>
+				            <td align="right">2</td>
+				            <td align="right">2</td>
+				        </tr>
+				        <tr>
+				            <td>Tanzania</td>
+				            <td align="right">1</td>
+				            <td align="right">1</td>
+				        </tr>
+				        <tr>
+				            <td>Turkey</td>
+				            <td align="right">2</td>
+				            <td align="right">2</td>
+				        </tr>
+
+				    </table>
 
 				    <div class="col geo_main">
-						<link rel="stylesheet" href="css/clndr.css" type="text/css" />
-						<script src="js/underscore-min.js" type="text/javascript"></script>
-						<script src= "js/moment-2.2.1.js" type="text/javascript"></script>
-						<script src="js/clndr.js" type="text/javascript"></script>
-						<script src="js/site.js" type="text/javascript"></script>
-						<div class="cal1 cal_2"><div class="clndr"><div class="clndr-controls"><div class="clndr-control-button"><p class="clndr-previous-button">previous</p></div><div class="month">April 2016</div><div class="clndr-control-button rightalign"><p class="clndr-next-button">next</p></div></div><table class="clndr-table" border="0" cellspacing="0" cellpadding="0"><thead><tr class="header-days"><td class="header-day">S</td><td class="header-day">M</td><td class="header-day">T</td><td class="header-day">W</td><td class="header-day">T</td><td class="header-day">F</td><td class="header-day">S</td></tr></thead><tbody><tr><td class="day past adjacent-month last-month calendar-day-2016-03-27"><div class="day-contents">27</div></td><td class="day past adjacent-month last-month calendar-day-2016-03-28"><div class="day-contents">28</div></td><td class="day past adjacent-month last-month calendar-day-2016-03-29"><div class="day-contents">29</div></td><td class="day past adjacent-month last-month calendar-day-2016-03-30"><div class="day-contents">30</div></td><td class="day past adjacent-month last-month calendar-day-2016-03-31"><div class="day-contents">31</div></td><td class="day past calendar-day-2016-04-01"><div class="day-contents">1</div></td><td class="day past calendar-day-2016-04-02"><div class="day-contents">2</div></td></tr><tr><td class="day past calendar-day-2016-04-03"><div class="day-contents">3</div></td><td class="day past calendar-day-2016-04-04"><div class="day-contents">4</div></td><td class="day past calendar-day-2016-04-05"><div class="day-contents">5</div></td><td class="day past calendar-day-2016-04-06"><div class="day-contents">6</div></td><td class="day past calendar-day-2016-04-07"><div class="day-contents">7</div></td><td class="day past calendar-day-2016-04-08"><div class="day-contents">8</div></td><td class="day past calendar-day-2016-04-09"><div class="day-contents">9</div></td></tr><tr><td class="day past event calendar-day-2016-04-10"><div class="day-contents">10</div></td><td class="day past event calendar-day-2016-04-11"><div class="day-contents">11</div></td><td class="day past event calendar-day-2016-04-12"><div class="day-contents">12</div></td><td class="day past event calendar-day-2016-04-13"><div class="day-contents">13</div></td><td class="day past event calendar-day-2016-04-14"><div class="day-contents">14</div></td><td class="day today calendar-day-2016-04-15"><div class="day-contents">15</div></td><td class="day calendar-day-2016-04-16"><div class="day-contents">16</div></td></tr><tr><td class="day calendar-day-2016-04-17"><div class="day-contents">17</div></td><td class="day calendar-day-2016-04-18"><div class="day-contents">18</div></td><td class="day calendar-day-2016-04-19"><div class="day-contents">19</div></td><td class="day calendar-day-2016-04-20"><div class="day-contents">20</div></td><td class="day event calendar-day-2016-04-21"><div class="day-contents">21</div></td><td class="day event calendar-day-2016-04-22"><div class="day-contents">22</div></td><td class="day event calendar-day-2016-04-23"><div class="day-contents">23</div></td></tr><tr><td class="day calendar-day-2016-04-24"><div class="day-contents">24</div></td><td class="day calendar-day-2016-04-25"><div class="day-contents">25</div></td><td class="day calendar-day-2016-04-26"><div class="day-contents">26</div></td><td class="day calendar-day-2016-04-27"><div class="day-contents">27</div></td><td class="day calendar-day-2016-04-28"><div class="day-contents">28</div></td><td class="day calendar-day-2016-04-29"><div class="day-contents">29</div></td><td class="day calendar-day-2016-04-30"><div class="day-contents">30</div></td></tr></tbody></table></div></div>
+				         <h3 id="geoChartTitle">Calendar</h3>
+						<div class="row calender widget-shadow">
 
+							<div class="cal1">
+								<div class="clndr">
+									<div class="clndr-controls">
+										<div class="clndr-control-button"><span class="clndr-previous-button">previous</span></div><div class="month">April 2016</div><div class="clndr-control-button rightalign"><span class="clndr-next-button">next</span></div></div><table class="clndr-table" border="0" cellspacing="0" cellpadding="0"><thead><tr class="header-days"><td class="header-day">S</td><td class="header-day">M</td><td class="header-day">T</td><td class="header-day">W</td><td class="header-day">T</td><td class="header-day">F</td><td class="header-day">S</td></tr></thead><tbody><tr><td class="day past adjacent-month last-month calendar-day-2016-03-27 calendar-dow-0"><div class="day-contents">27</div></td><td class="day past adjacent-month last-month calendar-day-2016-03-28 calendar-dow-1"><div class="day-contents">28</div></td><td class="day past adjacent-month last-month calendar-day-2016-03-29 calendar-dow-2"><div class="day-contents">29</div></td><td class="day past adjacent-month last-month calendar-day-2016-03-30 calendar-dow-3"><div class="day-contents">30</div></td><td class="day past adjacent-month last-month calendar-day-2016-03-31 calendar-dow-4"><div class="day-contents">31</div></td><td class="day past calendar-day-2016-04-01 calendar-dow-5"><div class="day-contents">1</div></td><td class="day past calendar-day-2016-04-02 calendar-dow-6"><div class="day-contents">2</div></td></tr><tr><td class="day past calendar-day-2016-04-03 calendar-dow-0"><div class="day-contents">3</div></td><td class="day past calendar-day-2016-04-04 calendar-dow-1"><div class="day-contents">4</div></td><td class="day past calendar-day-2016-04-05 calendar-dow-2"><div class="day-contents">5</div></td><td class="day past calendar-day-2016-04-06 calendar-dow-3"><div class="day-contents">6</div></td><td class="day past calendar-day-2016-04-07 calendar-dow-4"><div class="day-contents">7</div></td><td class="day past calendar-day-2016-04-08 calendar-dow-5"><div class="day-contents">8</div></td><td class="day past calendar-day-2016-04-09 calendar-dow-6"><div class="day-contents">9</div></td></tr><tr><td class="day past event calendar-day-2016-04-10 calendar-dow-0"><div class="day-contents">10</div></td><td class="day past event calendar-day-2016-04-11 calendar-dow-1"><div class="day-contents">11</div></td><td class="day past event calendar-day-2016-04-12 calendar-dow-2"><div class="day-contents">12</div></td><td class="day past event calendar-day-2016-04-13 calendar-dow-3"><div class="day-contents">13</div></td><td class="day today event calendar-day-2016-04-14 calendar-dow-4"><div class="day-contents">14</div></td><td class="day calendar-day-2016-04-15 calendar-dow-5"><div class="day-contents">15</div></td><td class="day calendar-day-2016-04-16 calendar-dow-6"><div class="day-contents">16</div></td></tr><tr><td class="day calendar-day-2016-04-17 calendar-dow-0"><div class="day-contents">17</div></td><td class="day calendar-day-2016-04-18 calendar-dow-1"><div class="day-contents">18</div></td><td class="day calendar-day-2016-04-19 calendar-dow-2"><div class="day-contents">19</div></td><td class="day calendar-day-2016-04-20 calendar-dow-3"><div class="day-contents">20</div></td><td class="day calendar-day-2016-04-21 calendar-dow-4"><div class="day-contents">21</div></td><td class="day calendar-day-2016-04-22 calendar-dow-5"><div class="day-contents">22</div></td><td class="day event calendar-day-2016-04-23 calendar-dow-6"><div class="day-contents">23</div></td></tr><tr><td class="day event calendar-day-2016-04-24 calendar-dow-0"><div class="day-contents">24</div></td><td class="day event calendar-day-2016-04-25 calendar-dow-1"><div class="day-contents">25</div></td><td class="day event calendar-day-2016-04-26 calendar-dow-2"><div class="day-contents">26</div></td><td class="day calendar-day-2016-04-27 calendar-dow-3"><div class="day-contents">27</div></td><td class="day calendar-day-2016-04-28 calendar-dow-4"><div class="day-contents">28</div></td><td class="day calendar-day-2016-04-29 calendar-dow-5"><div class="day-contents">29</div></td><td class="day calendar-day-2016-04-30 calendar-dow-6"><div class="day-contents">30</div></td></tr></tbody></table></div></div>
+						</div>
 				    </div>
 
 
@@ -448,12 +509,11 @@ $(".sidebar-icon").click(function() {
             });
 </script>
 <!--scrolling js-->
-		<script src="js/jquery.nicescroll.js"></script>
-		<script src="js/scripts.js"></script>
+		<script src="trial/js/jquery.nicescroll.js"></script>
+		<script src="trial/js/scripts.js"></script>
 		<!--//scrolling js-->
 
-<script type="text/javascript"  src="js/bootstrap.js"> </script>
-
+<script src="trial/js/bootstrap.js"> </script>
 <!-- mother grid end here-->
 </body>
 </html>
