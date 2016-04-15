@@ -7,10 +7,11 @@
     <link href="additemstyle.css" type="text/css" rel="stylesheet">
 
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+
 </head>
-<div id =sidebar class="visible">
-    <?php include("sidebar.php"); ?>
-</div>
+    <div id =sidebar class="visible">
+        <?php include("sidebar.php"); ?>
+    </div>
 <body>
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
@@ -18,26 +19,25 @@
 
 <div class="container"id ="itemcont">
 <form action="addorder.php" method="post">
-
-
     <br><br>
-    <div class="content">
-    Device Name: <input class ="search tb5" id ="searchitem" type="text" name="orddevicename" required  >&nbsp; <br><br>
-    </div><div id="resultlol"></div>
-    ID: <input  class ="tb5"  type="text" name="ordID" required  value=" " ><br><br>
-    <label for="from">From Date :</label>
-    <input class ="tb5" name="from" type="text" id="from" size="10" />
+        <div class="content">
+        Device Name:    <input class ="search tb5" id ="searchitem" type="text" name="orddevicename" required  >&nbsp; <br><br>
+        </div>
+    <div id="resultlol"></div>
+    ID:             <input  class ="tb5"  type="text" name="ordID" required  value=" " ><br><br>
+        <label for="from">From Date :</label>
+        <input class ="tb5" name="from" type="text" id="from" size="10" />
     <br><br>
-    <label for="to">To Date :</label>
-    <input class ="tb5" name="to" type="text" id="to" size="10"/>
+        <label for="to">To Date :</label>
+        <input class ="tb5" name="to" type="text" id="to" size="10"/>
     <br><br>
-    Customers Name: <input  class ="searchC tb5"  id ="searchcust" type="text" name="ordcustname" required>&nbsp;<br><br>
+        Customers Name: <input  class ="searchC tb5"  id ="searchcust" type="text" name="ordcustname" required>&nbsp;<br><br>
     <div id="resultcust"></div>
-    Additional Details:
-    <br>
+    Additional Details: <br>
+
     <textarea  class ="tb6" name="orderdetails"rows="10"cols="20" class="form-control" rows="10"></textarea>
     <br><br>
-    <input class ="tb5"  type= "submit" value="Submit" name='submitt'>
+        <input class ="tb5"  type= "submit" value="Submit" name='submitt'>
 </form>
 
 </div>
@@ -56,12 +56,9 @@ if(isset($_POST['submitt']))
     $to_ = $_POST['to'];
     $client_ = $_POST['ordcustname'];
     $checkAvailable = $conn->query("SELECT client FROM objects WHERE name = '$device_name' AND (client IS NOT NULL OR client != '')  ");
-    //if this is null, then the object is owned
-    //if this is not null, then the object is available
-    // if ($checkNonAvailable-> num_rows = 0){
+
     if ( mysqli_num_rows($checkAvailable)==0){
-        // $details_ = $_POST['message'];
-        //include("config.php");
+
         $sql = "UPDATE objects SET beginDate = '$from_' ,  endDate = '$to_' , client ='$client_'  WHERE name = ' $device_name'  ";
 
         if ($conn->query($sql) === TRUE) {
@@ -182,36 +179,6 @@ if(isset($_POST['submitt']))
 
 <style type="text/css">
 
-    #searchitem,#searchcust
-    {
-        border:solid 1px #000;
-        padding:5px;
-        font-size:14px;
-    }
-    #resultlol,#resultcust
-    {
-        position:absolute;
-        padding:5px;
-        display:none;
-        margin-top:-36px;
-        border-top:0px;
-        overflow:hidden;
-        border:1px #CCC solid;
-        background-color: white;
-    }
-    .show
-    {
-        padding:10px;
-        border-bottom:1px #999 dashed;
-        font-size:15px;
-        height:50px;
-    }
-    .show:hover
-    {
-        background:#4c66a4;
-        color:#FFF;
-        cursor:pointer;
-    }
 </style>
 
 </html>

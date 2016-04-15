@@ -43,18 +43,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </ul>
             </li>
 
-            <li><a href="charts.html"><i class="fa fa-bar-chart"></i><span>Table</span></span><span class="fa fa-angle-right" style="float: right"></span></a>
+            <li><a href="#"><i class="fa fa-bar-chart"></i><span>Table</span></span><span class="fa fa-angle-right" style="float: right"></span></a>
                 <ul id="menu-academico-sub" >
                     <li id="menu-academico-avaliacoes" ><a href="viewtableItem.php">Products</a></li>
                     <li id="menu-academico-boletim" ><a href="viewtablecust.php">Customer</a></li>
                 </ul>
             </li>
-            <li><a href="#"><i class="fa fa-envelope"></i><span>Email</a>
+            <li><a href="inbox.php"><i class="fa fa-envelope"></i><span>Email</a>
 
             </li>
             <li><a href="#"><i class="fa fa-user"></i><span>Administrator</span><span class="fa fa-angle-right" style="float: right"></span></a>
                 <ul id="menu-academico-sub" >
-                    <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
                     <li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li>
                     <li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
                 </ul>

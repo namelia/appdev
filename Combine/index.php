@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -412,7 +413,7 @@ $tableclients='clients';
                       <li id="menu-academico-boletim" ><a href="viewtablecust.php">Customer</a></li>
                   </ul>
                 </li>
-		        <li><a href="#"><i class="fa fa-envelope"></i><span>Email</a>
+		        <li><a href="inbox.php"><i class="fa fa-envelope"></i><span>Email</a>
 
 		        </li>
 		         <li><a href="#"><i class="fa fa-user"></i><span>Administrator</span><span class="fa fa-angle-right" style="float: right"></span></a>

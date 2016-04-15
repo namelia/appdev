@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <head>
-
     <meta charset="UTF-8">
     <title>add item</title>
     <link href="additemstyle.css" type="text/css" rel="stylesheet">
@@ -11,8 +10,10 @@
     <script src="js/jquery.validate.min.js"></script>
     <script src="js/main.js"></script>
 </head>
+
 <body>
-<?php include_once("sidebar.php") ?>
+<?php include_once("sidebar.php") ;
+$table= "clients";?>
 <div class="inner-block container"id=custcont" >
 
 
@@ -44,23 +45,13 @@
 <?php
 include("config.php");
 if(isset($_POST['submit'])) {
-    $servername = 'localhost';
-    $username = 'root';
-    $password = '';
-    $database = 'MOBILEDEVICELENDINGPROJECT';
-    $conn = New mysqli($servername, $username, $password, $database);
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-
     $cust_name = $_POST['custname'];
     $email_ = $_POST['custemail'];
     $category_ = $_POST['category'];
     $details_ = $_POST['details'];
     $phone_ =$_POST['phoneno'];
     $address_ =$_POST['address'];
-    $sql = "INSERT INTO clients (name,email,category,details,phone,address) VALUES ('$cust_name','$email_','$category_','$details_','$phone_','$address_')";
+    $sql = "INSERT INTO $table (name,email,category,details,phone,address) VALUES ('$cust_name','$email_','$category_','$details_','$phone_','$address_')";
 
     if ($conn->query($sql) === TRUE) {
         echo 'Details have been added to the database!';
