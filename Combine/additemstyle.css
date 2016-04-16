@@ -20,7 +20,7 @@ div#responseitem {
     position: fixed;
     width: 300px;
     height: 100px;
-    left: 700px;
+    left: 800px;
     top: 50px;
 }
 .tb5 {
@@ -68,4 +68,8 @@ div#responseitem {
     background:#4c66a4;
     color:#FFF;
     cursor:pointer;
+}
+form
+{
+    margin-left:250px;
 }

@@ -4,8 +4,17 @@ include("config.php");
 $table='clients';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" class="no-js">
 	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+
+		<!-- CSS reset -->
+		<link rel="stylesheet" href="simple-confirmation-popup/css/reset.css">
+		<link rel="stylesheet" href="simple-confirmation-popup/css/style.css"> <!-- Resource style -->
+		<script type="text/javascript" src="simple-confirmation-popup/js/modernizr.js"></script> <!-- Modernizr -->
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>MySQL table search</title>
 
@@ -36,7 +45,7 @@ $table='clients';
 	</select>
 	<input type="submit" name="button" id="button" value="Filter" />
 	</label>
-	<a href="tablecust.php">reset</a>
+	<button type="button"><a href="tablecust.php">Reset</a></button>
 </form>
 <br /><br />
 <table width="700" border="1" cellspacing="0" cellpadding="4" class="table table-striped  table-hover">
@@ -60,6 +69,7 @@ if ($_REQUEST["category"]<>'') {
 }
 	$sql = "SELECT * FROM $table WHERE id>0".$search_string .$search_category;
 $sql_result =$conn->query($sql) or die ('request "Could not execute SQL query" '.$sql);
+
 if (mysqli_num_rows($sql_result)>0) {
 	while ($row=$sql_result->fetch_assoc()) {
 ?>
@@ -67,20 +77,20 @@ if (mysqli_num_rows($sql_result)>0) {
 	  <td><?php echo $row["id"]; ?></td>
 	  <td><?php echo $row["category"]; ?></td>
 	  <td><?php echo $row["name"]; ?></td>
-
+	  <td><?php echo $row["email"]; ?></td>
 	  <td><?php echo $row["phone"]; ?></td>
 	  <td><?php echo $row["address"]; ?></td>
 	  <td><?php echo $row["details"]; ?></td>
 	  <td> <a href="editCustomer.php?category=<?php echo $row['category']?>&customername=<?php echo $row['name']?>&email=<?php echo $row['email']?>&phone=<?php echo $row['phone']?>&address=<?php echo $row['address']?>&details=<?php echo $row['details']?>&id=<?php echo $row["id"]; ?>" 2="post" class="group1"  >Edit</a> </td>
-	  <td> <a href="removeCustomer.php?id=<?php echo $row["id"] ?>">Remove</a> </td>
+	  <td> <a class="cd-popup-trigger" href="#" >Remove</a> </td>
 
   </tr>
 <?php
 	}
 } else {
 ?>
-<tr><td colspan="8">No results found.</td>
-<?php	
+<tr><td colspan="9">No results found.</td>
+<?php
 }
 ?>
 </table>
@@ -105,7 +115,10 @@ if (mysqli_num_rows($sql_result)>0) {
 		});
 	});
 </script>
-</div>
 
+
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="simple-confirmation-popup/js/main.js"></script> <!-- Resource jQuery -->
 </body>
 </html>

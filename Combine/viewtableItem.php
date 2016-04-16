@@ -37,16 +37,9 @@ $table='objects';
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>MySQL table search</title>
 
-	<link href="table.css" rel="stylesheet" type="text/css">
+
 	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
-	<!--<style>
-BODY, TD:not(id=sidebar) {
-	font-family:Arial, Helvetica, sans-serif;
-	font-size:12px;
-}
-</style>-->
-
-
+	<link href="table.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -64,21 +57,22 @@ BODY, TD:not(id=sidebar) {
 
 	<!-- <div class=" col-sm-9 col-xs-9">-->
 	<div id="table" class="container ">
-	<form id="form1" name="form1" method="post" action="tableItem.php">
+	<form id="form1" name="form1" method="post" action="viewtableItem.php">
 		<div class ="row">
 			<div class="col-xs-2">
 				<label for="from">From</label>
 				<input name="from" type="text" id="from" size="10" value="<?php echo $_REQUEST["from"]; ?>" />
+
 			</div>
 			<div class="col-xs-2">
 				<label for="to">to</label>
 				<input name="to" type="text" id="to" size="10" value="<?php echo $_REQUEST["to"]; ?>"/>
 			</div>
-			<div  class="col-xs-3">
+			<div  class="col-xs-2">
 				<label>Items:</label>&nbsp;
-				<input id ="searchitem"  type="text" name="string" id="string" value="<?php echo stripcslashes($_REQUEST["string"]); ?>" />
+				<input id ="searchitem"  type="text" name="string" id="string"size="8" value="<?php echo stripcslashes($_REQUEST["string"]); ?>" />
 			</div>
-			<div  class="col-xs-3">
+			<div  class="col-xs-2">
 				<label>Category</label>
 				<select name="category" id="cat">
 				<option value="">--</option>
@@ -91,9 +85,19 @@ BODY, TD:not(id=sidebar) {
 				</select>
 			</div>
 			<div  class="col-xs-2">
+				<label>Status</label>
+				<select name ="status">
+					<option ><?php echo stripcslashes($_REQUEST["status"]); ?></option>
+					<option value="Available">Available</option>
+					<option value="On Loan">On Loan</option>
+					<option value="Overdue">Overdue</option>
+				</select>
+			</div>
+
+			<div  class="col-xs-2">
 				<input type="submit" name="button" id="button" value="Filter" />
 				</label>
-				<a href="tableItem.php"> reset</a>
+				<button type="button"><a href="viewtableItem.php"> Reset</a></button>
 			</div>
 
 		</form>
@@ -105,16 +109,13 @@ BODY, TD:not(id=sidebar) {
   <tr>
 	  <td width="159" bgcolor="#CCCCCC"><strong>Category</strong></td>
 	  <td width="95" bgcolor="#CCCCCC"><strong>ID</strong/td>
-      <!--<td width="160" bgcolor="#CCCCCC"><strong>From date</strong></td>
-      <td width="160" bgcolor="#CCCCCC"><strong>To date</strong/td>-->
       <td width="159" bgcolor="#CCCCCC"><strong>Name</strong></td>
-	  <td width="159" bgcolor="#CCCCCC"><strong>Manufacturer</strong></td>
 	  <td width="95" bgcolor="#CCCCCC"><strong>OS</strong/td>
 	  <td width="95" bgcolor="#CCCCCC"><strong>UDID</strong/td>
-	  <td width="95" bgcolor="#CCCCCC"><strong>IMEI</strong/td>
-	  <td width="95" bgcolor="#CCCCCC"><strong>Serial</strong/td>
-      <td width="191" bgcolor="#CCCCCC"><strong>Description</strong></td>
-	  <td width="30" bgcolor="#CCCCCC"><strong>Availability</strong></td>
+	  <td width="95" bgcolor="#CCCCCC"><strong>Start Date</strong/td>
+	  <td width="95" bgcolor="#CCCCCC"><strong>End Date</strong/td>
+      <td width="191" bgcolor="#CCCCCC"><strong>Client</strong></td>
+	  <td width="30" bgcolor="#CCCCCC"><strong>Status</strong></td>
   </tr>
 <?php
 
@@ -127,14 +128,27 @@ if ($_REQUEST["category"]<>'') {
 
 if ($_REQUEST["from"]<>'' and $_REQUEST["to"]<>'')
 {
-	$sql = "SELECT * FROM $table WHERE from_date >= '".mysqli_real_escape_string($conn,$_REQUEST["from"])."' AND to_date <= '".mysqli_real_escape_string($conn,$_REQUEST["to"])."'".$search_string.$search_category;
+	$sql = "SELECT * FROM $table WHERE beginDate >= '".mysqli_real_escape_string($conn,$_REQUEST["from"])."' AND endDate <= '".mysqli_real_escape_string($conn,$_REQUEST["to"])."'".$search_string.$search_category;
 } else if ($_REQUEST["from"]<>'')
 {
-	$sql = "SELECT * FROM $table WHERE from_date >= '".mysqli_real_escape_string($conn,$_REQUEST["from"])."'".$search_string.$search_category;
+	$sql = "SELECT * FROM $table WHERE beginDate >= '".mysqli_real_escape_string($conn,$_REQUEST["from"])."'".$search_string.$search_category;
 } else if ($_REQUEST["to"]<>'')
 {
-	$sql = "SELECT * FROM $table WHERE to_date <= '".mysqli_real_escape_string($conn,$_REQUEST["to"])."'".$search_string.$search_category;
-} else {
+	$sql = "SELECT * FROM $table WHERE endDate<= '".mysqli_real_escape_string($conn,$_REQUEST["to"])."'".$search_string.$search_category;
+}else if($_REQUEST["status"]=="Available")
+{
+	$sql = "SELECT * FROM $table WHERE client IS NULL".$search_string.$search_category;
+}
+else if($_REQUEST["status"]=="On Loan")
+{
+
+	$sql = "SELECT * FROM $table WHERE client IS NOT NULL AND CURDATE()< endDate ".$search_string.$search_category ;
+}
+else if($_REQUEST["status"]=="Overdue")
+{
+	$sql = "SELECT * FROM $table WHERE client IS NOT NULL AND CURDATE()>endDate ".$search_string.$search_category ;
+}
+else {
 	$sql = "SELECT * FROM $table WHERE id>0".$search_string.$search_category;
 }
 
@@ -146,16 +160,28 @@ if (mysqli_num_rows($sql_result)>0) {
 	  <td><?php echo $row["category"]; ?></td>
 	  <td><?php echo $row["id"]; ?></td>
       <td><?php echo $row["name"]; ?></td>
-	  <td><?php echo $row["manufacturer"]; ?></td>
 	  <td><?php echo $row["OS"]; ?></td>
 	  <td><?php echo $row["UDID"]; ?></td>
-	  <td><?php echo $row["IMEI"]; ?></td>
-	  <td><?php echo $row["serial"]; ?></td>
-      <td><?php echo $row["description"]; ?></td>
+	  <td><?php echo $row["beginDate"]; ?></td>
+	  <td><?php echo $row["endDate"]; ?></td>
+      <td><?php echo $row["client"]; ?></td>
+		<?php include("config.php");
+			$endDate = $row['endDate'];
+			if ($row["client"]!= NULL)
+			{
+				if (date("Y-m-d") > $endDate) {
+					echo "<td> <span class=\"label label-danger\">Overdue</span></td>";
+				} else {
+					echo "<td><span class=\"label label-success\">On Loan</span></td>";
+				}
+			}
+		else
+			echo "<td><span class=\"label label-info\">Available</span></td>"
+		  ?>
 
-	  <td> <form $row  id ='checkbox $i' action="" method="post">
+	  <!-- <td> <form $row  id ='checkbox $i' action="" method="post">
 			  <input type="checkbox" name=<?php echo "box "+$row["id"]?> value="Available" class="group1" >
-			  </td>
+			  </td>-->
   </tr>
 <?php
 	}
@@ -203,20 +229,6 @@ if (mysqli_num_rows($sql_result)>0) {
 	}
 	</script>
 
-	<script>
-	$("#delete").on("click", function (e) {
-	var checkbox = $(this);
-	if (checkbox.is(":checked") {
-		var r = confirm("Are you sure you want to delete this?");
-		if (r == true) {
-			if(isset($_POST['submitt']))
-		} else {
-		}
-	e.preventDefault();
-	return false;
-	}
-	});
-	</script>
 
 
 <div id = resp>

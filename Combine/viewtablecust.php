@@ -36,7 +36,7 @@ $table='clients';
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>MySQL table search</title>
-
+	<link rel="stylesheet" href="simple-confirmation-popup/css/reset.css">
 	<link href="table.css" rel="stylesheet" type="text/css">
 	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
 	<!--<style>
@@ -58,7 +58,7 @@ BODY, TD:not(id=sidebar) {
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
 <script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 <div id="table" class="container" style="overflow-x:auto;">
-<form id="form1" name="form1" method="post" action="tablecust.php">
+<form id="form1" name="form1" method="post" action="viewtablecust.php">
  <label>Search:</label>
 <input type="text" name="string" id="string" value="<?php echo stripcslashes($_REQUEST["string"]); ?>" />
 <label>category</label>
@@ -73,8 +73,7 @@ BODY, TD:not(id=sidebar) {
 </select>
 <input type="submit" name="button" id="button" value="Filter" />
   </label>
-  <a href="tablecust.php">
-  reset</a>
+	<button type="button"><a href="viewtablecust.php">Reset</a></button>
 </form>
 <br /><br />
 <table width="700" border="1" cellspacing="0" cellpadding="4" class="table table-striped  table-hover">
@@ -124,7 +123,7 @@ if (mysqli_num_rows($sql_result)>0) {
 	}
 } else {
 ?>
-<tr><td colspan="6">No results found.</td>
+<tr><td colspan="7">No results found.</td>
 <?php	
 }
 ?>

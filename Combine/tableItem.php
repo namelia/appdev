@@ -1,31 +1,5 @@
 <?php
-###########################################################
-/*
-GuestBook Script
-Copyright (C) 2012 StivaSoft ltd. All rights Reserved.
 
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
-
-For further information visit:
-http://www.phpjabbers.com/
-info@phpjabbers.com
-
-Version:  1.0
-Released: 2012-03-18
-*/
-###########################################################
 
 error_reporting(0);
 include("config.php");
@@ -39,15 +13,6 @@ $table='objects';
 
 	<link href="table.css" rel="stylesheet" type="text/css">
 	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
-	<!--<style>
-BODY, TD:not(id=sidebar) {
-	font-family:Arial, Helvetica, sans-serif;
-	font-size:12px;
-}
-</style>-->
-
-
-
 </head>
 
 
@@ -55,14 +20,13 @@ BODY, TD:not(id=sidebar) {
 <div class="row">
 
 		<div id ="sidebar" class="container">
-			<!--<div class=" col-sm-3 col-xs-3">-->
 			<?php include("sidebar.php"); ?>
 			</div>
 		</div>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
 		<script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 
-	<!-- <div class=" col-sm-9 col-xs-9">-->
+
 	<div id="table" class="container ">
 	<form id="form1" name="form1" method="post" action="tableItem.php">
 		<div class ="row">
@@ -76,7 +40,7 @@ BODY, TD:not(id=sidebar) {
 			</div>
 			<div  class="col-xs-3">
 				<label>Items:</label>&nbsp;
-				<input id ="searchitem"  type="text" name="string" id="string" value="<?php echo stripcslashes($_REQUEST["string"]); ?>" />
+				<input id ="searchitem"  type="text" size="10" name="string" id="string" value="<?php echo stripcslashes($_REQUEST["string"]); ?>" />
 			</div>
 			<div  class="col-xs-3">
 				<label>Category</label>
@@ -93,7 +57,7 @@ BODY, TD:not(id=sidebar) {
 			<div  class="col-xs-2">
 				<input type="submit" name="button" id="button" value="Filter" />
 				</label>
-				<a href="tableItem.php"> reset</a>
+				<button type="button"><a href="tableItem.php"> Reset</a></button>
 			</div>
 
 		</form>
@@ -127,13 +91,13 @@ if ($_REQUEST["category"]<>'') {
 
 if ($_REQUEST["from"]<>'' and $_REQUEST["to"]<>'')
 {
-	$sql = "SELECT * FROM $table WHERE from_date >= '".mysqli_real_escape_string($conn,$_REQUEST["from"])."' AND to_date <= '".mysqli_real_escape_string($conn,$_REQUEST["to"])."'".$search_string.$search_category;
+	$sql = "SELECT * FROM $table WHERE beginDate >= '".mysqli_real_escape_string($conn,$_REQUEST["from"])."' AND endDate <= '".mysqli_real_escape_string($conn,$_REQUEST["to"])."'".$search_string.$search_category;
 } else if ($_REQUEST["from"]<>'')
 {
-	$sql = "SELECT * FROM $table WHERE from_date >= '".mysqli_real_escape_string($conn,$_REQUEST["from"])."'".$search_string.$search_category;
+	$sql = "SELECT * FROM $table WHERE beginDate >= '".mysqli_real_escape_string($conn,$_REQUEST["from"])."'".$search_string.$search_category;
 } else if ($_REQUEST["to"]<>'')
 {
-	$sql = "SELECT * FROM $table WHERE to_date <= '".mysqli_real_escape_string($conn,$_REQUEST["to"])."'".$search_string.$search_category;
+	$sql = "SELECT * FROM $table WHERE endDate <= '".mysqli_real_escape_string($conn,$_REQUEST["to"])."'".$search_string.$search_category;
 } else {
 	$sql = "SELECT * FROM $table WHERE id>0".$search_string.$search_category;
 }
@@ -163,7 +127,7 @@ if (mysqli_num_rows($sql_result)>0) {
 	}
 } else {
 ?>
-<tr><td colspan="11">No results found.</td>
+<tr><td colspan="12">No results found.</td>
 <?php	
 }
 ?>

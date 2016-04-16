@@ -21,21 +21,14 @@
             <option value="External Other Customer">External Other Customer</option>
         </select>
         <br><br>
-        Customer Name: <input   class ="tb5" type="text" name="customername" required value="<?php echo $_GET['customername']?> " ><br><br>
-        Email address: <input  class ="tb5"  type="text" name="email" required  value="<?php echo $_GET['email']?> " readonly><br><br>
-        
-        <button type="button" style=" border-radius:10px;   border:2px solid #456879;" data-toggle="collapse" data-target="#more">
-            <span data-toggle="tooltip" data-placement="right" title="Add more Details"> Add More Details</span>
-        </button>
-        <br><br>
-        <div id="more" class="collapse" >
+            Customer Name: <input   class ="tb5" type="text" name="customername" required value="<?php echo $_GET['customername']?> " ><br><br>
+            Email address: <input  class ="tb5"  type="text" name="email" required  value="<?php echo $_GET['email']?> " readonly><br><br>
             Phone: <input   class ="tb5" type="text" name="phone" value="<?php echo $_GET['phone']?>" ><br><br>
             Address: <input   class ="tb5" type="text" name="address"  value="<?php echo $_GET['address']?>"> <br><br>
             Other Details:
             <br>
             <textarea  class ="tb6" name="details"rows="10"cols="20" class="form-control" rows="10"><?php echo $_GET['details']?></textarea>
             <br><br>
-        </div>
         <input type= "submit" value="Update" name="Update">
     </form>
 
@@ -62,7 +55,7 @@
          
          
 
-    $sql = "UPDATE clients SET name = '$device_name', OS ='$os_' ,description=' $details_',category='$category_',UDID='$udid_',IMEI='$imei_',serial=' $serial_',manufacturer='$manu_'WHERE id = '$id_' ";
+    $sql = "UPDATE clients SET name = '$customername_', email ='$email_' ,category=' $category_',category='$category_',address='$address_',phone='$phone_',details=' $details_'WHERE id = '$id_' ";
     if ($conn->query($sql) === TRUE) {
         echo 'Details have been modified in the database! In the entry: ';
         echo $id_ ;
