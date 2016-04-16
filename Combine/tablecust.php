@@ -61,6 +61,7 @@ $table='clients';
   </tr>
 <?php
 include("config.php");
+
 if ($_REQUEST["string"]<>'') {
 	$search_string = " AND (name LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR details LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%')";
 }
@@ -69,7 +70,6 @@ if ($_REQUEST["category"]<>'') {
 }
 	$sql = "SELECT * FROM $table WHERE id>0".$search_string .$search_category;
 $sql_result =$conn->query($sql) or die ('request "Could not execute SQL query" '.$sql);
-
 if (mysqli_num_rows($sql_result)>0) {
 	while ($row=$sql_result->fetch_assoc()) {
 ?>
@@ -82,8 +82,7 @@ if (mysqli_num_rows($sql_result)>0) {
 	  <td><?php echo $row["address"]; ?></td>
 	  <td><?php echo $row["details"]; ?></td>
 	  <td> <a href="editCustomer.php?category=<?php echo $row['category']?>&customername=<?php echo $row['name']?>&email=<?php echo $row['email']?>&phone=<?php echo $row['phone']?>&address=<?php echo $row['address']?>&details=<?php echo $row['details']?>&id=<?php echo $row["id"]; ?>" 2="post" class="group1"  >Edit</a> </td>
-	  <td> <a class="cd-popup-trigger" href="#" >Remove</a> </td>
-
+	  <td> <a class="cd-popup-trigger" href="removeCustomer.php?id=<?php echo $row["id"]; ?>" >Remove</a> </td>
   </tr>
 <?php
 	}
@@ -116,6 +115,16 @@ if (mysqli_num_rows($sql_result)>0) {
 	});
 </script>
 
+	<div class="cd-popup" role="alert">
+		<div class="cd-popup-container">
+			<p>Are you sure you want to delete this element?</p>
+			<ul class="cd-buttons">
+				<li><a href="removeCustomer.php?id=<?php echo $row["id"]; ?>Yes</a></li>
+				<li><a href="tablecust.php">No</a></li>
+			</ul>
+			<a href="" class="cd-popup-close img-replace">Close</a>
+		</div> <!-- cd-popup-container  !--href="removeCustomer.php?id=<1--?php echo $row["id"] -->>-->
+	</div> <!-- cd-popup -->
 
 </div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
