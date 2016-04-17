@@ -15,7 +15,7 @@ include("config.php");
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Login Form</title>
+        <title>Login</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/main.css">
@@ -61,7 +61,6 @@ include("config.php");
 
 	    <form id="login-form" class="login-form" name="form1">
 			<?php
-			$_SESSION['login'] = "1";
 			header("Location:index.php?status=success");
 			exit(); ?>
 	        <div id="form-content">
@@ -80,7 +79,7 @@ include("config.php");
 	<?php } else { ?>
 	    <form id="login-form" class="login-form" name="form1" method="post" action="logout.php">
 	    	<input type="hidden" name="is_login" value="1">
-	        <div class="h1">Login Form</div>
+	        <div class="h1">Login </div>
 	        <div id="form-content">
 	            <div class="group">
 	                <label for="email">Email</label>

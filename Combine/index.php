@@ -1,5 +1,6 @@
+<?php
 
-
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -46,7 +47,7 @@ $tableclients='clients';
 				<div class="header-main">
 					<div class="header-left">
 							<div class="logo-name">
-									 <a href="index.php"> <h1 style="width:400px">UCL APPLAB <i class="fa fa-cubes"> </i></h1>
+									 <a href="index.php?status=success"> <h1 style="width:400px">UCL APPLAB <i class="fa fa-cubes"> </i></h1>
 									<!--<img id="logo" src="" alt="Logo"/>-->
 								  </a>
 							</div>
@@ -58,7 +59,7 @@ $tableclients='clients';
 								<ul class="nofitications-dropdown">
 									<li class="dropdown head-dpdn">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-envelope"></i><span class="badge">3</span></a>
-										<ul class="dropdown-menu">
+										<!--<ul class="dropdown-menu">
 											<li>
 												<div class="notification_header">
 													<h3>You have 3 new messages</h3>
@@ -93,11 +94,11 @@ $tableclients='clients';
 													<a href="#">See all messages</a>
 												</div>
 											</li>
-										</ul>
+										</ul>-->
 									</li>
 									<li class="dropdown head-dpdn">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell"></i><span class="badge blue">3</span></a>
-										<ul class="dropdown-menu">
+										<!--<ul class="dropdown-menu">
 											<li>
 												<div class="notification_header">
 													<h3>You have 3 new notification</h3>
@@ -132,11 +133,11 @@ $tableclients='clients';
 													<a href="#">See all notifications</a>
 												</div>
 											</li>
-										</ul>
+										</ul>-->
 									</li>
 									<li class="dropdown head-dpdn">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-tasks"></i><span class="badge blue1">9</span></a>
-										<ul class="dropdown-menu">
+										<!--<ul class="dropdown-menu">
 											<li>
 												<div class="notification_header">
 													<h3>You have 8 pending task</h3>
@@ -184,7 +185,7 @@ $tableclients='clients';
 												</div>
 											</li>
 										</ul>
-									</li>
+									</li>-->
 								</ul>
 
 								<div class="clearfix" id="notification"> </div>
@@ -419,7 +420,7 @@ $tableclients='clients';
 		         <li><a href="#"><i class="fa fa-user"></i><span>Administrator</span><span class="fa fa-angle-right" style="float: right"></span></a>
                      <ul id="menu-academico-sub" >
                          <li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li>
-                         <li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                         <li> <a href="logout.php?ac=logout"><i class="fa fa-sign-out"></i> Logout</a> </li>
                      </ul>
 		         </li>
 		      </ul>
