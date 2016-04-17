@@ -1,0 +1,32 @@
+.button, #button {
+    background-color: #4CAF50; /* Green */
+    border: 3px solid #4CAF50;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline;
+    font-size: 16px;
+}
+
+.button:hover, .buttonReset:hover {
+    background-color: white; 
+    color: #4CAF50;
+     /* Green */
+}
+
+
+.buttonReset {
+    background-color: rgb(240,240,240); /* Green */
+    border: 4px solid #4CAF50;
+    color: #4CAF50;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline;
+    font-size: 15px;
+}
+
+a:link, .buttonReset>a:link {
+    color: rgb(110,110,110);
+}

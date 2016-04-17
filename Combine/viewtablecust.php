@@ -67,17 +67,17 @@ $table='clients';
 	<button type="button"><a href="viewtablecust.php">Reset</a></button>
 </form>
 <br /><br />
-<table width="700" border="1" cellspacing="0" cellpadding="4" class="table table-striped  table-hover">
+<table width="700" border="1" cellspacing="0" cellpadding="4" class="table">
   <tr>
     <!--<td width="90" bgcolor="#CCCCCC"><strong>From date</strong></td>
     <td width="95" bgcolor="#CCCCCC"><strong>To date</strong></td>-->
-	  <td width="50" bgcolor="#CCCCCC"><strong>Id</strong></td>
-	  <td width="191" bgcolor="#CCCCCC"><strong>Category</strong></td>
-      <td width="159" bgcolor="#CCCCCC"><strong>Name</strong></td>
-	  <td width="159" bgcolor="#CCCCCC"><strong>Email</strong></td>
-	  <td width="159" bgcolor="#CCCCCC"><strong>Phone</strong></td>
-	  <td width="159" bgcolor="#CCCCCC"><strong>Address</strong></td>
-      <td width="191" bgcolor="#CCCCCC"><strong>Description</strong></td>
+	  <th width="50">Id</th>
+	  <th width="191">Category</th>
+      <th width="159">Name</th>
+	  <th width="159">Email</th>
+	  <th width="159">Phone</th>
+	  <th width="159">Address</th>
+      <th width="191">Description</th>
   </tr>
 <?php
 include("config.php");

@@ -22,7 +22,7 @@
         </select>
         <br><br>
             Customer Name: <input   class ="tb5" type="text" name="customername" required value="<?php echo $_GET['customername']?> " ><br><br>
-            Email address: <input  class ="tb5"  type="text" name="email" required  value="<?php echo $_GET['email']?> " readonly><br><br>
+            Email address: <input  class ="form-control required tb5" type="email" name="email" required  value="<?php echo $_GET['email']?> "><br><br>
             Phone: <input   class ="tb5" type="text" name="phone" value="<?php echo $_GET['phone']?>" ><br><br>
             Address: <input   class ="tb5" type="text" name="address"  value="<?php echo $_GET['address']?>"> <br><br>
             Other Details:
@@ -34,7 +34,7 @@
 
 </div>
 </body>
-<div id ="responseitem">
+
     <?php
     include("config.php");
     if(isset($_POST['Update']))
@@ -57,8 +57,16 @@
 
     $sql = "UPDATE clients SET name = '$customername_', email ='$email_' ,category=' $category_',category='$category_',address='$address_',phone='$phone_',details=' $details_'WHERE id = '$id_' ";
     if ($conn->query($sql) === TRUE) {
-        echo 'Details have been modified in the database! In the entry: ';
-        echo $id_ ;
+
+        echo '<div id="boxes">
+              <div id="dialog" class="window">
+
+              <h1>Details have been modified!</h1>
+              </div>
+              <div id="mask"></div>
+              </div>';
+       /* echo 'Details have been modified in the database! In the entry: ';
+        echo $id_ ;*/
 
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
@@ -66,6 +74,51 @@
     $conn->close();
     }
     ?>
-</div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            var id = '#dialog';
+
+//Get the screen height and width
+            var maskHeight = $(document).height();
+            var maskWidth = $(window).width();
+
+//Set heigth and width to mask to fill up the whole screen
+            $('#mask').css({'width':maskWidth,'height':maskHeight});
+
+//transition effect
+            $('#mask').fadeIn(500);
+            $('#mask').fadeTo("slow",0.9);
+
+//Get the window height and width
+            var winH = $(window).height();
+            var winW = $(window).width();
+
+//Set the popup window to center
+            $(id).css('top',  winH/2-$(id).height()/2);
+            $(id).css('left', winW/2-$(id).width()/2);
+
+//transition effect
+            $(id).fadeIn(2000);
+
+//if close button is clicked
+            $('.window .close').click(function (e) {
+//Cancel the link behavior
+                e.preventDefault();
+
+                $('#mask').hide();
+                $('.window').hide();
+            });
+
+//if mask is clicked
+            $('#mask').click(function () {
+                $(this).hide();
+                $('.window').hide();
+            });
+
+        });
+    </script>
+
 
 </html>

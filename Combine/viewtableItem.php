@@ -76,23 +76,23 @@ $table='objects';
 		<!-- </div>
 	</div>-->
 
-<br /><br />
-<table width="500" border="1" cellspacing="0" cellpadding="4" class="table table-striped table-hover table-responsive">
+<br /><br /><br />
+<table width="500" border="1" cellspacing="0" cellpadding="4" class="table">
   <tr>
-	  <td width="159" bgcolor="#CCCCCC"><strong>Category</strong></td>
-	  <td width="95" bgcolor="#CCCCCC"><strong>ID</strong/td>
-      <td width="159" bgcolor="#CCCCCC"><strong>Name</strong></td>
-	  <td width="95" bgcolor="#CCCCCC"><strong>OS</strong/td>
-	  <td width="95" bgcolor="#CCCCCC"><strong>UDID</strong/td>
-	  <td width="95" bgcolor="#CCCCCC"><strong>Start Date</strong/td>
-	  <td width="95" bgcolor="#CCCCCC"><strong>End Date</strong/td>
-      <td width="191" bgcolor="#CCCCCC"><strong>Client</strong></td>
-	  <td width="30" bgcolor="#CCCCCC"><strong>Status</strong></td>
+	  <th width="159">Category</th>
+	  <th width="95">ID</th>
+      <th width="159">Name</th>
+	  <th width="95">OS</th>
+	  <th width="95">UDID</th>
+	  <th width="95"> Start Date</th>
+	  <th width="95">End Date</th>
+      <th width="191">Client</th>
+	  <th width="30">Status</th>
   </tr>
 <?php
 
 if ($_REQUEST["string"]<>'') {
-	$search_string = " AND (name LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR description LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR Category LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%') OR OS LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR UDID LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR client LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%'id LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%'";
+	$search_string = " AND (name LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR description LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR Category LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%') OR OS LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR UDID LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR client LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR id LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%'";
 }
 if ($_REQUEST["category"]<>'') {
 	$search_category = " AND category='".mysqli_real_escape_string($conn,$_REQUEST["category"])."'";
@@ -147,9 +147,9 @@ if (mysqli_num_rows($sql_result)>0) {
 					echo "<td><span class=\"label label-success\">On Loan</span></td>";
 				}
 			}
-		else
-			echo "<td><span class=\"label label-info\">Available</span></td>"
-		  ?>
+			else
+				echo "<td><span class=\"label label-info\">Available</span></td>"
+		?>
 
 	  <!-- <td> <form $row  id ='checkbox $i' action="" method="post">
 			  <input type="checkbox" name=<?php echo "box "+$row["id"]?> value="Available" class="group1" >

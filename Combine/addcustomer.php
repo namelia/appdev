@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
+    <meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
     <title>add item</title>
     <link href="additemstyle.css" type="text/css" rel="stylesheet">
     <script src="js/jquery.validate.min.js"></script>
@@ -19,7 +20,7 @@ $table= "clients";?>
 
     <form action="addcustomer.php" method="post">
         Customers Name: <input  class ="tb5" type="text" name="custname" required><br><br>
-        Email address: <input  class ="tb5" type="text" name="custemail" class="form-control required" type="email" required><br><br>
+        Email address: <input  class =" form-control required tb5 " type="email" name="custemail"" required><br><br>
         Category:
         <select class ="tb5"  name="category">
             <option value="Internal Customer">Internal Customer</option>
@@ -41,7 +42,7 @@ $table= "clients";?>
         <div class="clearfix"></div>
     </div>
 
-<div id ="responseitem">
+
 <?php
 include("config.php");
 if(isset($_POST['submit'])) {
@@ -54,17 +55,66 @@ if(isset($_POST['submit'])) {
     $sql = "INSERT INTO $table (name,email,category,details,phone,address) VALUES ('$cust_name','$email_','$category_','$details_','$phone_','$address_')";
 
     if ($conn->query($sql) === TRUE) {
-        echo 'Details have been added to the database!';
-    } else {
+        echo '<div id="boxes">
+              <div id="dialog" class="window">
+
+              <h1>Database has been updated!</h1>
+              </div>
+              <div id="mask"></div>
+              </div>';
+    }
+    else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 
     $conn->close();
 }
 ?>
-</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
 
-</div>
+var id = '#dialog';
+
+//Get the screen height and width
+var maskHeight = $(document).height();
+var maskWidth = $(window).width();
+
+//Set heigth and width to mask to fill up the whole screen
+$('#mask').css({'width':maskWidth,'height':maskHeight});
+
+//transition effect
+$('#mask').fadeIn(500);
+$('#mask').fadeTo("slow",0.9);
+
+//Get the window height and width
+var winH = $(window).height();
+var winW = $(window).width();
+
+//Set the popup window to center
+$(id).css('top',  winH/2-$(id).height()/2);
+$(id).css('left', winW/2-$(id).width()/2);
+
+//transition effect
+$(id).fadeIn(2000);
+
+//if close button is clicked
+$('.window .close').click(function (e) {
+//Cancel the link behavior
+e.preventDefault();
+
+$('#mask').hide();
+$('.window').hide();
+});
+
+//if mask is clicked
+$('#mask').click(function () {
+$(this).hide();
+$('.window').hide();
+});
+
+});
+</script>
 </body>
 
 </html>

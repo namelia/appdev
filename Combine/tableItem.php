@@ -1,5 +1,31 @@
 <?php
+###########################################################
+/*
+GuestBook Script
+Copyright (C) 2012 StivaSoft ltd. All rights Reserved.
 
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
+
+For further information visit:
+http://www.phpjabbers.com/
+info@phpjabbers.com
+
+Version:  1.0
+Released: 2012-03-18
+*/
+###########################################################
 
 error_reporting(0);
 include("config.php");
@@ -12,7 +38,18 @@ $table='objects';
 <title>MySQL table search</title>
 
 	<link href="table.css" rel="stylesheet" type="text/css">
+	<link href="css/buttons.css" rel="stylesheet" type="text/css" media="all">
+
 	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+	<!--<style>
+BODY, TD:not(id=sidebar) {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+}
+</style>-->
+
+
+
 </head>
 
 
@@ -20,13 +57,14 @@ $table='objects';
 <div class="row">
 
 		<div id ="sidebar" class="container">
+			<!--<div class=" col-sm-3 col-xs-3">-->
 			<?php include("sidebar.php"); ?>
 			</div>
 		</div>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
 		<script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 
-
+	<!-- <div class=" col-sm-9 col-xs-9">-->
 	<div id="table" class="container ">
 	<form id="form1" name="form1" method="post" action="tableItem.php">
 		<div class ="row">
@@ -40,10 +78,10 @@ $table='objects';
 			</div>
 			<div  class="col-xs-3">
 				<label>Items:</label>&nbsp;
-				<input id ="searchitem"  type="text" size="15" name="string" id="string" value="<?php echo stripcslashes($_REQUEST["string"]); ?>" />
+				<input id ="searchitem"  type="text" name="string" id="string" value="<?php echo stripcslashes($_REQUEST["string"]); ?>" />
 			</div>
-			<div  class="col-xs-3">
-				<label>Type</label>
+			<div  class="col-xs-2">
+				<label>Category</label>
 				<select name="category" id="cat">
 				<option value="">--</option>
 				<?php
@@ -54,36 +92,38 @@ $table='objects';
 				?>
 				</select>
 			</div>
-			<div  class="col-xs-2">
-				<input type="submit" name="button" id="button" value="Filter" />
+			<div  class="col-xs-1">
+				<input type="submit" name="button" class="button"  value="Filter" />
 				</label>
-				<button type="button"><a href="tableItem.php"> Reset</a></button>
+				<!-- <button  class="buttonReset"><a href="tableItem.php">Reset</a></button> -->
+				<a href="tableItem.php" class="buttonReset" role="button">Reset</a>
+				
 			</div>
 
 		</form>
 		<!-- </div>
 	</div>-->
 
-<br /><br />
+<br /><br /> <br> <br>
 <table width="500" border="1" cellspacing="0" cellpadding="4" class="table table-striped table-hover table-responsive">
   <tr>
-	  <td width="159" bgcolor="#CCCCCC"><strong>Category</strong></td>
-	  <td width="95" bgcolor="#CCCCCC"><strong>ID</strong/td>
+	  <th width="159"> Category</td>
+	  <th width="95"> ID</td>
       <!--<td width="160" bgcolor="#CCCCCC"><strong>From date</strong></td>
       <td width="160" bgcolor="#CCCCCC"><strong>To date</strong/td>-->
-      <td width="159" bgcolor="#CCCCCC"><strong>Name</strong></td>
-	  <td width="159" bgcolor="#CCCCCC"><strong>Manufacturer</strong></td>
-	  <td width="95" bgcolor="#CCCCCC"><strong>OS</strong/td>
-	  <td width="95" bgcolor="#CCCCCC"><strong>UDID</strong/td>
-	  <td width="95" bgcolor="#CCCCCC"><strong>IMEI</strong/td>
-	  <td width="95" bgcolor="#CCCCCC"><strong>Serial</strong/td>
-      <td width="100" bgcolor="#CCCCCC"><strong>Description</strong></td>
-	  <td colspan="2" width="20" bgcolor="#CCCCCC"><strong>Manage</strong></td>
+      <th width="159"> Name</th>
+	  <th width="159"> Manufacturer</th>
+	  <th width="95"> OS</th>
+      <th width="100"> Description</th>
+      <th width="95"> UDID</th>
+	  <th width="95"> IMEI</th>
+	  <th width="95"> Serial</th>
+	  <th colspan="2"> Manage</th>
   </tr>
 <?php
 
-if ($_REQUEST["string"]<>'') {
-	$search_string = " AND (name LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR description LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR Category LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%') OR OS LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR UDID LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR IMEI LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR serial LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR manufacturer LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR id LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%'";
+if ($_REQUEST["string"]<>''){
+	$search_string = " AND (name LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR description LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR Category LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%') OR OS LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR UDID LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR id LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR manufacturer LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR serial LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR IMEI LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%'";
 }
 if ($_REQUEST["category"]<>'') {
 	$search_category = " AND category='".mysqli_real_escape_string($conn,$_REQUEST["category"])."'";
@@ -91,13 +131,13 @@ if ($_REQUEST["category"]<>'') {
 
 if ($_REQUEST["from"]<>'' and $_REQUEST["to"]<>'')
 {
-	$sql = "SELECT * FROM $table WHERE beginDate >= '".mysqli_real_escape_string($conn,$_REQUEST["from"])."' AND endDate <= '".mysqli_real_escape_string($conn,$_REQUEST["to"])."'".$search_string.$search_category;
+	$sql = "SELECT * FROM $table WHERE from_date >= '".mysqli_real_escape_string($conn,$_REQUEST["from"])."' AND to_date <= '".mysqli_real_escape_string($conn,$_REQUEST["to"])."'".$search_string.$search_category;
 } else if ($_REQUEST["from"]<>'')
 {
-	$sql = "SELECT * FROM $table WHERE beginDate >= '".mysqli_real_escape_string($conn,$_REQUEST["from"])."'".$search_string.$search_category;
+	$sql = "SELECT * FROM $table WHERE from_date >= '".mysqli_real_escape_string($conn,$_REQUEST["from"])."'".$search_string.$search_category;
 } else if ($_REQUEST["to"]<>'')
 {
-	$sql = "SELECT * FROM $table WHERE endDate <= '".mysqli_real_escape_string($conn,$_REQUEST["to"])."'".$search_string.$search_category;
+	$sql = "SELECT * FROM $table WHERE to_date <= '".mysqli_real_escape_string($conn,$_REQUEST["to"])."'".$search_string.$search_category;
 } else {
 	$sql = "SELECT * FROM $table WHERE id>0".$search_string.$search_category;
 }
@@ -105,7 +145,7 @@ if ($_REQUEST["from"]<>'' and $_REQUEST["to"]<>'')
 $sql_result =$conn->query($sql) or die ('request "Could not execute SQL query" '.$sql);
 if (mysqli_num_rows($sql_result)>0) {
 	while ($row=$sql_result->fetch_assoc()) {
-?>
+?> 
   <tr>
 	  <td><?php echo $row["category"]; ?></td>
       <!--<td><!--?php echo $row["beginDate"]; ?></td>
@@ -114,10 +154,10 @@ if (mysqli_num_rows($sql_result)>0) {
       <td><?php echo $row["name"]; ?></td>
 	  <td><?php echo $row["manufacturer"]; ?></td>
 	  <td><?php echo $row["OS"]; ?></td>
-	  <td><?php echo $row["UDID"]; ?></td>
+      <td><?php echo $row["description"]; ?></td>
+      <td><?php echo $row["UDID"]; ?></td>
 	  <td><?php echo $row["IMEI"]; ?></td>
 	  <td><?php echo $row["serial"]; ?></td>
-      <td><?php echo $row["description"]; ?></td>
 
 	  <td> <a href="editItem.php?id=<?php echo $row["id"]?>&name=<?php echo $row["name"]?>&description=<?php echo $row["description"]?>&category=<?php echo $row["category"]?>&OS=<?php echo $row["OS"]?>&UDID=<?php echo $row["UDID"]?>&IMEI=<?php echo $row["IMEI"]?>&Serial=<?php echo $row["serial"]?>&Manufacturer=<?php echo $row["manufacturer"]?>" class="group1"  >Edit</a> </td>
 	  <td> <a href="removeItem.php?id=<?php echo $row["id"] ?>">Remove</a> </td>
@@ -127,7 +167,7 @@ if (mysqli_num_rows($sql_result)>0) {
 	}
 } else {
 ?>
-<tr><td colspan="12">No results found.</td>
+<tr><td colspan="11">No results found.</td>
 <?php	
 }
 ?>
@@ -154,35 +194,7 @@ if (mysqli_num_rows($sql_result)>0) {
 		});
 	});
 </script>
-	<script>
-	$(function() {
-	enable_cb();
-	$("#group1").click(enable_cb);
-	});
 
-	function enable_cb() {
-	if (this.click) {
-	$("input.group1").removeAttr("disabled");
-	} else {
-	$("input.group1").attr("disabled", true);
-	}
-	}
-	</script>
-
-	<script>
-	$("#delete").on("click", function (e) {
-	var checkbox = $(this);
-	if (checkbox.is(":checked") {
-		var r = confirm("Are you sure you want to delete this?");
-		if (r == true) {
-			if(isset($_POST['submitt']))
-		} else {
-		}
-	e.preventDefault();
-	return false;
-	}
-	});
-	</script>
 
 
 <div id = resp>

@@ -1,4 +1,5 @@
 <?php
+
 error_reporting(0);
 include("config.php");
 $table='clients';
@@ -19,6 +20,8 @@ $table='clients';
 	<title>MySQL table search</title>
 
 	<link href="table.css" rel="stylesheet" type="text/css">
+	<link href="css/buttons.css" rel="stylesheet" type="text/css" media="all">
+
 	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
 </head>
 
@@ -43,21 +46,22 @@ $table='clients';
 		}
 	?>
 	</select>
-	<input type="submit" name="button" id="button" value="Filter" />
+	<input type="submit" name="button" class="button" value="Filter" />
 	</label>
-	<button type="button"><a href="tablecust.php">Reset</a></button>
+	<button class="buttonReset"><a href="tablecust.php">Reset</a></button>
 </form>
 <br /><br />
-<table width="700" border="1" cellspacing="0" cellpadding="4" class="table table-striped  table-hover">
+
+<table  border="1" cellspacing="0" cellpadding="4" class="table">
   <tr>
-	  <td width="50" bgcolor="#CCCCCC"><strong>Id</strong></td>
-	  <td width="191" bgcolor="#CCCCCC"><strong>Category</strong></td>
-      <td width="159" bgcolor="#CCCCCC"><strong>Name</strong></td>
-	  <td width="159" bgcolor="#CCCCCC"><strong>Email</strong></td>
-	  <td width="159" bgcolor="#CCCCCC"><strong>Phone</strong></td>
-	  <td width="159" bgcolor="#CCCCCC"><strong>Address</strong></td>
-      <td width="191" bgcolor="#CCCCCC"><strong>Description</strong></td>
-	  <td colspan="2" width="20" bgcolor="#CCCCCC"><strong>Manage</strong></td>
+	  <th> Id</th>
+	  <th> Category</th>
+      <th> Name</th>
+	  <th> Email</th>
+	  <th> Phone</th>
+	  <th> Address</th>
+      <th> Description</th>
+	  <th> Manage</th><th></th>
   </tr>
 <?php
 include("config.php");
@@ -82,10 +86,24 @@ if (mysqli_num_rows($sql_result)>0) {
 	  <td><?php echo $row["address"]; ?></td>
 	  <td><?php echo $row["details"]; ?></td>
 	  <td> <a href="editCustomer.php?category=<?php echo $row['category']?>&customername=<?php echo $row['name']?>&email=<?php echo $row['email']?>&phone=<?php echo $row['phone']?>&address=<?php echo $row['address']?>&details=<?php echo $row['details']?>&id=<?php echo $row["id"]; ?>" 2="post" class="group1"  >Edit</a> </td>
-	  <td> <a class="cd-popup-trigger" href="removeCustomer.php?id=<?php echo $row["id"]; ?>" >Remove</a> </td>
+	  <td><a href="removeCustomer.php?id=<?php echo $row["id"] ?>" >Remove</a> </td>
+<!-- want to implement this but fail
+	   <div class="cd-popup" role="alert">
+		  <div class="cd-popup-container">
+			  <p>Are you sure you want to delete this element?</p>
+			  <ul class="cd-buttons">
+				  <li><a href="removeCustomer.php?id=<?php echo $row["id"]; ?>">Yes</a></li>
+				  <li><a href="tablecust.php">No</a></li>
+			  </ul>
+			  <a href="" class="cd-popup-close img-replace">Close</a>
+		  </div> <!-- cd-popup-container  !--href="removeCustomer.php?id=<1--?php echo $row["id"] -->
+	 <!--<div><!-- cd-popup -->
+
   </tr>
 <?php
 	}
+
+
 } else {
 ?>
 <tr><td colspan="9">No results found.</td>
@@ -115,16 +133,7 @@ if (mysqli_num_rows($sql_result)>0) {
 	});
 </script>
 
-	<div class="cd-popup" role="alert">
-		<div class="cd-popup-container">
-			<p>Are you sure you want to delete this element?</p>
-			<ul class="cd-buttons">
-				<li><a href="removeCustomer.php?id=<?php echo $row["id"]; ?>Yes</a></li>
-				<li><a href="tablecust.php">No</a></li>
-			</ul>
-			<a href="" class="cd-popup-close img-replace">Close</a>
-		</div> <!-- cd-popup-container  !--href="removeCustomer.php?id=<1--?php echo $row["id"] -->>-->
-	</div> <!-- cd-popup -->
+
 
 </div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
