@@ -1,32 +1,4 @@
 <?php
-###########################################################
-/*
-GuestBook Script
-Copyright (C) 2012 StivaSoft ltd. All rights Reserved.
-
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
-
-For further information visit:
-http://www.phpjabbers.com/
-info@phpjabbers.com
-
-Version:  1.0
-Released: 2012-03-18
-*/
-###########################################################
-
 error_reporting(0);
 include("config.php");
 $table='objects';
@@ -69,11 +41,11 @@ $table='objects';
 				<input name="to" type="text" id="to" size="10" value="<?php echo $_REQUEST["to"]; ?>"/>
 			</div>
 			<div  class="col-xs-2">
-				<label>Items:</label>&nbsp;
-				<input id ="searchitem"  type="text" name="string" id="string"size="8" value="<?php echo stripcslashes($_REQUEST["string"]); ?>" />
+				<label>Search</label>&nbsp;
+				<input id ="searchitem" type="text" name="string" id="string" size="7" value="<?php echo stripcslashes($_REQUEST["string"]); ?>" />
 			</div>
 			<div  class="col-xs-2">
-				<label>Category</label>
+				<label>Type</label>
 				<select name="category" id="cat">
 				<option value="">--</option>
 				<?php
@@ -120,7 +92,7 @@ $table='objects';
 <?php
 
 if ($_REQUEST["string"]<>'') {
-	$search_string = " AND (name LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR description LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%')";
+	$search_string = " AND (name LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR description LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR Category LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%') OR OS LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR UDID LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR client LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%'id LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%'";
 }
 if ($_REQUEST["category"]<>'') {
 	$search_category = " AND category='".mysqli_real_escape_string($conn,$_REQUEST["category"])."'";

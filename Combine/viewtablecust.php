@@ -39,15 +39,6 @@ $table='clients';
 	<link rel="stylesheet" href="simple-confirmation-popup/css/reset.css">
 	<link href="table.css" rel="stylesheet" type="text/css">
 	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
-	<!--<style>
-BODY, TD:not(id=sidebar) {
-	font-family:Arial, Helvetica, sans-serif;
-	font-size:12px;
-}
-</style>-->
-
-
-
 </head>
 
 
@@ -91,7 +82,7 @@ BODY, TD:not(id=sidebar) {
 <?php
 include("config.php");
 if ($_REQUEST["string"]<>'') {
-	$search_string = " AND (name LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR details LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%')";
+	$search_string = " AND (name LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR details LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%'OR email LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%'OR phone LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%'OR address LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%'OR id LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%'OR category LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%')";
 }
 if ($_REQUEST["category"]<>'') {
 	$search_category = " AND category= '".mysqli_real_escape_string($conn,$_REQUEST["category"])."'".$search_string.$search_category;

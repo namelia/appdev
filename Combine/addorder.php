@@ -24,7 +24,7 @@
         Device Name:    <input class ="search tb5" id ="searchitem" type="text" name="orddevicename" required  >&nbsp; <br><br>
         </div>
     <div id="resultlol"></div>
-    ID:             <input  class ="tb5"  type="text" name="ordID" required  value=" " ><br><br>
+    ID:             <input  class ="ui-autocomplete-input tb5"  type="text" name="ordID" required  value=" " ><br><br>
         <label for="from">From Date :</label>
         <input class ="tb5" name="from" type="text" id="from" size="10" />
     <br><br>
@@ -59,7 +59,7 @@ if(isset($_POST['submitt']))
 
     if ( mysqli_num_rows($checkAvailable)==0){
 
-        $sql = "UPDATE objects SET beginDate = '$from_' ,  endDate = '$to_' , client ='$client_'  WHERE name = ' $device_name'  ";
+        $sql = "UPDATE objects SET beginDate = '$from_' ,  endDate = '$to_' , client ='$client_'  WHERE name = '$device_name'  ";
 
         if ($conn->query($sql) === TRUE) {
             echo 'Details have been added to the database!';
@@ -174,6 +174,7 @@ if(isset($_POST['submitt']))
             });
         });
     </script>
+
 
 </div>
 

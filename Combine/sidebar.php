@@ -54,7 +54,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </li>
             <li><a href="#"><i class="fa fa-user"></i><span>Administrator</span><span class="fa fa-angle-right" style="float: right"></span></a>
                 <ul id="menu-academico-sub" >
-                    <li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li>
+                    <li> <a href="profile.php"><i class="fa fa-user"></i> Profile</a> </li>
                     <li> <a href="logout.php"><i class="fa fa-sign-out"></i> Logout</a> </li>
                 </ul>
             </li>

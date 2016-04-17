@@ -40,10 +40,10 @@ $table='objects';
 			</div>
 			<div  class="col-xs-3">
 				<label>Items:</label>&nbsp;
-				<input id ="searchitem"  type="text" size="10" name="string" id="string" value="<?php echo stripcslashes($_REQUEST["string"]); ?>" />
+				<input id ="searchitem"  type="text" size="15" name="string" id="string" value="<?php echo stripcslashes($_REQUEST["string"]); ?>" />
 			</div>
 			<div  class="col-xs-3">
-				<label>Category</label>
+				<label>Type</label>
 				<select name="category" id="cat">
 				<option value="">--</option>
 				<?php
@@ -83,7 +83,7 @@ $table='objects';
 <?php
 
 if ($_REQUEST["string"]<>'') {
-	$search_string = " AND (name LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR description LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%')";
+	$search_string = " AND (name LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR description LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR Category LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%') OR OS LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR UDID LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR IMEI LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR serial LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR manufacturer LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR id LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%'";
 }
 if ($_REQUEST["category"]<>'') {
 	$search_category = " AND category='".mysqli_real_escape_string($conn,$_REQUEST["category"])."'";
