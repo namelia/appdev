@@ -1,7 +1,6 @@
  <?php
 // Written by Pierce.
 include("config.php");
-// Data base connection hyper force GO!
 // Query...
 $resultSet= $conn->query("SELECT category,name,id,OS,manufacturer,description,UDID,IMEI,serial FROM objects");
 
@@ -9,7 +8,7 @@ $resultSet= $conn->query("SELECT category,name,id,OS,manufacturer,description,UD
 header('Content-Type: text/csv; charset=utf-8');
 header('Content-Disposition: attachment; filename=product.csv');
 
-// Rev up those file pointers!
+// Rev up those filepointers!
 $output = fopen('php://output', 'w');
 
 // Headings...
@@ -18,6 +17,5 @@ fputcsv($output, array('category','name', 'id', 'os','manufacturer', 'descriptio
 // ...and rows!
 while ($rows = $resultSet->fetch_assoc()) fputcsv($output, $rows);
 
-// Never did want to live forever.
 fclose($output);
 ?>

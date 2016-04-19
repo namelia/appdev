@@ -62,7 +62,7 @@ include("config.php");
 
             <li><a href="statistics.php"><i class="fa fa-star"></i><span>Statistics</a>
 
-            <li><a href="inbox.php"><i class="fa fa-envelope"></i><span>Email</a>
+            <li><a href="inbox.php"><i class="fa fa-envelope"></i><span>Returns</a>
 
             </li>
             <li id="menu--comunicacao" ><a href="#"><i class="fa fa-download"></i><span>Download</span><span class="fa fa-angle-right" style="float: right"></span></a>

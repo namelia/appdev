@@ -5,8 +5,6 @@
     <title>Mobile Device Lending Project</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     // <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
@@ -42,17 +40,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <body>
     <div class="container">
         <div class="inbox" style="padding-left:100px ">
-            <h2>Automated e-mails Settings</h2>
+            <h2>Returns</h2>
 
             <div class="col-md-8 compose-right">
                 <div class="inbox-details-default">
-                    <div class="inbox-details-heading" style="background-color: #4CAF50 ;color:white">
-                    Here, you can send emails to all owners of overdue items with one click.  <!-- <a href="mailing/someTest.php">here</a> -->
-                    </div>
-
                     <div class="inbox-details-body">
                         <div class="alert alert-info" >
-                            Today's overdue items: 
+                            Currently overdue items:
                         </div>
 
                         <div class="table-responsive">
@@ -67,29 +61,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php include("config.php");?>
                                 <?php
+                                $someID = 0;
+                                if(isset($_POST['submit'])) { $someID = $_GET['id']; }
                                 $todayy = date("Y-m-d") ;
-                                $sql = "SELECT * FROM $tableobjects WHERE client IS NOT NULL AND DATE(endDate) < '$todayy' ORDER BY endDate  LIMIT 6";
+                                $sql = "SELECT * FROM $tableobjects WHERE client IS NOT NULL AND ID != $someID AND DATE(endDate) <= '$todayy' ORDER BY endDate";
                                 $sql_result =$conn->query($sql) or die ('request "Could not execute SQL query" '.$sql);
+
                                 if ($sql_result-> num_rows!=0)
                                 {
-                                    while ( $row= $sql_result->fetch_assoc())
-                                    {
-                                        $id_=$row['id'];
-                                        $name_=$row['name'];
-                                        $client_=$row['client'];
-                                        $endDate_=$row['endDate'];
-                                        echo"
-                                        <tr>
+                                    while ( $row= $sql_result->fetch_assoc()) {
+                                        $id_ = $row['id'];
+                                        $name_ = $row['name'];
+                                        $client_ = $row['client'];
+                                        $endDate_ = $row['endDate'];
+                                        $url_ = "inbox.php?id=$id_";
+                                        echo "
+                                            <tr>
                                             <td>$id_</td>
                                             <td>$name_</td>
                                             <td>$client_</td>
                                             <td>$endDate_</td>
                                             <td>
-                                            <form action=\"inbox.php?id=$id_; \" method=\"POST\">
-                                            <input type=\"submit\" name=\"submit\" value=\"Returned\"> </input></td>";
-
+                                            <form action=\"$url_ \" method=\"POST\">
+                                            <input type=\"submit\" name=\"submit\" value=\"Return item\"> </input></form></td>";
                                         }
                                     }
                                     ?>
@@ -98,7 +93,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </table>
 
                             <form action="mailing/someTest.php">
-                                <button type="submit" class="button"> Send the emails !</button>
+                                <button type="submit" class="button"> Email all clients with overdue items</button>
                             </form>
 
 
@@ -129,7 +124,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
     </div>
     <?php
-    include("config.php");
     if(isset($_POST['submit'])) {
         $someID = $_GET['id'];
         $beginDate_ = " ";
