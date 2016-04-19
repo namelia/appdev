@@ -1,9 +1,19 @@
+<?php
+session_name('DeviceLabSystem');
+session_start();
+
+include("config.php");
+?>
+
+<?php if (!(isset($_SESSION['user_info']) && is_array($_SESSION['user_info']))) {
+    header("Location:logout.php");
+    exit();
+}?>
+
 <head>
     <title>Mobile Device Lending Project</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
@@ -24,8 +34,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 <body>
 
-<div id="sidebar" class=" sidebar-menu" >
-
+<!--slider menu-->
+<div id="sidebar" class="sidebar-menu" >
     <div id class="menu">
         <ul id="menu" >
             <li id="menu-home" ><a href="index.php"><i class="fa fa-tachometer"></i><span>Dashboard</span></a></li>
@@ -49,6 +59,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <li id="menu-academico-boletim" ><a href="viewtablecust.php">Customer</a></li>
                 </ul>
             </li>
+
             <li><a href="inbox.php"><i class="fa fa-envelope"></i><span>Email</a>
 
             </li>
@@ -68,32 +79,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
 </div>
 <div class="clearfix"> </div>
-<!--slide bar menu end here-->
-<script>
-    var toggle = true;
-
-    $(".sidebar-icon").click(function() {
-        if (toggle)
-        {
-            $(".page-container").addClass("sidebar-collapsed").removeClass("sidebar-collapsed-back");
-            $("#menu span").css({"position":"absolute"});
-        }
-        else
-        {
-            $(".page-container").removeClass("sidebar-collapsed").addClass("sidebar-collapsed-back");
-            setTimeout(function() {
-                $("#menu span").css({"position":"relative"});
-            }, 400);
-        }
-        toggle = !toggle;
-    });
-</script>
+</div>
 <!--scrolling js-->
 <script src="js/jquery.nicescroll.js"></script>
 <script src="js/scripts.js"></script>
 <!--//scrolling js-->
-<script src="js/bootstrap.js"> </script>
-<div class="clearfix"></div>
+
+<script type="text/javascript"  src="js/bootstrap.js"> </script>
+
 <!-- mother grid end here-->
 
 </body>

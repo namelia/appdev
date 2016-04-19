@@ -1,5 +1,5 @@
 <?php
-
+include("sidebar.php");
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -7,8 +7,6 @@
 <title>Mobile Device Lending Project</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
@@ -48,7 +46,7 @@ $tableclients='clients';
 				<div class="header-main">
 					<div class="header-left">
 							<div class="logo-name">
-									 <a href="index.php?status=success"> <h1 style="width:400px">UCL DEVICE LAB <i class="fa fa-cubes"> </i></h1>
+									 <a href="index.php"> <h1 style="width:400px">UCL DEVICE LAB <i class="fa fa-cubes"> </i></h1>
 									<!--<img id="logo" src="" alt="Logo"/>-->
 								  </a>
 							</div>
@@ -58,11 +56,10 @@ $tableclients='clients';
 						 <div class="header-right">
 							<div class="clearfix">
 								<?php
-								include("config.php");
 								$nameofuser = $conn->query("SELECT * FROM login WHERE id=1") or die ('Could not execute sql query...')
 								?>
-								<p style="color:blue;font-size:20px;font-weight:bold; text-align:right;margin-top: 5px;
-								   margin-right: 50px;">Hello, <?php echo $nameofuser->fetch_assoc()['name'];?>!<i class="fa fa-smile-o"></i> </p>
+								<p style="color:#007acc;font-size:20px;font-weight:bold; text-align:right;margin-top: 5px;
+								   margin-right: 50px;">Hello, <?php echo $nameofuser->fetch_assoc()['name'];?>! <i class="fa fa-smile-o"></i> </p>
 							</div>
 						</div>
 				     <div class="clearfix"> </div>
@@ -93,7 +90,6 @@ $tableclients='clients';
 				<div class="market-update-block clr-block-1">
 					<div class="col-md-8 market-update-left">
 						<?php
-						include("config.php");
 						$sql2 ="SELECT * FROM objects WHERE beginDate=CURDATE()";
 						$sql  ="SELECT * FROM objects WHERE client IS NOT NULL";
 						$sql_result =$conn->query($sql) or die ('request "Could not execute SQL query" '.$sql);
@@ -115,7 +111,6 @@ $tableclients='clients';
 				<div class="market-update-block clr-block-2">
 				 <div class="col-md-8 market-update-left">
 					 <?php
-					 include("config.php");
 					 $sql = "SELECT * FROM $tableclients";
 					 $sql_result =$conn->query($sql) or die ('request "Could not execute SQL query" '.$sql);
 					 $numbercust=(mysqli_num_rows($sql_result))?>
@@ -132,7 +127,6 @@ $tableclients='clients';
 			<div class="col-md-4 market-update-gd">
 				<div class="market-update-block clr-block-3">
 					<?php
-					include("config.php");
 					$sql3 = "SELECT * FROM $tableobjects";
 					$sql = "SELECT * FROM $tableobjects WHERE client is NULL";
 					$sql_result =$conn->query($sql) or die ('request "Could not execute SQL query" '.$sql);
@@ -172,8 +166,6 @@ $tableclients='clients';
                                   </tr>
                               </thead>
                               <tbody>
-
-									<?php include("config.php");?>
 									<?php
 									$sql = "SELECT * FROM $tableobjects WHERE client IS NOT NULL ORDER BY endDate  LIMIT 6";
 									$sql_result =$conn->query($sql) or die ('request "Could not execute SQL query" '.$sql);
@@ -252,86 +244,9 @@ $tableclients='clients';
 <!--inner block end here-->
 <!--copy rights start here-->
 <div class="copyrights">
-	 <p>© 2016 UCL CS TEAM7. All Rights Reserved </a> </p>
+	 <p>© 2016 UCL CS TEAM 7. All Rights Reserved </a> </p>
 </div>
 <!--COPY rights end here-->
 </div>
 </div>
-<!--slider menu-->
-    <div id="sidebar" class="sidebar-menu" >
-		  	<div class="logo"> <a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> <a href="#"> <span id="logo" ></span>
-			  </a> </div>
-		    <div id class="menu">
-		      <ul id="menu" >
-		        <li id="menu-home" ><a href="index.php"><i class="fa fa-tachometer"></i><span>Dashboard</span></a></li>
-		        <li><a href="addorder.php"><i class="fa fa-plus"></i><span>Add Order</span></span></a>
-		        <li id="menu-comunicacao" ><a href="#"><i class="fa fa-book nav_icon"></i><span>Products</span><span class="fa fa-angle-right" style="float: right"></span></a>
-		          <ul id="menu-comunicacao-sub" >
-		            <li id="menu-arquivos" ><a href="additem.php">Add Product</a></li>
-		            <li id="menu-arquivos" ><a href="tableItem.php">Manage Product</a></li>
-		          </ul>
-		        </li>
-                  <li id="menu--comunicacao" ><a href="#"><i class="fa fa-book nav_icon"></i><span>Customers</span><span class="fa fa-angle-right" style="float: right"></span></a>
-                      <ul id="menu-comunicacao-sub" >
-                          <li id="menu-arquivos" ><a href="addcustomer.php">Add Customers</a></li>
-                          <li id="menu-arquivos" ><a href="tablecust.php">Manage Customers</a></li>
-                      </ul>
-                  </li>
-
-		        <li><a href="#"><i class="fa fa-bar-chart"></i><span>Table</span></span><span class="fa fa-angle-right" style="float: right"></span></a>
-                  <ul id="menu-academico-sub" >
-                      <li id="menu-academico-avaliacoes" ><a href="viewtableItem.php">Products</a></li>
-                      <li id="menu-academico-boletim" ><a href="viewtablecust.php">Customer</a></li>
-                  </ul>
-                </li>
-
-		        <li><a href="inbox.php"><i class="fa fa-envelope"></i><span>Email</a>
-
-		        </li>
-				  <li id="menu--comunicacao" ><a href="#"><i class="fa fa-download"></i><span>Download</span><span class="fa fa-angle-right" style="float: right"></span></a>
-					  <ul id="menu-comunicacao-sub" >
-						  <li id="menu-arquivos" ><a href="download.php">Product Table </a></li>
-						  <li id="menu-arquivos" ><a href="downloadcust.php">Customer Table</a></li>
-					  </ul>
-				  </li>
-		         <li><a href="#"><i class="fa fa-user"></i><span>Administrator</span><span class="fa fa-angle-right" style="float: right"></span></a>
-                     <ul id="menu-academico-sub" >
-                         <li> <a href="profile.php"><i class="fa fa-user"></i> Profile</a> </li>
-                         <li> <a href="logout.php?ac=logout"><i class="fa fa-sign-out"></i> Logout</a> </li>
-                     </ul>
-		         </li>
-		      </ul>
-		    </div>
-	 </div>
-	<div class="clearfix"> </div>
-</div>
-<!--slide bar menu end here-->
-<script>
-var toggle = true;
-
-$(".sidebar-icon").click(function() {
-  if (toggle)
-  {
-    $(".page-container").addClass("sidebar-collapsed").removeClass("sidebar-collapsed-back");
-    $("#menu span").css({"position":"absolute"});
-  }
-  else
-  {
-    $(".page-container").removeClass("sidebar-collapsed").addClass("sidebar-collapsed-back");
-    setTimeout(function() {
-      $("#menu span").css({"position":"relative"});
-    }, 400);
-  }
-                toggle = !toggle;
-            });
-</script>
-<!--scrolling js-->
-		<script src="js/jquery.nicescroll.js"></script>
-		<script src="js/scripts.js"></script>
-		<!--//scrolling js-->
-
-<script type="text/javascript"  src="js/bootstrap.js"> </script>
-
-<!-- mother grid end here-->
-</body>
 </html>

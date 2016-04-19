@@ -1,11 +1,9 @@
-
 <?php
-session_name('LoginForm');
-@session_start();
+session_name('DeviceLabSystem');
+session_start();
 
 error_reporting(0);
 include("config.php");
-
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -42,7 +40,7 @@ include("config.php");
 		if(!empty($user)){
 			$_SESSION['user_info'] = $user;
 			$query = " UPDATE `login` SET last_login = NOW() WHERE id=".$user['id'];
-			mysqli_query ($conn,$query) or die ('request "Could not executee SQL query" '.$query);
+			mysqli_query ($conn,$query) or die ('request "Could not execute SQL query" '.$query);
 		}
 		else{
 			$error = 'Wrong email or password.';
@@ -57,26 +55,10 @@ include("config.php");
 		session_destroy();
 	}
 ?>
-	<?php if(isset($_SESSION['user_info']) && is_array($_SESSION['user_info'])) { ?>
-
-	    <form id="login-form" class="login-form" name="form1">
-			<?php
-			header("Location:index.php?status=success");
-			exit(); ?>
-	        <div id="form-content">
-	            <div class="welcome">
-					<?php echo $_SESSION['user_info']['name']  ?>, you are logged in. 
-                    <br /><br />
-                    <?php echo $_SESSION['user_info']['content']  ?>
-                    <br /><br />
-
-                    <a href="logout.php?ac=logout" style="color:#3ec038">Logout</a>
-				</div>	
-	        </div>
-	
-	f    <!--</form>-->
-        
-	<?php } else { ?>
+	<?php if(isset($_SESSION['user_info']) && is_array($_SESSION['user_info'])) {
+		header("Location:index.php");
+		exit();
+	} else { ?>
 	    <form id="login-form" class="login-form" name="form1" method="post" action="logout.php">
 	    	<input type="hidden" name="is_login" value="1">
 	        <div class="h1">Login </div>
@@ -91,7 +73,7 @@ include("config.php");
 	            </div>
 	            <?php if($error) { ?>
 	                <em>
-						<label class="err" for="password" generated="true" style="display: block;"><?php echo $error ?></label>
+						<label class="err" for="password" style="display: block;"><?php echo $error ?></label>
 					</em>
 				<?php } ?>
 	            <div class="group submit">
