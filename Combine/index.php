@@ -61,7 +61,8 @@ $tableclients='clients';
 								include("config.php");
 								$nameofuser = $conn->query("SELECT * FROM login WHERE id=1") or die ('Could not execute sql query...')
 								?>
-								<p>Hello, <?php echo $nameofuser->fetch_assoc()['name'];?>! </p>
+								<p style="color:blue;font-size:20px;font-weight:bold; text-align:right;margin-top: 5px;
+								   margin-right: 50px;">Hello, <?php echo $nameofuser->fetch_assoc()['name'];?>!<i class="fa fa-smile-o"></i> </p>
 							</div>
 						</div>
 				     <div class="clearfix"> </div>
