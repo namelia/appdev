@@ -1,0 +1,68 @@
+div.card {
+     /*display: inline-block;*/
+     font-family: 'Trebuchet MS';
+     width: 650px;
+     margin: 321px;
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+     text-align: left;
+ }
+div.cardmin {
+    /*display: inline-block;*/
+    font-family: 'Trebuchet MS';
+    width: 650px;
+    margin: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: left;
+}
+
+div.mega {
+  width: 1000px;
+  padding-bottom: 10px;
+  margin-top: 60px;
+}
+
+strong {
+  color: rgb(110,110,110);
+}
+
+em {
+  font-weight: bold;
+}
+
+div.containerr {
+    padding: 10px;
+
+}
+
+
+div.header {
+    font-family: 'Arial' ;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    /*font-size: 40px;*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

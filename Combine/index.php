@@ -11,7 +11,6 @@ include("sidebar.php");
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 <!-- Custom Theme files -->
-
 	<link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
 	<link href="css/clndr.css" rel="stylesheet" type="text/css" media="all"/>
 <!--js-->
@@ -136,7 +135,7 @@ $tableclients='clients';
 					<div class="col-md-8 market-update-left">
 						<h3><?php echo $numberita;?> </h3>
 						<h4>Items Available</h4>
-						<p>Out of <?php echo $numberitems;?> items </p>
+						<p>out of <?php echo $numberitems;?> items </p>
 					</div>
 					<div class="col-md-4 market-update-right">
 						<i class="fa fa-cubes"> </i>
@@ -230,19 +229,9 @@ $tableclients='clients';
       </div>
      <div class="clearfix"> </div>
 </div>
-<!--main page chit chating end here-->
-<!--main page chart start here-->
-<div class="main-page-charts">
-   <div class="main-page-chart-layer1">
-
-
-	 <div class="clearfix"> </div>
-  </div>
- </div>
-
 </div>
 <!--inner block end here-->
-<!--copy rights start here-->
+<!--copyrights start here-->
 <div class="copyrights">
 	 <p>© 2016 UCL CS TEAM 7. All Rights Reserved </a> </p>
 </div>

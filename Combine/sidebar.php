@@ -40,25 +40,27 @@ include("config.php");
         <ul id="menu" >
             <li id="menu-home" ><a href="index.php"><i class="fa fa-tachometer"></i><span>Dashboard</span></a></li>
             <li><a href="addorder.php"><i class="fa fa-plus"></i><span>Add Order</span></span></a>
-            <li id="menu-comunicacao" ><a href="#"><i class="fa fa-book nav_icon"></i><span>Products</span><span class="fa fa-angle-right" style="float: right"></span></a>
+            <li id="menu-comunicacao" ><a href="#"><i class="fa fa-tablet nav_icon"></i><span>Products</span><span class="fa fa-angle-right" style="float: right"></span></a>
                 <ul id="menu-comunicacao-sub" >
                     <li id="menu-arquivos" ><a href="additem.php">Add Product</a></li>
                     <li id="menu-arquivos" ><a href="tableItem.php">Manage Product</a></li>
                 </ul>
             </li>
-            <li id="menu--comunicacao" ><a href="#"><i class="fa fa-book nav_icon"></i><span>Customers</span><span class="fa fa-angle-right" style="float: right"></span></a>
+            <li id="menu--comunicacao" ><a href="#"><i class="fa fa-user nav_icon"></i><span>Customers</span><span class="fa fa-angle-right" style="float: right"></span></a>
                 <ul id="menu-comunicacao-sub" >
                     <li id="menu-arquivos" ><a href="addcustomer.php">Add Customers</a></li>
                     <li id="menu-arquivos" ><a href="tablecust.php">Manage Customers</a></li>
                 </ul>
             </li>
 
-            <li><a href="#"><i class="fa fa-bar-chart"></i><span>Table</span></span><span class="fa fa-angle-right" style="float: right"></span></a>
+            <li><a href="#"><i class="fa fa-table"></i><span>Table</span></span><span class="fa fa-angle-right" style="float: right"></span></a>
                 <ul id="menu-academico-sub" >
                     <li id="menu-academico-avaliacoes" ><a href="viewtableItem.php">Products</a></li>
                     <li id="menu-academico-boletim" ><a href="viewtablecust.php">Customer</a></li>
                 </ul>
             </li>
+
+            <li><a href="statistics.php"><i class="fa fa-star"></i><span>Statistics</a>
 
             <li><a href="inbox.php"><i class="fa fa-envelope"></i><span>Email</a>
 
@@ -69,9 +71,9 @@ include("config.php");
                     <li id="menu-arquivos" ><a href="downloadcust.php">Customer Table</a></li>
                 </ul>
             </li>
-            <li><a href="#"><i class="fa fa-user"></i><span>Administrator</span><span class="fa fa-angle-right" style="float: right"></span></a>
+            <li><a href="#"><i class="fa fa-user-plus"></i><span>Administrator</span><span class="fa fa-angle-right" style="float: right"></span></a>
                 <ul id="menu-academico-sub" >
-                    <li> <a href="profile.php"><i class="fa fa-user"></i> Profile</a> </li>
+                    <li> <a href="profile.php"><i class="fa fa-user-plus"></i> Profile</a> </li>
                     <li> <a href="logout.php?ac=logout"><i class="fa fa-sign-out"></i> Logout</a> </li>
                 </ul>
             </li>
