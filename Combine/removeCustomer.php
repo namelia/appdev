@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>add item</title>
+    <title>Remove Customer</title>
     <link href="additemstyle.css" type="text/css" rel="stylesheet">
 </head>
 <div id =sidebar class="visible">
@@ -18,7 +18,6 @@
 </body>
 
     <?php
-    include("config.php");
 
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);

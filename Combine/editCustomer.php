@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>add item</title>
+    <title>Edit Customer details</title>
     <link href="additemstyle.css" type="text/css" rel="stylesheet">
 </head>
 <div id =sidebar class="visible">
@@ -36,7 +36,6 @@
 </body>
 
     <?php
-    include("config.php");
     if(isset($_POST['Update']))
      {
     if ($conn->connect_error) {

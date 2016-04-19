@@ -9,7 +9,7 @@ $table='objects';
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>MySQL table search</title>
+<title>Manage Products</title>
 
 	<link href="table.css" rel="stylesheet" type="text/css">
 	<link href="css/buttons.css" rel="stylesheet" type="text/css" media="all">
@@ -164,7 +164,6 @@ if (mysqli_num_rows($sql_result)>0) {
 
 	</script>
 <?php
-include("config.php");
 if(isset($_POST["submitri"])) {
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);

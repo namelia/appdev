@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
-    <title>add item</title>
+    <title>Add Customer</title>
     <link href="additemstyle.css" type="text/css" rel="stylesheet">
     <script src="js/jquery.validate.min.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
@@ -44,7 +44,6 @@ $table= "clients";?>
 
 
 <?php
-include("config.php");
 if(isset($_POST['submit'])) {
     $cust_name = $_POST['custname'];
     $email_ = $_POST['custemail'];

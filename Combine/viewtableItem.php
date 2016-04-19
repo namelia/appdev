@@ -1,13 +1,12 @@
 <?php
 error_reporting(0);
-include("config.php");
 $table='objects';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>MySQL table search</title>
+<title>View Products</title>
 
 
 	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
@@ -140,7 +139,7 @@ if (mysqli_num_rows($sql_result)>0) {
 	  <td><?php echo $row["beginDate"]; ?></td>
 	  <td><?php echo $row["endDate"]; ?></td>
       <td><?php echo $row["client"]; ?></td>
-		<?php include("config.php");
+		<?php
 			$endDate = $row['endDate'];
 			if ($row["client"]!= NULL)
 			{

@@ -17,7 +17,7 @@ $table='clients';
 		<link rel="stylesheet" href="simple-confirmation-popup/css/style.css"> <!-- Resource style -->
 		<script type="text/javascript" src="simple-confirmation-popup/js/modernizr.js"></script> <!-- Modernizr -->
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>MySQL table search</title>
+	<title>Manage Customers</title>
 
 	<link href="table.css" rel="stylesheet" type="text/css">
 	<link href="css/buttons.css" rel="stylesheet" type="text/css" media="all">
@@ -39,7 +39,7 @@ $table='clients';
 <form id="form1" name="form1" method="post" action="tablecust.php">
 	<label>Search:</label>
 	<input type="text" name="string" id="string" value="<?php echo stripcslashes($_REQUEST["string"]); ?>" />
-	<label>category</label>
+	<label>Category</label>
 	<select name="category">
 	<option value="">--</option>
 	<?php
@@ -57,7 +57,7 @@ $table='clients';
 
 <table  border="1" cellspacing="0" cellpadding="4" class="table tablesorter" id="tablecust">
 <thead>
-	  <th> Id</th>
+	  <th> ID</th>
 	  <th> Category</th>
       <th> Name</th>
 	  <th> Email</th>
@@ -69,7 +69,6 @@ $table='clients';
 </thead>
 	<tbody>
 <?php
-include("config.php");
 
 if ($_REQUEST["string"]<>'')  {
 	$search_string = " AND (name LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR details LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%'OR email LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%'OR phone LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%'OR address LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%'OR id LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%'OR category LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%')";

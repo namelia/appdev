@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>add item</title>
+    <title>Add Order</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="additemstyle.css" type="text/css" rel="stylesheet">
 
@@ -18,7 +18,7 @@
 <script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 
 <div class="container"id ="itemcont">
-<form action="addorder.php" method="post">
+<form action="addorder.php" method="post" autocomplete="off">
     <br><br>
         <div class="content">
         Device Name:    <input class ="search tb5" id ="searchitem" type="text" name="orddevicename" required  >&nbsp; <br><br>
@@ -33,9 +33,6 @@
     <br><br>
         Customers Name: <input  class ="searchC tb5"  id ="searchcust" type="text" name="ordcustname" required>&nbsp;<br><br>
     <div id="resultcust"></div>
-    Additional Details: <br>
-
-    <textarea  class ="tb6" name="orderdetails"rows="10"cols="20" class="form-control" rows="10"></textarea>
     <br><br>
         <input class ="tb5"  type= "submit" value="Submit" name='submitt'>
 </form>
@@ -44,7 +41,6 @@
 </body>
 
 <?php
-include("config.php");
 if(isset($_POST['submitt']))
 {
     if ($conn->connect_error) {

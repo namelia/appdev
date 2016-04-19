@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Edit login information</title>
+    <title>Edit Login information</title>
     <link href="additemstyle.css" type="text/css" rel="stylesheet">
 </head>
 <div id =sidebar class="visible">
@@ -13,8 +13,8 @@
 
 <div class="container">
     <form action="profile.php" method="post">
-        Name: <input   class ="tb5" type="text" name="name" required value="" ><br><br>
-        Email address: <input  class ="form-control required tb5" type="email" name="email" required  value=""><br><br>
+        Name: <input   class ="tb5" type="text" name="name" required value="<?php echo $_SESSION['user_info']['name'] ?>" ><br><br>
+        Email address: <input  class ="form-control required tb5" type="email" name="email" required  value="<?php echo $_SESSION['user_info']['email'] ?>"><br><br>
         Password: <input   class ="tb5" type="text" name="password"  value=""> <br><br>
         <br><br>
         <input type= "submit" value="Update" name="Update">
@@ -24,7 +24,6 @@
 </body>
 
 <?php
-include("config.php");
 if(isset($_POST['Update']))
 {
     if ($conn->connect_error) {
@@ -34,10 +33,9 @@ if(isset($_POST['Update']))
     $email_ = $_POST['email'];
     $name_ = $_POST['name'];
     $passhash_ = md5($_POST['password']);
+    $id_ = $_SESSION['user_info']['id'];
 
-
-
-    $sql = "UPDATE login SET name = '$name_', email ='$email_' ,passhash='$passhash_'WHERE id = '1' ";
+    $sql = "UPDATE login SET name = '$name_', email ='$email_' ,passhash='$passhash_'WHERE id = $id_";
     if ($conn->query($sql) === TRUE) {
 
         echo '<div id="boxes">
@@ -47,8 +45,6 @@ if(isset($_POST['Update']))
               </div>
               <div id="mask"></div>
               </div>';
-        /* echo 'Details have been modified in the database! In the entry: ';
-         echo $id_ ;*/
 
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;

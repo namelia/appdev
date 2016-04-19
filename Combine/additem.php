@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>add item</title>
+    <title>Add Product</title>
     <link href="additemstyle.css" type="text/css" rel="stylesheet">
 </head>
 <div id =sidebar class="visible">
@@ -48,7 +48,6 @@
 
 
 <?php
-include("config.php");
 if(isset($_POST['submitt']))
 {
     if ($conn->connect_error) {

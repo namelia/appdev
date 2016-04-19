@@ -45,7 +45,7 @@ $tableclients='clients';
 				<div class="header-main">
 					<div class="header-left">
 							<div class="logo-name">
-									 <a href="index.php"> <h1 style="width:400px">UCL DEVICE LAB <i class="fa fa-cubes"> </i></h1>
+									 <a href="index.php"> <h1 style="width:400px; margin-top: 16px;">UCL DEVICE LAB <i class="fa fa-cubes"> </i></h1>
 									<!--<img id="logo" src="" alt="Logo"/>-->
 								  </a>
 							</div>
@@ -54,11 +54,10 @@ $tableclients='clients';
 						 </div>
 						 <div class="header-right">
 							<div class="clearfix">
-								<?php
-								$nameofuser = $conn->query("SELECT * FROM login WHERE id=1") or die ('Could not execute sql query...')
-								?>
 								<p style="color:#007acc;font-size:20px;font-weight:bold; text-align:right;margin-top: 5px;
-								   margin-right: 50px;">Hello, <?php echo $nameofuser->fetch_assoc()['name'];?>! <i class="fa fa-smile-o"></i> </p>
+								   margin-right: 50px;">Hello, <?php echo $_SESSION['user_info']['name'] ?>! <i class="fa fa-smile-o"></i> </p>
+								<p style="color:#999999;font-size:14px;font-weight:normal; text-align:right;margin-top: 5px;
+								   margin-right: 50px;"> Last log-in on <?php echo $_SESSION['user_info']['last_login'] ?> </p>
 							</div>
 						</div>
 				     <div class="clearfix"> </div>

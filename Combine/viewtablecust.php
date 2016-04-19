@@ -1,14 +1,13 @@
 <?php
 
 error_reporting(0);
-include("config.php");
 $table='clients';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>MySQL table search</title>
+<title>View Customers</title>
 	<link rel="stylesheet" href="simple-confirmation-popup/css/reset.css">
 	<link href="table.css" rel="stylesheet" type="text/css">
 	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
@@ -25,7 +24,7 @@ $table='clients';
 <form id="form1" name="form1" method="post" action="viewtablecust.php">
  <label>Search:</label>
 <input type="text" name="string" id="string" value="<?php echo stripcslashes($_REQUEST["string"]); ?>" />
-<label>category</label>
+<label>Category</label>
 <select name="category">
 <option value="">--</option>
 <?php
@@ -45,7 +44,7 @@ $table='clients';
   <tr>
     <!--<td width="90" bgcolor="#CCCCCC"><strong>From date</strong></td>
     <td width="95" bgcolor="#CCCCCC"><strong>To date</strong></td>-->
-	  <th width="50">Id</th>
+	  <th width="50">ID</th>
 	  <th width="191">Category</th>
       <th width="159">Name</th>
 	  <th width="159">Email</th>
@@ -56,7 +55,6 @@ $table='clients';
 	</thead>
 	<tbody>
 <?php
-include("config.php");
 if ($_REQUEST["string"]<>'') {
 	$search_string = " AND (name LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%' OR details LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%'OR email LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%'OR phone LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%'OR address LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%'OR id LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%'OR category LIKE '%".mysqli_real_escape_string($conn,$_REQUEST["string"])."%')";
 }
