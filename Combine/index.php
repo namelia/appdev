@@ -48,7 +48,7 @@ $tableclients='clients';
 				<div class="header-main">
 					<div class="header-left">
 							<div class="logo-name">
-									 <a href="index.php?status=success"> <h1 style="width:400px">UCL APPLAB <i class="fa fa-cubes"> </i></h1>
+									 <a href="index.php?status=success"> <h1 style="width:400px">UCL DEVICE LAB <i class="fa fa-cubes"> </i></h1>
 									<!--<img id="logo" src="" alt="Logo"/>-->
 								  </a>
 							</div>
@@ -414,6 +414,12 @@ $tableclients='clients';
                       <li id="menu-academico-boletim" ><a href="viewtablecust.php">Customer</a></li>
                   </ul>
                 </li>
+				  <li id="menu--comunicacao" ><a href="#"><i class="fa fa-download"></i><span>Download</span><span class="fa fa-angle-right" style="float: right"></span></a>
+					  <ul id="menu-comunicacao-sub" >
+						  <li id="menu-arquivos" ><a href="download.php">Product Table </a></li>
+						  <li id="menu-arquivos" ><a href="downloadcust.php">Customer Table</a></li>
+					  </ul>
+				  </li>
 		        <li><a href="inbox.php"><i class="fa fa-envelope"></i><span>Email</a>
 
 		        </li>

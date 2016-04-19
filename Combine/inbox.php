@@ -87,7 +87,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <td>$client_</td>
                                             <td>$endDate_</td>
                                             <td>
-                                            <form action=\"inbox.php?id=$id_; \" method=\"POST\">gi
+                                            <form action=\"inbox.php?id=$id_; \" method=\"POST\">
                                             <input type=\"submit\" name=\"submit\" value=\"Returned\"> </input></td>";
 
                                         }
