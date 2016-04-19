@@ -73,35 +73,57 @@ if ($_REQUEST["category"]<>'') {
 	$search_category = " AND category= '".mysqli_real_escape_string($conn,$_REQUEST["category"])."'".$search_string.$search_category;
 }
 	$sql = "SELECT * FROM $table WHERE id>0".$search_string .$search_category;
-$sql_result =$conn->query($sql) or die ('request "Could not execute SQL query" '.$sql);
+	$sql_result =$conn->query($sql) or die ('request "Could not execute SQL query" '.$sql);
 if (mysqli_num_rows($sql_result)>0) {
+	$count=0;
 	while ($row=$sql_result->fetch_assoc()) {
-?>
-  <tr>
-	  <td><?php echo $row["id"]; ?></td>
-	  <td><?php echo $row["category"]; ?></td>
-	  <td><?php echo $row["name"]; ?></td>
-	  <td><?php echo $row["email"]; ?></td>
-	  <td><?php echo $row["phone"]; ?></td>
-	  <td><?php echo $row["address"]; ?></td>
-	  <td><?php echo $row["details"]; ?></td>
-	  <td> <a href="editCustomer.php?category=<?php echo $row['category']?>&customername=<?php echo $row['name']?>&email=<?php echo $row['email']?>&phone=<?php echo $row['phone']?>&address=<?php echo $row['address']?>&details=<?php echo $row['details']?>&id=<?php echo $row["id"]; ?>" 2="post" class="group1"  >Edit</a> </td>
-	  <td><a href="removeCustomer.php?id=<?php echo $row["id"] ?>" >Remove</a> </td>
-<!-- want to implement this but fail
-	   <div class="cd-popup" role="alert">
-		  <div class="cd-popup-container">
-			  <p>Are you sure you want to delete this element?</p>
-			  <ul class="cd-buttons">
-				  <li><a href="removeCustomer.php?id=<?php echo $row["id"]; ?>">Yes</a></li>
-				  <li><a href="tablecust.php">No</a></li>
-			  </ul>
-			  <a href="" class="cd-popup-close img-replace">Close</a>
-		  </div> <!-- cd-popup-container  !--href="removeCustomer.php?id=<1--?php echo $row["id"] -->
-	 <!--<div><!-- cd-popup -->
 
-  </tr>
+		$id_=$row['id'];
+		$category_=$row['category'];
+		$name_=$row['name'];
+		$email_=$row['email'];
+		$phone_=$row['phone'];
+		$address_=$row['address'];
+		$details_=$row['details'];
+		echo"
+  <tr>
+
+	  <td> $id_</td>
+	  <td> $category_</td>
+	  <td> $name_</td>
+	  <td> $email_</td>
+	  <td> $phone_</td>
+	  <td> $address_</td>
+	  <td> $details_</td>
+	  <td><form action=\"editCustomer.php?category=$category_&customername=$name_&email=$email_&phone=$phone_&address=$address_&details=$details_&id=$id_ \" method=\"POST\">
+		  <input type=\"submit\" name=\"submitec\" value=\"Edit\"> </input></form></td>
+
+	  <td><form action=\"tablecust.php?id=$id_\" method=\"POST\">
+			  <input type=\"submit\" name=\"submitrc\" value=\"Remove\"> </input></form></td>
+			    </tr>
+		<!--<?php if ($count==1)
+		{
+		<div class=\"cd-popup\" role=\"alert\">
+		  <div class=\"cd-popup-container\">
+			  <p>Are you sure you want to delete this element?</p>
+			  <ul class=\"cd-buttons\">
+			  <form action=\"tablecust.php ? id = $id_\" method=\"POST\">
+				  <input type=\"submit\" name=\"submitrc\" value=\"YES\"> </input></form></td>
+			   	  </tr>
+				  <li><a href=\"tablecust.php?id=$id_;\">Yes</a></li>
+				  <li><a href=\"tablecust.php\">No</a></li>
+			  </ul>
+			  <a  class=\"cd-popup-close img-replace\">Close</a>
+		  </div>
+
+		}-->";
+
+?>
+
+
 <?php
 	}
+
 
 
 } else {
@@ -113,6 +135,38 @@ if (mysqli_num_rows($sql_result)>0) {
 </table>
 
 
+
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="simple-confirmation-popup/js/main.js"></script> <!-- Resource jQuery -->
+<?php
+
+include("config.php");
+if(isset ($_POST['submitrc'])) {
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+	$someID = $_GET['id'];
+
+
+	$sql = "DELETE FROM clients WHERE `id` = $someID ";
+	if ($conn->query($sql) === TRUE) {
+		echo '<div id="boxes">
+              <div id="dialog" class="window">
+
+              <h1>Entry has been deleted!</h1>
+              </div>
+              <div id="mask"></div>
+              </div>';
+		echo $someID;
+
+	} else {
+		echo "Error: " . $sql . "<br>" . $conn->error;
+		//echo "  ID: " . $someID;
+	}
+	$conn->close();
+}
+?>
 <script>
 	$(function() {
 		var dates = $( "#from, #to" ).datepicker({
@@ -132,11 +186,53 @@ if (mysqli_num_rows($sql_result)>0) {
 		});
 	});
 </script>
+<script  type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
 
+		var id = '#dialog';
 
+		//Get the screen height and width
+		var maskHeight = $(document).height();
+		var maskWidth = $(window).width();
 
-</div>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="simple-confirmation-popup/js/main.js"></script> <!-- Resource jQuery -->
+		//Set heigth and width to mask to fill up the whole screen
+		$('#mask').css({'width':maskWidth,'height':maskHeight});
+
+		//transition effect
+		$('#mask').fadeIn(500);
+		$('#mask').fadeTo("slow",0.9);
+
+		//Get the window height and width
+		var winH = $(window).height();
+		var winW = $(window).width();
+
+		//Set the popup window to center
+		$(id).css('top',  winH/2-$(id).height()/2);
+		$(id).css('left', winW/2-$(id).width()/2);
+
+		//transition effect
+		$(id).fadeIn(2000);
+
+		//if close button is clicked
+		$('.window .close').click(function (e) {
+			//Cancel the link behavior
+			e.preventDefault();
+
+			$('#mask').hide();
+			$('.window').hide();
+		});
+
+		//if mask is clicked
+		$('#mask').click(function () {
+			<?php header(tablecust.php)?>
+			$(this).hide();
+			$('.window').hide();
+
+		});
+
+	});
+</script>
+
 </body>
 </html>

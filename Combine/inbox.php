@@ -15,6 +15,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
     <link href="css/clndr.css" rel="stylesheet" type="text/css" media="all"/>
     //<!--js-->
+
     <script type="text/javascript" src="js/clndr.js"></script>
     <script type="text/javascript" src="js/underscore-min.js"></script>
     <script type="text/javascript" src="js/moment-2.2.1.js"></script>
@@ -84,10 +85,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <td>$id</td>
                                             <td>$name</td>
                                             <td>$client</td>
-                                            <td>$endDate</td>";
-
-
-
+                                            <td>$endDate</td>
+                                            <td>
+                                            <form action=\"inbox.php?id=$id; \" method=\"post\">
+                                            <input type=\"submit\" name=\"submit\" value=\"Returned\"> </input></td>";
 
                                         }
                                     }
@@ -115,11 +116,82 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div> -->
                         <!-- <input type="submit" value="Send Message">
                     </form> -->
-                </div>
-            </div>
+
+
+
+            <div class="clearfix"> </div>
         </div>
 
-        <div class="clearfix"> </div>
     </div>
-</div>
+
+
+            </div>
+        </div>
+    </div>
+    <?php
+    include("config.php");
+    if(isset($_POST['submit'])) {
+        $someID = $_GET['id'];
+        $beginDate_ = " ";
+        $endDate_ = " ";
+        $sql = "UPDATE objects SET client=NULL,beginDate='$beginDate_',endDate='$endDate_' WHERE id =$someID";
+        if ($conn->query($sql) === TRUE) {
+            echo '<div id="boxes">
+              <div id="dialog" class="window">
+              <h1>Database has been updated!</h1>
+              </div>
+              <div id="mask"></div>
+              </div>';
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+    }
+    $conn->close();
+    ?>
+
+    <script  type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            var id = '#dialog';
+
+//Get the screen height and width
+            var maskHeight = $(document).height();
+            var maskWidth = $(window).width();
+
+//Set heigth and width to mask to fill up the whole screen
+            $('#mask').css({'width':maskWidth,'height':maskHeight});
+
+//transition effect
+            $('#mask').fadeIn(500);
+            $('#mask').fadeTo("slow",0.9);
+
+//Get the window height and width
+            var winH = $(window).height();
+            var winW = $(window).width();
+
+//Set the popup window to center
+            $(id).css('top',  winH/2-$(id).height()/2);
+            $(id).css('left', winW/2-$(id).width()/2);
+
+//transition effect
+            $(id).fadeIn(2000);
+
+//if close button is clicked
+            $('.window .close').click(function (e) {
+//Cancel the link behavior
+                e.preventDefault();
+
+                $('#mask').hide();
+                $('.window').hide();
+            });
+
+//if mask is clicked
+            $('#mask').click(function () {
+                $(this).hide();
+                $('.window').hide();
+            });
+
+        });
+    </script>
 </body>

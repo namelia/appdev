@@ -13,6 +13,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 <!-- Custom Theme files -->
+
 	<link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
 	<link href="css/clndr.css" rel="stylesheet" type="text/css" media="all"/>
 <!--js-->
@@ -298,7 +299,6 @@ $tableclients='clients';
                                         <th>Customers</th>
 										<th>End Date</th>
 										<th>Status</th>
-
                                   </tr>
                               </thead>
                               <tbody>

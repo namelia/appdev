@@ -54,7 +54,7 @@ BODY, TD:not(id=sidebar) {
 
 
 <body>
-<div class="row">
+	<div class="row">
 
 		<div id ="sidebar" class="container">
 			<!--<div class=" col-sm-3 col-xs-3">-->
@@ -68,14 +68,14 @@ BODY, TD:not(id=sidebar) {
 	<div id="table" class="container ">
 	<form id="form1" name="form1" method="post" action="tableItem.php">
 		<div class ="row">
-			<div class="col-xs-2">
+			<!--<div class="col-xs-2">
 				<label for="from">From</label>
 				<input name="from" type="text" id="from" size="10" value="<?php echo $_REQUEST["from"]; ?>" />
 			</div>
 			<div class="col-xs-2">
 				<label for="to">to</label>
 				<input name="to" type="text" id="to" size="10" value="<?php echo $_REQUEST["to"]; ?>"/>
-			</div>
+			</div>-->
 			<div  class="col-xs-3">
 				<label>Items:</label>&nbsp;
 				<input id ="searchitem"  type="text" name="string" id="string" value="<?php echo stripcslashes($_REQUEST["string"]); ?>" />
@@ -92,11 +92,11 @@ BODY, TD:not(id=sidebar) {
 				?>
 				</select>
 			</div>
-			<div  class="col-xs-1">
+			<div  class="col-xs-4">
 				<input type="submit" name="button" class="button"  value="Filter" />
 				</label>
 				<!-- <button  class="buttonReset"><a href="tableItem.php">Reset</a></button> -->
-				<a href="tableItem.php" class="buttonReset" role="button">Reset</a>
+				<a href="tableItem.php?id=$id_" class="buttonReset" role="button">Reset</a>
 				
 			</div>
 
@@ -109,8 +109,6 @@ BODY, TD:not(id=sidebar) {
   <tr>
 	  <th width="159"> Category</td>
 	  <th width="95"> ID</td>
-      <!--<td width="160" bgcolor="#CCCCCC"><strong>From date</strong></td>
-      <td width="160" bgcolor="#CCCCCC"><strong>To date</strong/td>-->
       <th width="159"> Name</th>
 	  <th width="159"> Manufacturer</th>
 	  <th width="95"> OS</th>
@@ -145,25 +143,32 @@ if ($_REQUEST["from"]<>'' and $_REQUEST["to"]<>'')
 $sql_result =$conn->query($sql) or die ('request "Could not execute SQL query" '.$sql);
 if (mysqli_num_rows($sql_result)>0) {
 	while ($row=$sql_result->fetch_assoc()) {
-?> 
-  <tr>
-	  <td><?php echo $row["category"]; ?></td>
-      <!--<td><!--?php echo $row["beginDate"]; ?></td>
-      <td><!--?php echo $row["endDate"]; ?></td>-->
-	  <td><?php echo $row["id"]; ?></td>
-      <td><?php echo $row["name"]; ?></td>
-	  <td><?php echo $row["manufacturer"]; ?></td>
-	  <td><?php echo $row["OS"]; ?></td>
-      <td><?php echo $row["description"]; ?></td>
-      <td><?php echo $row["UDID"]; ?></td>
-	  <td><?php echo $row["IMEI"]; ?></td>
-	  <td><?php echo $row["serial"]; ?></td>
+		$category_=$row['category'];
+		$id_=$row['id'];
+		$name_=$row['name'];
+		$manufacturer_=$row['manufacturer'];
+		$OS_=$row['OS'];
+		$description_=$row['description'];
+		$UDID_=$row['UDID'];
+		$IMEI_=$row['IMEI'];
+		$serial_=$row['serial'];
+		echo"
+ 	  <tr>
+	  <td>$category_</td>
+	  <td>$id_</td>
+      <td>$name_</td>
+	  <td>$manufacturer_</td>
+	  <td>$OS_</td>
+	  <td>$description_</td>
+      <td>$UDID_</td>
+	  <td>$IMEI_</td>
+	  <td>$serial_</td>
+	  <td><form action=\"editItem.php?id=$id_&name=$name_&description=$description_&category=$category_&OS=$OS_&UDID=$UDID_&IMEI=$IMEI_&Serial=$serial_&Manufacturer=$manufacturer_\" method=\"POST\">
+			 <input type=\"submit\" name=\"submitec\" value=\"Edit\"> </input></form></td>
+	  <td><form action=\"tableItem.php?id=$id_\" method=\"POST\">
+			  <input type=\"submit\" name=\"submitri\" value=\"Remove\"> </input></form></td>
+  </tr>";
 
-	  <td> <a href="editItem.php?id=<?php echo $row["id"]?>&name=<?php echo $row["name"]?>&description=<?php echo $row["description"]?>&category=<?php echo $row["category"]?>&OS=<?php echo $row["OS"]?>&UDID=<?php echo $row["UDID"]?>&IMEI=<?php echo $row["IMEI"]?>&Serial=<?php echo $row["serial"]?>&Manufacturer=<?php echo $row["manufacturer"]?>" class="group1"  >Edit</a> </td>
-	  <td> <a href="removeItem.php?id=<?php echo $row["id"] ?>">Remove</a> </td>
-
-  </tr>
-<?php
 	}
 } else {
 ?>
@@ -172,33 +177,97 @@ if (mysqli_num_rows($sql_result)>0) {
 }
 ?>
 	</div>
-</table>
+</div>
+<?php
+include("config.php");
+if(isset($_POST["submitri"])) {
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+	$someID = $_GET['id'];
+	$sql = "DELETE FROM objects WHERE `objects`.`id` = $someID ";
+	if ($conn->query($sql) === TRUE) {
+		echo '<div id="boxes">
+              <div id="dialog" class="window">
+
+              <h1>Entry has been deleted!</h1>
+              </div>
+              <div id="mask"></div>
+              </div>';
+
+
+	} else {
+		echo "Error: " . $sql . "<br>" . $conn->error;
+		//echo "  ID: " . $someID;
+	}
+	$conn->close();
+}
+?>
+
 
 
 <script>
-	$(function() {
-		var dates = $( "#from, #to" ).datepicker({
-			defaultDate: "+1w",
-			changeMonth: true,
-			numberOfMonths: 2,
-			dateFormat: 'yy-mm-dd',
-			onSelect: function( selectedDate ) {
-				var option = this.id == "from" ? "minDate" : "maxDate",
-					instance = $( this ).data( "datepicker" ),
-					date = $.datepicker.parseDate(
-						instance.settings.dateFormat ||
-						$.datepicker._defaults.dateFormat,
-						selectedDate, instance.settings );
-				dates.not( this ).datepicker( "option", option, date );
-			}
+	$(document).ready(function() {
+
+		var id = '#dialog';
+
+//Get the screen height and width
+		var maskHeight = $(document).height();
+		var maskWidth = $(window).width();
+
+//Set heigth and width to mask to fill up the whole screen
+		$('#mask').css({'width':maskWidth,'height':maskHeight});
+
+//transition effect
+		$('#mask').fadeIn(500);
+		$('#mask').fadeTo("slow",0.9);
+
+//Get the window height and width
+		var winH = $(window).height();
+		var winW = $(window).width();
+
+//Set the popup window to center
+		$(id).css('top',  winH/2-$(id).height()/2);
+		$(id).css('left', winW/2-$(id).width()/2);
+
+//transition effect
+		$(id).fadeIn(2000);
+
+//if close button is clicked
+		$('.window .close').click(function (e) {
+//Cancel the link behavior
+			e.preventDefault();
+
+			$('#mask').hide();
+			$('.window').hide();
 		});
+
+//if mask is clicked
+		$('#mask').click(function () {
+			$(this).hide();
+			$('.window').hide();
+		});
+
 	});
 </script>
-
-
-
-<div id = resp>
-
-</div>
+	<script>
+		$(function() {
+			var dates = $( "#from, #to" ).datepicker({
+				defaultDate: "+1w",
+				changeMonth: true,
+				numberOfMonths: 2,
+				dateFormat: 'yy-mm-dd',
+				onSelect: function( selectedDate ) {
+					var option = this.id == "from" ? "minDate" : "maxDate",
+						instance = $( this ).data( "datepicker" ),
+						date = $.datepicker.parseDate(
+							instance.settings.dateFormat ||
+							$.datepicker._defaults.dateFormat,
+							selectedDate, instance.settings );
+					dates.not( this ).datepicker( "option", option, date );
+				}
+			});
+		});
+	</script>
 </body>
 </html>
