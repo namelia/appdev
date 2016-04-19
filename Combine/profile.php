@@ -1,51 +1,106 @@
 <!DOCTYPE html>
-<style>
-    .fieldset.container {
-        position: relative;
-        left: 100px;
-        top: 100px;
-    }
-</style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit login information</title>
+    <link href="additemstyle.css" type="text/css" rel="stylesheet">
+</head>
+<div id =sidebar class="visible">
+    <?php include("sidebar.php"); ?>
+</div>
+<body>
 
-<form action="profile.php" method="post">
-<div class="fieldset container">
-    <h2 class="icon-mobile">Account details</h2>
-    <div class="field" data-addclass-invalid="employee.errors.name.length">
-        <label>Name</label><br>
-        <input data-bind="employee.name" name="name" type="text">
-        <ul class="errors" data-showif="employee.errors.name.length" style="display: none !important;">
-            <!--batman-iterator-error="employee.errors.name"-->
-        </ul></div>
-    <div class="field">
-        <label>Email</label>
-        <div class="input-prepend icon-mail" data-addclass-invalid="employee.errors.email.length">
-            <input data-bind="employee.email" name="email" type="email">
-            <ul class="errors" data-showif="employee.errors.email.length" style="display: none !important;">
-                <!--batman-iterator-error="employee.errors.email"-->
-            </ul></div>
-    </div>
-    <div class="field">
-        <label>Password</label>
-        <div class="input-prepend icon-lock" data-addclass-invalid="employee.errors.password.length">
-            <input data-bind="employee.password" name="password" type="password">
-            <ul class="errors" data-showif="employee.errors.password.length" style="display: none !important;">
-                <!--batman-iterator-error="employee.errors.password"-->
-            </ul></div>
-    </div>
-    <div class="field">
-        <label>Confirm password</label>
-        <div class="input-prepend icon-lock" data-addclass-invalid="employee.errors.password_confirmation.length">
-            <input data-bind="employee.password_confirmation" name="password" type="password">
-            <ul class="errors" data-showif="employee.errors.password_confirmation.length" style="display: none !important;">
-                <!--batman-iterator-error="employee.errors.password_confirmation"-->
-            </ul></div>
-    </div>
-    <br><br>
-    <input type="submit" name="submit" >
 
+<div class="container">
+    <form action="profile.php" method="post">
+        Name: <input   class ="tb5" type="text" name="name" required value="" ><br><br>
+        Email address: <input  class ="form-control required tb5" type="email" name="email" required  value=""><br><br>
+        Password: <input   class ="tb5" type="text" name="password"  value=""> <br><br>
+        <br><br>
+        <input type= "submit" value="Update" name="Update">
+    </form>
 
 </div>
+</body>
+
 <?php
-include("sidebar.php");
 include("config.php");
+if(isset($_POST['Update']))
+{
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    //$someID = $_GET['id'];
+    $email_ = $_POST['email'];
+    $name_ = $_POST['name'];
+    $passhash_ = md5($_POST['password']);
+
+
+
+    $sql = "UPDATE login SET name = '$name_', email ='$email_' ,passhash='$passhash_'WHERE id = '1' ";
+    if ($conn->query($sql) === TRUE) {
+
+        echo '<div id="boxes">
+              <div id="dialog" class="window">
+
+              <h1>Details have been modified!</h1>
+              </div>
+              <div id="mask"></div>
+              </div>';
+        /* echo 'Details have been modified in the database! In the entry: ';
+         echo $id_ ;*/
+
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+    $conn->close();
+}
 ?>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+
+        var id = '#dialog';
+
+//Get the screen height and width
+        var maskHeight = $(document).height();
+        var maskWidth = $(window).width();
+
+//Set heigth and width to mask to fill up the whole screen
+        $('#mask').css({'width':maskWidth,'height':maskHeight});
+
+//transition effect
+        $('#mask').fadeIn(500);
+        $('#mask').fadeTo("slow",0.9);
+
+//Get the window height and width
+        var winH = $(window).height();
+        var winW = $(window).width();
+
+//Set the popup window to center
+        $(id).css('top',  winH/2-$(id).height()/2);
+        $(id).css('left', winW/2-$(id).width()/2);
+
+//transition effect
+        $(id).fadeIn(2000);
+
+//if close button is clicked
+        $('.window .close').click(function (e) {
+//Cancel the link behavior
+            e.preventDefault();
+
+            $('#mask').hide();
+            $('.window').hide();
+        });
+
+//if mask is clicked
+        $('#mask').click(function () {
+            $(this).hide();
+            $('.window').hide();
+        });
+
+    });
+</script>
+
+
+</html>

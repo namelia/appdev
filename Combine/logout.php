@@ -31,17 +31,17 @@ include("config.php");
 <?php
 	$error = '';
     $email=$_POST["email"];
-	$pass=$_POST["password"];
+	$passhash=md5($_POST["password"]);
 	if ($conn->connect_error)
 	{
 	die("Connection failed: " . $conn->connect_error);
 	}
 	if(isset($_POST['is_login'])){
-		$query= $conn->query("SELECT * FROM php_users_login WHERE `email` = '".mysqli_real_escape_string($conn,$email)."'  AND `password` = '".mysqli_real_escape_string($conn,$pass)."'")or die ('request "Could not execute SQL query" '.$sql);
+		$query= $conn->query("SELECT * FROM login WHERE `email` = '$email'  AND `passhash` = '$passhash'")or die ('request "Could not execute SQL query" '.$sql);
 		$user= $query->fetch_assoc();
 		if(!empty($user)){
 			$_SESSION['user_info'] = $user;
-			$query = " UPDATE `php_users_login` SET last_login = NOW() WHERE id=".$user['id'];
+			$query = " UPDATE `login` SET last_login = NOW() WHERE id=".$user['id'];
 			mysqli_query ($conn,$query) or die ('request "Could not executee SQL query" '.$query);
 		}
 		else{
