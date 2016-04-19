@@ -1,31 +1,5 @@
 <?php
-###########################################################
-/*
-GuestBook Script
-Copyright (C) 2012 StivaSoft ltd. All rights Reserved.
 
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
-
-For further information visit:
-http://www.phpjabbers.com/
-info@phpjabbers.com
-
-Version:  1.0
-Released: 2012-03-18
-*/
-###########################################################
 
 error_reporting(0);
 include("config.php");
@@ -39,7 +13,7 @@ $table='objects';
 
 	<link href="table.css" rel="stylesheet" type="text/css">
 	<link href="css/buttons.css" rel="stylesheet" type="text/css" media="all">
-
+	<script type="text/javascript" src="tablesort.js"></script>
 	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
 	<!--<style>
 BODY, TD:not(id=sidebar) {
@@ -105,7 +79,8 @@ BODY, TD:not(id=sidebar) {
 	</div>-->
 
 <br /><br /> <br> <br>
-<table width="500" border="1" cellspacing="0" cellpadding="4" class="table table-striped table-hover table-responsive">
+<table width="500" border="1" cellspacing="0" cellpadding="4" id="tableitem"class="table table-striped table-hover table-responsive tablesorter">
+  <thead>
   <tr>
 	  <th width="159"> Category</td>
 	  <th width="95"> ID</td>
@@ -118,6 +93,8 @@ BODY, TD:not(id=sidebar) {
 	  <th width="95"> Serial</th>
 	  <th colspan="2"> Manage</th>
   </tr>
+  </thead>
+	<tbody>
 <?php
 
 if ($_REQUEST["string"]<>''){
@@ -176,8 +153,16 @@ if (mysqli_num_rows($sql_result)>0) {
 <?php	
 }
 ?>
+	</tbody>
 	</div>
-</div>
+	<script type="text/javascript">
+		$(document).ready(function()
+			{
+				$("#tableitem").tablesorter();
+			}
+		);
+
+	</script>
 <?php
 include("config.php");
 if(isset($_POST["submitri"])) {
@@ -206,7 +191,7 @@ if(isset($_POST["submitri"])) {
 
 
 
-<script>
+<script type="text/javascript">
 	$(document).ready(function() {
 
 		var id = '#dialog';
@@ -250,7 +235,7 @@ if(isset($_POST["submitri"])) {
 
 	});
 </script>
-	<script>
+	<script type="text/javascript">
 		$(function() {
 			var dates = $( "#from, #to" ).datepicker({
 				defaultDate: "+1w",
@@ -269,5 +254,6 @@ if(isset($_POST["submitri"])) {
 			});
 		});
 	</script>
+	<script type="text/javascript" src="tablesort.js"></script>
 </body>
 </html>

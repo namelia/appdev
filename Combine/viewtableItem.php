@@ -77,7 +77,8 @@ $table='objects';
 	</div>-->
 
 <br /><br /><br />
-<table width="500" border="1" cellspacing="0" cellpadding="4" class="table">
+<table width="500" border="1" cellspacing="0" cellpadding="4" id="tableitem" class="table tablesort">
+ <thead>
   <tr>
 	  <th width="159">Category</th>
 	  <th width="95">ID</th>
@@ -89,6 +90,8 @@ $table='objects';
       <th width="191">Client</th>
 	  <th width="30">Status</th>
   </tr>
+ </thead>
+	<tbody>
 <?php
 
 if ($_REQUEST["string"]<>'') {
@@ -201,8 +204,15 @@ if (mysqli_num_rows($sql_result)>0) {
 	}
 	</script>
 
+<script type="text/javascript">
+	$(document).ready(function()
+		{
+			$("#tableitem").tablesorter();
+		}
+	);
 
-
+</script>
+<script type="text/javascript" src="tablesort.js"></script>
 <div id = resp>
 
 </div>

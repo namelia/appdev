@@ -16,13 +16,16 @@ $table='clients';
 		<link rel="stylesheet" href="simple-confirmation-popup/css/reset.css">
 		<link rel="stylesheet" href="simple-confirmation-popup/css/style.css"> <!-- Resource style -->
 		<script type="text/javascript" src="simple-confirmation-popup/js/modernizr.js"></script> <!-- Modernizr -->
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>MySQL table search</title>
 
 	<link href="table.css" rel="stylesheet" type="text/css">
 	<link href="css/buttons.css" rel="stylesheet" type="text/css" media="all">
+<!-- try adding table sorter-->
 
-	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+
+		<script type="text/javascript" src="tablesort.js"></script>
+		<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
 </head>
 
 
@@ -52,8 +55,8 @@ $table='clients';
 </form>
 <br /><br />
 
-<table  border="1" cellspacing="0" cellpadding="4" class="table">
-  <tr>
+<table  border="1" cellspacing="0" cellpadding="4" class="table tablesorter" id="tablecust">
+<thead>
 	  <th> Id</th>
 	  <th> Category</th>
       <th> Name</th>
@@ -61,8 +64,10 @@ $table='clients';
 	  <th> Phone</th>
 	  <th> Address</th>
       <th> Description</th>
-	  <th> Manage</th><th></th>
+	  <th colspan="2"> Manage</th>
   </tr>
+</thead>
+	<tbody>
 <?php
 include("config.php");
 
@@ -87,6 +92,7 @@ if (mysqli_num_rows($sql_result)>0) {
 		$details_=$row['details'];
 		echo"
   <tr>
+
 
 	  <td> $id_</td>
 	  <td> $category_</td>
@@ -116,7 +122,9 @@ if (mysqli_num_rows($sql_result)>0) {
 			  <a  class=\"cd-popup-close img-replace\">Close</a>
 		  </div>
 
-		}-->";
+		}-->
+";
+
 
 ?>
 
@@ -132,13 +140,23 @@ if (mysqli_num_rows($sql_result)>0) {
 <?php
 }
 ?>
+	</tbody>
 </table>
 
 
 
 </div>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="simple-confirmation-popup/js/main.js"></script> <!-- Resource jQuery -->
+<script type="text/javascript">
+	$(document).ready(function()
+		{
+			$("#tablecust").tablesorter();
+		}
+	);
+
+</script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript src="simple-confirmation-popup/js/main.js"></script> <!-- Resource jQuery -->
+
 <?php
 
 include("config.php");
@@ -187,7 +205,8 @@ if(isset ($_POST['submitrc'])) {
 	});
 </script>
 <script  type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script>
+
+<script type="text/javascript">
 	$(document).ready(function() {
 
 		var id = '#dialog';
@@ -233,6 +252,6 @@ if(isset ($_POST['submitrc'])) {
 
 	});
 </script>
-
 </body>
+	<script type="text/javascript" src="tablesort.js"></script>
 </html>

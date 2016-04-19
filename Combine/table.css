@@ -1,3 +1,55 @@
+.tablesorter-default {
+    width: 100%;
+    font: 15px/18px Arial, Sans-serif;
+    color: #333;
+    background-color: #fff;
+    border-spacing: 0;
+    margin: 20px 0 15px;
+    text-align: left;
+}
+
+/* header */
+.tablesorter-default th,
+.tablesorter-default tfoot th,
+.tablesorter-default tfoot td {
+    border: 0;
+}
+.tablesorter-default .header,
+.tablesorter-default .tablesorter-header {
+    background-image: url(data:image/gif;base64,R0lGODlhFQAJAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAkAAAIXjI+AywnaYnhUMoqt3gZXPmVg94yJVQAAOw==);
+    background-position: center right;
+    background-repeat: no-repeat;
+
+}
+.tablesorter-default thead .headerSortUp,
+ .tablesorter-default thead .tablesorter-headerSortUp,
+ .tablesorter-default thead .tablesorter-headerAsc {
+     background-image: url(data:image/gif;base64,R0lGODlhFQAEAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAQAAAINjI8Bya2wnINUMopZAQA7);
+     border-bottom: #000 2px solid;
+ }
+.tablesorter-default thead .headerSortDown,
+.tablesorter-default thead .tablesorter-headerSortDown,
+.tablesorter-default thead .tablesorter-headerDesc {
+    background-image: url(data:image/gif;base64,R0lGODlhFQAEAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAQAAAINjB+gC+jP2ptn0WskLQA7);
+    border-bottom: #000 2px solid;
+}
+.tablesorter-default thead .sorter-false {
+    background-image: none;
+    cursor: default;
+    padding: 4px;
+}
+
+/* tfoot */
+.tablesorter-default tfoot .tablesorter-headerSortUp,
+.tablesorter-default tfoot .tablesorter-headerSortDown,
+.tablesorter-default tfoot .tablesorter-headerAsc,
+.tablesorter-default tfoot .tablesorter-headerDesc {
+    border-top: #000 2px solid;
+}
+
+
+
+
 #table
 {
 
@@ -76,3 +128,4 @@ select#cat {
     margin-top:0;
     margin-bottom:0;
 }
+

@@ -1,31 +1,4 @@
 <?php
-###########################################################
-/*
-GuestBook Script
-Copyright (C) 2012 StivaSoft ltd. All rights Reserved.
-
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
-
-For further information visit:
-http://www.phpjabbers.com/
-info@phpjabbers.com
-
-Version:  1.0
-Released: 2012-03-18
-*/
-###########################################################
 
 error_reporting(0);
 include("config.php");
@@ -67,7 +40,8 @@ $table='clients';
 	<button type="button"><a href="viewtablecust.php">Reset</a></button>
 </form>
 <br /><br />
-<table width="700" border="1" cellspacing="0" cellpadding="4" class="table">
+<table width="700" border="1" cellspacing="0" cellpadding="4" id="tablecust" class="table tablesort">
+	<thead>
   <tr>
     <!--<td width="90" bgcolor="#CCCCCC"><strong>From date</strong></td>
     <td width="95" bgcolor="#CCCCCC"><strong>To date</strong></td>-->
@@ -79,6 +53,8 @@ $table='clients';
 	  <th width="159">Address</th>
       <th width="191">Description</th>
   </tr>
+	</thead>
+	<tbody>
 <?php
 include("config.php");
 if ($_REQUEST["string"]<>'') {
@@ -119,9 +95,9 @@ if (mysqli_num_rows($sql_result)>0) {
 }
 ?>
 </table>
+	</tbody>
 
-
-<script>
+<script type="text/javascript">
 	$(function() {
 		var dates = $( "#from, #to" ).datepicker({
 			defaultDate: "+1w",
@@ -140,7 +116,15 @@ if (mysqli_num_rows($sql_result)>0) {
 		});
 	});
 </script>
-</div>
+	<script type="text/javascript">
+		$(document).ready(function()
+			{
+				$("#tablecust").tablesorter();
+			}
+		);
 
+	</script>
+</div>
+<script type="text/javascript" src="tablesort.js"></script>
 </body>
 </html>
