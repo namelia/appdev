@@ -76,18 +76,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 {
                                     while ( $row= $sql_result->fetch_assoc())
                                     {
-                                        $id=$row['id'];
-                                        $name=$row['name'];
-                                        $client=$row['client'];
-                                        $endDate=$row['endDate'];
+                                        $id_=$row['id'];
+                                        $name_=$row['name'];
+                                        $client_=$row['client'];
+                                        $endDate_=$row['endDate'];
                                         echo"
                                         <tr>
-                                            <td>$id</td>
-                                            <td>$name</td>
-                                            <td>$client</td>
-                                            <td>$endDate</td>
+                                            <td>$id_</td>
+                                            <td>$name_</td>
+                                            <td>$client_</td>
+                                            <td>$endDate_</td>
                                             <td>
-                                            <form action=\"inbox.php?id=$id; \" method=\"post\">
+                                            <form action=\"inbox.php?id=$id_; \" method=\"POST\">gi
                                             <input type=\"submit\" name=\"submit\" value=\"Returned\"> </input></td>";
 
                                         }

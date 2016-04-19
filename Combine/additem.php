@@ -63,7 +63,7 @@ if(isset($_POST['submitt']))
     $serial_ = $_POST['serialno'];
     $details_ = $_POST['message'];
     $imei_ = $_POST['imei'];
-    $sql = "INSERT INTO objects (name,id,OS,description,category,UDID,IMEI,serial,manufacturer) VALUES ('$device_name','$id_','$os_','$details_','$category_','$udid_','$imei_','$serial_ ','$manu_ ')";
+    $sql = "INSERT INTO objects (name,id,OS,description,category,UDID,IMEI,serial,manufacturer,client) VALUES ('$device_name','$id_','$os_','$details_','$category_','$udid_','$imei_','$serial_ ','$manu_ ',NULL)";
     if ($conn->query($sql) === TRUE) {
        echo '<div id="boxes">
               <div id="dialog" class="window">

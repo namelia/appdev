@@ -5,7 +5,7 @@ include('config.php');
 if($_POST)
 {
     $q = mysqli_real_escape_string($conn,$_POST['search']);
-    $strSQL_Result = mysqli_query($conn,"select id,name,description,OS from objects where client IS NULL AND name like '%$q%' order by id LIMIT 5");
+    $strSQL_Result = mysqli_query($conn,"select id,name,description,OS from objects WHERE client IS NULL AND name like '%$q%' order by id LIMIT 5");
     while($row=mysqli_fetch_array($strSQL_Result))
     {
         $username   = $row['name'];
