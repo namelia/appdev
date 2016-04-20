@@ -11,7 +11,7 @@
 
 <body>
 <div class="container">
-    <form action="profile.php" method="post">
+    <form action="profile.php" method="post" autocomplete="off">
         Current password: <input class = "form-control required" type="password" name="oldpass"  value=""> <br><br>
         Name: <input type="text" name="name" required value="<?php echo $_SESSION['user_info']['name'] ?>" ><br><br>
         Email address: <input class ="form-control required" type="email" name="email" required  value="<?php echo $_SESSION['user_info']['email'] ?>"><br><br>

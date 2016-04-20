@@ -10,7 +10,7 @@
 </div>
 <body>
     <div class="container"id ="itemcont">
-        <form action="additem.php" method="post">
+        <form action="additem.php" method="post" autocomplete="off">
             Category:
             <select  class ="tb5"name="category">
                 <option value="none"></option>

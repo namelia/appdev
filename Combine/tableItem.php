@@ -40,7 +40,7 @@ BODY, TD:not(id=sidebar) {
 
 	<!-- <div class=" col-sm-9 col-xs-9">-->
 	<div id="table" class="container ">
-	<form id="form1" name="form1" method="post" action="tableItem.php">
+	<form id="form1" name="form1" method="post" action="tableItem.php" autocomplete="off">
 		<div class ="row">
 			<!--<div class="col-xs-2">
 				<label for="from">From</label>

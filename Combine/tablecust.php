@@ -36,7 +36,7 @@ $table='clients';
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
 <script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 <div id="table" class="container" style="overflow-x:auto;">
-<form id="form1" name="form1" method="post" action="tablecust.php">
+<form id="form1" name="form1" method="post" action="tablecust.php" autocomplete="off">
 	<label>Search:</label>
 	<input type="text" name="string" id="string" value="<?php echo stripcslashes($_REQUEST["string"]); ?>" />
 	<label>Category</label>
@@ -160,49 +160,30 @@ if (mysqli_num_rows($sql_result)>0) {
 
 include("config.php");
 if(isset ($_POST['submitrc'])) {
-	if ($conn->connect_error) {
-		die("Connection failed: " . $conn->connect_error);
-	}
-	$someID = $_GET['id'];
+		if ($conn->connect_error) {
+			die("Connection failed: " . $conn->connect_error);
+		}
+		$someID = $_GET['id'];
 
 
-	$sql = "DELETE FROM clients WHERE `id` = $someID ";
-	if ($conn->query($sql) === TRUE) {
-		echo '<div id="boxes">
-              <div id="dialog" class="window">
+		$sql = "DELETE FROM clients WHERE `id` = $someID ";
+		if ($conn->query($sql) === TRUE) {
+			echo '<div id="boxes">
+				  <div id="dialog" class="window">
+	
+				  <h1>Entry has been deleted!</h1>
+				  </div>
+				  <div id="mask"></div>
+				  </div>';
+			echo $someID;
 
-              <h1>Entry has been deleted!</h1>
-              </div>
-              <div id="mask"></div>
-              </div>';
-		echo $someID;
-
-	} else {
-		echo "Error: " . $sql . "<br>" . $conn->error;
-		//echo "  ID: " . $someID;
-	}
-	$conn->close();
+		} else {
+			echo "Error: " . $sql . "<br>" . $conn->error;
+		}
+		$conn->close();
 }
 ?>
-<script>
-	$(function() {
-		var dates = $( "#from, #to" ).datepicker({
-			defaultDate: "+1w",
-			changeMonth: true,
-			numberOfMonths: 2,
-			dateFormat: 'yy-mm-dd',
-			onSelect: function( selectedDate ) {
-				var option = this.id == "from" ? "minDate" : "maxDate",
-					instance = $( this ).data( "datepicker" ),
-					date = $.datepicker.parseDate(
-						instance.settings.dateFormat ||
-						$.datepicker._defaults.dateFormat,
-						selectedDate, instance.settings );
-				dates.not( this ).datepicker( "option", option, date );
-			}
-		});
-	});
-</script>
+
 <script  type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
 <script type="text/javascript">

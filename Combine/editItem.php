@@ -12,7 +12,7 @@
 
 
 <div class="container">
-    <form action="editItem.php?id=<?php echo $_GET['id']?>&name=<?php echo $_GET['name']?>&description=<?php echo $_GET['description']?>&category=<?php echo $_GET['category']?>&OS=<?php echo $_GET['OS']?>&IMEI=<?php echo $_GET['IMEI']?>&Serial=<?php echo $_GET['Serial']?>&UDID=<?php echo $_GET['UDID']?>&Manufacturer=<?php echo $_GET['Manufacturer']?>" method="post">
+    <form action="editItem.php?id=<?php echo $_GET['id']?>&name=<?php echo $_GET['name']?>&description=<?php echo $_GET['description']?>&category=<?php echo $_GET['category']?>&OS=<?php echo $_GET['OS']?>&IMEI=<?php echo $_GET['IMEI']?>&Serial=<?php echo $_GET['Serial']?>&UDID=<?php echo $_GET['UDID']?>&Manufacturer=<?php echo $_GET['Manufacturer']?>" method="post" autocomplete="off">
         Category:
         <select  class ="tb5"name="category">
             <option value="<?php echo $_GET['category']?>"> <?php echo $_GET["category"]; ?></option>

@@ -23,9 +23,9 @@
         die("Connection failed: " . $conn->connect_error);
     }
     $someID = $_GET['id'];
-    
 
-    
+
+
     $sql = "DELETE FROM clients WHERE `id` = $someID ";
     if ($conn->query($sql) === TRUE) {
         echo '<div id="boxes">
