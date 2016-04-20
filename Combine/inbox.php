@@ -46,12 +46,14 @@
                 <div class="inbox-details-default">
                     <div class="inbox-details-body">
                         <div class="alert alert-info" >
-                            Currently overdue items:
+                            Currently Overdue items:
                         </div>
+
 
                         <div class="table-responsive">
                             <table class="table table-hover">
                               <thead>
+
                                 <tr>
                                     <th>ID</th>
                                     <th>Item</th>
@@ -91,7 +93,9 @@
 
                                 </tbody>
                             </table>
-
+                            <form action="mailing/someTest.php">
+                                <button type="submit" class="button"> Return All</button>
+                            </form>
                             <form action="mailing/someTest.php">
                                 <button type="submit" class="button"> Email all clients with overdue items</button>
                             </form>
