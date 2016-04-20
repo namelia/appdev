@@ -9,7 +9,7 @@
     <?php include("sidebar.php"); ?>
 </div>
 <body>
-    <div class="container"id ="itemcont">
+    <div class="inner-block container"id ="itemcont">
         <form action="additem.php" method="post" autocomplete="off">
             Category:
             <select  class ="tb5"name="category">
@@ -30,7 +30,7 @@
             Operating System : <input   class ="tb5" type="text" name="OS" value=" " ><br><br>
             UDID:              <input   class ="tb5" type="text" name="udid"  value=" " ><br><br>
             Description:
-            <br><br>
+            <br>
             <textarea  class ="tb6" name="message"rows="10"cols="20" class="form-control" rows="10"></textarea>
             <br><br>
             <button type="button" style=" border-radius:10px;   border:2px solid #456879;" data-toggle="collapse" data-target="#more">

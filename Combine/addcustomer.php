@@ -13,13 +13,12 @@
 </head>
 
 <body>
-<?php include_once("sidebar.php") ;
-$table= "clients";?>
+<div id =sidebar class="visible">
+    <?php include("sidebar.php"); ?>
+</div>
 <div class="inner-block container"id=custcont" >
-
-
-    <form action="addcustomer.php" method="post">
-        Customers Name: <input  class ="tb5" type="text" name="custname" required><br><br>
+    <form action="addcustomer.php" method="post" autocomplete="off">
+        Customer name: <input  class ="tb5" type="text" name="custname" required><br><br>
         Email address: <input  class =" form-control required tb5 " type="email" name="custemail"" required><br><br>
         Category:
         <select class ="tb5"  name="category">
@@ -33,7 +32,7 @@ $table= "clients";?>
         <br>
         <textarea  class ="tb6" name="address" rows="3" cols="10"></textarea>
         <br><br>
-        Other Details:
+        Other details:
         <br>
         <textarea  class ="tb6" name="details" rows="10" cols="20"></textarea>
         <br><br>

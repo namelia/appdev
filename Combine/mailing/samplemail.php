@@ -13,8 +13,6 @@ function sendEmail($emailTo, $msg){
 
 	//require 'phpmailer/PHPMailerAutoload.php';
 
-	echo "wheeeere" . "<br>" ;
-
 	//Create a new PHPMailer instance
 	$mail = new PHPMailer;
 
@@ -59,9 +57,7 @@ function sendEmail($emailTo, $msg){
 
 	//Set who the message is to be sent to
 
-	echo "before the thingy" . "<br>" ;
 	$mail->addAddress($emailTo, 'Customer');
-	echo "after the thingy" . "<br>" ;
 
 	//Set the subject line
 	$mail->Subject = 'Overdue Items from UCL APPLAB';
@@ -72,8 +68,7 @@ function sendEmail($emailTo, $msg){
 
 	//Replace the plain text body with one created manually
 	$mail->Body = $msg;
-
-	echo "just before sending" . "<br>" ;
+	
 
 	//send the message, check for errors
 	if (!$mail->send()) {

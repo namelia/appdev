@@ -10,8 +10,7 @@
 </div>
 <body>
 
-
-<div class="container">
+<div class="inner-block container">
     <form action="editCustomer.php?category=<?php echo $_GET['category']?>&customername=<?php echo $_GET['customername']?>&email=<?php echo $_GET['email']?>&phone=<?php echo $_GET['phone']?>&address=<?php echo $_GET['address']?>&details=<?php echo $_GET['details']?>&id=<?php echo $_GET['id']?>" method="post" autocomplete="off">
         Category:
         <select  class ="tb5"name="category">
@@ -21,15 +20,15 @@
             <option value="External Other Customer">External Other Customer</option>
         </select>
         <br><br>
-            Customer Name: <input   class ="tb5" type="text" name="customername" required value="<?php echo $_GET['customername']?> " ><br><br>
+            Customer name: <input   class ="tb5" type="text" name="customername" required value="<?php echo $_GET['customername']?> " ><br><br>
             Email address: <input  class ="form-control required tb5" type="email" name="email" required  value="<?php echo $_GET['email']?> "><br><br>
             Phone: <input   class ="tb5" type="text" name="phone" value="<?php echo $_GET['phone']?>" ><br><br>
             Address: <input   class ="tb5" type="text" name="address"  value="<?php echo $_GET['address']?>"> <br><br>
-            Other Details:
+            Other details:
             <br>
             <textarea  class ="tb6" name="details"rows="10"cols="20" class="form-control" rows="10"><?php echo $_GET['details']?></textarea>
             <br><br>
-        <input type= "submit" value="Update" name="Update">
+        <input class ="tb5" type= "submit" value="Update" name="Update">
     </form>
 
 </div>

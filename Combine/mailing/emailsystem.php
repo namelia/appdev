@@ -8,7 +8,7 @@ $today = date("Y-m-d") ;
 
 $clientsToMail = array();
 
-$resultObjects= $conn->query("SELECT * FROM objects WHERE DATE(endDate) < '$today' ");
+$resultObjects= $conn->query("SELECT * FROM objects WHERE DATE(endDate) <= '$today' ");
 
 echo "<table><tr><th>ID</th> <th>Name</th> <th>client</th> <th>date</th> </tr>";
         while ( $rows= $resultObjects->fetch_assoc())
@@ -66,12 +66,12 @@ $lengthArray = count($mailsOfClients);
 
 for($y = 0; $y < $lengthArray; $y++) {
     echo "<br> <br>" . "Sending an email to: " . $mailsOfClients[$y] . " => " ;
-    echo " This email adress is owned by: " . $clientsToMail[$y] . "<br>" ;
+    echo "This email adress is owned by: " . $clientsToMail[$y] . "<br>" ;
 
     $msg = getOverdueItems($clientsToMail[$y]); //gets the overdue items of the client with this email address
-    echo "This is the message sent :" . "<br>" ;
+    echo "This is the message we're about to send:" . "<br>" ;
     echo $msg . "<br>";
-    echo $mailsOfClients[$y] . "<br>";
+    echo $mailsOfClients[$y] . "<br><br>";
     sendEmail($mailsOfClients[$y] , $msg);
     
 }

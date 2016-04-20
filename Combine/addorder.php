@@ -17,23 +17,24 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
 <script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 
-<div class="container"id ="itemcont">
+<div class="inner-block container"id ="itemcont">
 <form action="addorder.php" method="post" autocomplete="off">
-    <br><br>
+        Please enter the ID <b>or</b> name of a <b>single product at a time</b>. In the case of multiple items with the same name, the item with the smallest ID wins.
+        <br></br>
+    Customers must be added to the customer system in order to work with autocomplete and the overdue notification system, but can be entered free-form under time constraints.
+        <br></br>
         <div class="content">
-        Device Name:    <input class ="search tb5" id ="searchitem" type="text" name="orddevicename" required  >&nbsp; <br><br>
-        </div>
-    <div id="resultlol"></div>
-    ID:             <input  class ="ui-autocomplete-input tb5"  type="text" name="ordID" required  value=" " ><br><br>
-        <label for="from">From Date :</label>
+        <label for="name">Device name:</label>    <input class ="search tb5" id ="searchitem" type="text" name="orddevicename">&nbsp;&nbsp;<br></br>
+    <div id="resultitem"></div>
+        <label for="id">ID:</label>              <input  class ="ui-autocomplete-input tb5"  type="text" name="ordID"  value="" ><br><br>
+        <label for="from">From Date:</label>
         <input class ="tb5" name="from" type="text" id="from" size="10" />
-    <br><br>
-        <label for="to">To Date :</label>
+    <br></br>
+        <label for="to">To Date:</label>
         <input class ="tb5" name="to" type="text" id="to" size="10"/>
-    <br><br>
-        Customers Name: <input  class ="searchC tb5"  id ="searchcust" type="text" name="ordcustname" required>&nbsp;<br><br>
+    <br></br>
+        <label for="custname">Customer name:</label> <input  class ="searchC tb5"  id ="searchcust" type="text" name="ordcustname" required>&nbsp;&nbsp;<br></br>
     <div id="resultcust"></div>
-    <br><br>
         <input class ="tb5"  type= "submit" value="Submit" name='submitt'>
 </form>
 
@@ -47,15 +48,18 @@ if(isset($_POST['submitt']))
         die("Connection failed: " . $conn->connect_error);
     }
     $device_name = $_POST['orddevicename'];
-    $id_ = $_POST['ordID'];
+    $id_ = 0;
+    if ($_POST['ordID']) {
+        $id_ = $_POST['ordID'];
+    }
     $from_ = $_POST['from'];
     $to_ = $_POST['to'];
     $client_ = $_POST['ordcustname'];
-    $checkAvailable = $conn->query("SELECT client FROM objects WHERE name = '$device_name' AND (client IS NOT NULL OR client != '')  ");
+    $checkAvailable = $conn->query("SELECT client FROM objects WHERE (name = '$device_name' OR id = $id_) AND (client IS NOT NULL OR client != '')")  or die ('request "Could not execute SQL query" ');
 
     if ( mysqli_num_rows($checkAvailable)==0){
 
-        $sql = "UPDATE objects SET beginDate = '$from_' ,  endDate = '$to_' , client ='$client_'  WHERE name = '$device_name'  ";
+        $sql = "UPDATE objects SET beginDate = '$from_' ,  endDate = '$to_' , client ='$client_'  WHERE (name = '$device_name' OR id = $id_) LIMIT 1  ";
 
         if ($conn->query($sql) === TRUE) {
             echo '<div id="boxes">
@@ -112,13 +116,13 @@ if(isset($_POST['submitt']))
                         cache: false,
                         success: function(html)
                         {
-                            $("#resultlol").html(html).show();
+                            $("#resultitem").html(html).show();
                         }
                     });
                 }return false;
             });
 
-            jQuery("#resultlol").live("click",function(e){
+            jQuery("#resultitem").live("click",function(e){
                 var $clicked = $(e.target);
                 var $name = $clicked.find('.name').html();
                 var decoded = $("<div/>").html($name).text();
@@ -127,11 +131,11 @@ if(isset($_POST['submitt']))
             jQuery(document).live("click", function(e) {
                 var $clicked = $(e.target);
                 if (! $clicked.hasClass("search")){
-                    jQuery("#resultlol").fadeOut();
+                    jQuery("#resultitem").fadeOut();
                 }
             });
             $('#searchitem').click(function(){
-            jQuery("#resultlol").fadeIn();
+            jQuery("#resultitem").fadeIn();
         });
         });
     </script>

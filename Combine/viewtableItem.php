@@ -17,23 +17,19 @@ $table='objects';
 
 <body>
 <div class="row">
-
 		<div id ="sidebar" class="container">
-			<!--<div class=" col-sm-3 col-xs-3">-->
 			<?php include("sidebar.php"); ?>
-			</div>
+		</div>
 		</div>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
 		<script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 
-	<!-- <div class=" col-sm-9 col-xs-9">-->
-	<div id="table" class="container ">
+	<div id="table" class="inner-block container">
 	<form id="form1" name="form1" method="post" action="viewtableItem.php" autocomplete="off">
 		<div class ="row">
 			<div class="col-xs-2">
 				<label for="from">From</label>
 				<input name="from" type="text" id="from" size="10" value="<?php echo $_REQUEST["from"]; ?>" />
-
 			</div>
 			<div class="col-xs-2">
 				<label for="to">to</label>
