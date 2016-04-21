@@ -43,7 +43,7 @@ include("statisticFunctions.php");
             echo "<div class='cardmin'>" ; //beginning of a card
                 echo "<div class='header'>"; //beginning of title
 
-                    echo "<h2> $categories[$i]s: </h2>" ;
+                    echo "<h2> $categories[$i]: </h2>" ;
 
                 echo "</div>"; //end of title
                 echo "<div class='containerr'>"; //beginning of content
