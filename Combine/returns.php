@@ -122,10 +122,11 @@
     if(isset($_POST['submit'])) {
         $beginDate_ = " ";
         $endDate_ = " ";
+        $todayy = date("Y-m-d");
         if ($someID != 0) {
             $sql = "UPDATE objects SET client=NULL,beginDate='$beginDate_',endDate='$endDate_' WHERE id =$someID";
         } else {
-            $sql = "UPDATE objects SET client=NULL,beginDate='$beginDate_',endDate='$endDate_'";
+            $sql = "UPDATE objects SET client=NULL,beginDate='$beginDate_',endDate='$endDate_' WHERE DATE(endDate) <= '$todayy'";
         }
         if ($conn->query($sql) === TRUE) {
             echo '<div id="boxes">
