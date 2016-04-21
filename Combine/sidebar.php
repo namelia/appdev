@@ -39,37 +39,29 @@ include("config.php");
     <div id class="menu">
         <ul id="menu" >
             <li id="menu-home" ><a href="dashboard.php"><i class="fa fa-tachometer"></i><span>Dashboard</span></a></li>
-            <li><a href="addorder.php"><i class="fa fa-plus"></i><span>Add Order</span></span></a>
             <li id="menu-comunicacao" ><a href="#"><i class="fa fa-tablet nav_icon"></i><span>Products</span><span class="fa fa-angle-right" style="float: right"></span></a>
                 <ul id="menu-comunicacao-sub" >
-                    <li id="menu-arquivos" ><a href="additem.php">Add Product</a></li>
-                    <li id="menu-arquivos" ><a href="tableItem.php">Manage Product</a></li>
+                    <li id="menu-arquivos" ><a href="additem.php"><i class="fa fa-plus"></i>Add</a></li>
+                    <li id="menu-arquivos" ><a href="tableItem.php"><i class="fa fa-table"></i>Manage</a></li>
+                    <li id="menu-arquivos" ><a href="downloaditem.php"><i class="fa fa-download"></i>Download</a></li>
                 </ul>
             </li>
             <li id="menu--comunicacao" ><a href="#"><i class="fa fa-user nav_icon"></i><span>Customers</span><span class="fa fa-angle-right" style="float: right"></span></a>
                 <ul id="menu-comunicacao-sub" >
-                    <li id="menu-arquivos" ><a href="addcustomer.php">Add Customers</a></li>
-                    <li id="menu-arquivos" ><a href="tablecust.php">Manage Customers</a></li>
+                    <li id="menu-arquivos" ><a href="addcustomer.php"><i class="fa fa-plus"></i>Add</a></li>
+                    <li id="menu-arquivos" ><a href="tablecust.php"><i class="fa fa-table"></i>Manage</a></li>
+                    <li id="menu-arquivos" ><a href="downloadcust.php"><i class="fa fa-download"></i>Download</a></li>
                 </ul>
             </li>
 
-            <li><a href="#"><i class="fa fa-table"></i><span>Table</span></span><span class="fa fa-angle-right" style="float: right"></span></a>
+            <li><a href="#"><i class="fa fa-list"></i><span>Orders</span></span><span class="fa fa-angle-right" style="float: right"></span></a>
                 <ul id="menu-academico-sub" >
-                    <li id="menu-academico-avaliacoes" ><a href="viewtableItem.php">Products</a></li>
-                    <li id="menu-academico-boletim" ><a href="viewtablecust.php">Customer</a></li>
+                    <li><a href="addorder.php"><i class="fa fa-plus"></i><span>Add</span></span></a>
+                    <li><a href="statistics.php"><i class="fa fa-star"></i><span>Statistics</a>
+                    <li><a href="returns.php"><i class="fa fa-refresh"></i><span>Returns</a>
                 </ul>
             </li>
 
-            <li><a href="statistics.php"><i class="fa fa-star"></i><span>Statistics</a>
-
-            <li><a href="returns.php"><i class="fa fa-envelope"></i><span>Returns</a>
-
-            </li>
-            <li id="menu--comunicacao" ><a href="#"><i class="fa fa-download"></i><span>Download</span><span class="fa fa-angle-right" style="float: right"></span></a>
-                <ul id="menu-comunicacao-sub" >
-                    <li id="menu-arquivos" ><a href="download.php">Product Table</a></li>
-                    <li id="menu-arquivos" ><a href="downloadcust.php">Customer Table</a></li>
-                </ul>
             </li>
             <li><a href="#"><i class="fa fa-user-plus"></i><span>Administrator</span><span class="fa fa-angle-right" style="float: right"></span></a>
                 <ul id="menu-academico-sub" >

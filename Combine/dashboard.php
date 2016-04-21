@@ -165,7 +165,7 @@ $tableclients='clients';
                               </thead>
                               <tbody>
 									<?php
-									$sql = "SELECT * FROM $tableobjects WHERE client IS NOT NULL ORDER BY endDate  LIMIT 6";
+									$sql = "SELECT * FROM $tableobjects WHERE client IS NOT NULL ORDER BY endDate";
 									$sql_result =$conn->query($sql) or die ('request "Could not execute SQL query" '.$sql);
 									if ($sql_result-> num_rows!=0)
 									{

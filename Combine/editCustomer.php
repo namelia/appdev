@@ -9,7 +9,9 @@
     <?php include("sidebar.php"); ?>
 </div>
 <body>
-
+<?php
+if (!isset($_POST['Update']))
+{?>
 <div class="inner-block container">
     <form action="editCustomer.php?category=<?php echo $_GET['category']?>&customername=<?php echo $_GET['customername']?>&email=<?php echo $_GET['email']?>&phone=<?php echo $_GET['phone']?>&address=<?php echo $_GET['address']?>&details=<?php echo $_GET['details']?>&id=<?php echo $_GET['id']?>" method="post" autocomplete="off">
         Category:
@@ -20,8 +22,8 @@
             <option value="External Other Customer">External Other Customer</option>
         </select>
         <br><br>
-            Customer name: <input   class ="tb5" type="text" name="customername" required value="<?php echo $_GET['customername']?> " ><br><br>
-            Email address: <input  class ="form-control required tb5" type="email" name="email" required  value="<?php echo $_GET['email']?> "><br><br>
+            Customer name: <input   class ="tb5" type="text" name="customername" required value="<?php echo $_GET['customername']?>" ><br><br>
+            Email address: <input  class ="form-control required tb5" type="email" name="email" required  value="<?php echo $_GET['email']?>"><br><br>
             Phone: <input   class ="tb5" type="text" name="phone" value="<?php echo $_GET['phone']?>" ><br><br>
             Address: <input   class ="tb5" type="text" name="address"  value="<?php echo $_GET['address']?>"> <br><br>
             Other details:
@@ -30,8 +32,30 @@
             <br><br>
         <input class ="tb5" type= "submit" value="Update" name="Update">
     </form>
-
 </div>
+<?php } else { ?>
+    <div class="inner-block container">
+        <form action="editCustomer.php?category=<?php echo $_POST['category']?>&customername=<?php echo $_POST['customername']?>&email=<?php echo $_POST['email']?>&phone=<?php echo $_POST['phone']?>&address=<?php echo $_POST['address']?>&details=<?php echo $_POST['details']?>&id=<?php echo $_POST['id']?>" method="post" autocomplete="off">
+            Category:
+            <select  class ="tb5"name="category">
+                <option value="<?php echo $_POST['category']?>"> <?php echo $_POST["category"]; ?></option>
+                <option value="Internal Customer">Internal Customer</option>
+                <option value="External UCL Customer">External UCL Customer</option>
+                <option value="External Other Customer">External Other Customer</option>
+            </select>
+            <br><br>
+            Customer name: <input   class ="tb5" type="text" name="customername" required value="<?php echo $_POST['customername']?>" ><br><br>
+            Email address: <input  class ="form-control required tb5" type="email" name="email" required  value="<?php echo $_POST['email']?>"><br><br>
+            Phone: <input   class ="tb5" type="text" name="phone" value="<?php echo $_POST['phone']?>" ><br><br>
+            Address: <input   class ="tb5" type="text" name="address"  value="<?php echo $_POST['address']?>"> <br><br>
+            Other details:
+            <br>
+            <textarea  class ="tb6" name="details"rows="10"cols="20" class="form-control" rows="10"><?php echo $_POST['details']?></textarea>
+            <br><br>
+            <input class ="tb5" type= "submit" value="Update" name="Update">
+        </form>
+    </div>
+<?php } ?>
 </body>
 
     <?php
@@ -63,9 +87,6 @@
               </div>
               <div id="mask"></div>
               </div>';
-       /* echo 'Details have been modified in the database! In the entry: ';
-        echo $id_ ;*/
-
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }

@@ -55,7 +55,7 @@ $table='clients';
 </form>
 <br /><br />
 
-<table  border="1" cellspacing="0" cellpadding="4" class="table tablesorter" id="tablecust">
+<table  border="0" cellspacing="0" cellpadding="4" class="table tablesorter" id="tablecust">
 <thead>
 	  <th> ID</th>
 	  <th> Category</th>
@@ -101,10 +101,10 @@ if (mysqli_num_rows($sql_result)>0) {
 	  <td> $address_</td>
 	  <td> $details_</td>
 	  <td><form action=\"editCustomer.php?category=$category_&customername=$name_&email=$email_&phone=$phone_&address=$address_&details=$details_&id=$id_ \" method=\"POST\">
-		  <input type=\"submit\" name=\"submitec\" value=\"Edit\" class = \"tb5\"> </input></form></td>
+		  <input type=\"submit\" name=\"submitec\" value=\"Edit\" class = \"tb5-2\"> </input></form></td>
 
 	  <td><form action=\"tablecust.php?id=$id_\" method=\"POST\">
-			  <input type=\"submit\" name=\"submitrc\" value=\"Remove\" class = \"tb5\"> </input></form></td>
+			  <input type=\"submit\" name=\"submitrc\" value=\"X\" class = \"tb5\"> </input></form></td>
 			    </tr>
 ";
 
