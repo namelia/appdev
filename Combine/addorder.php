@@ -5,7 +5,6 @@
     <title>Add Order</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="additemstyle.css" type="text/css" rel="stylesheet">
-
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
 
 </head>
@@ -17,29 +16,32 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
 <script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 
-<div class="inner-block container"id ="itemcont">
-<form action="addorder.php" method="post" autocomplete="off">
-        Please enter the ID <b>or</b> name of a <b>single product at a time</b>. In the case of multiple items with the same name, the item with the smallest ID wins.
-        <br></br>
-    Customers must be added to the customer system in order to work with autocomplete and the overdue notification system, but can be entered free-form under time constraints.
-        <br></br>
-        <div class="content">
-        <label for="name">Device name:</label>    <input class ="search tb5" id ="searchitem" type="text" name="orddevicename">&nbsp;&nbsp;<br></br>
-    <div id="resultitem"></div>
-        <label for="id">ID:</label>              <input  class ="ui-autocomplete-input tb5"  type="text" name="ordID"  value="" ><br><br>
-        <label for="from">From Date:</label>
-        <input class ="tb5" name="from" type="text" id="from" size="10" />
-    <br></br>
-        <label for="to">To Date:</label>
-        <input class ="tb5" name="to" type="text" id="to" size="10"/>
-    <br></br>
-        <label for="custname">Customer name:</label> <input  class ="searchC tb5"  id ="searchcust" type="text" name="ordcustname" required>&nbsp;&nbsp;<br></br>
-    <div id="resultcust"></div>
-        <input class ="tb5"  type= "submit" value="Submit" name='submitt'>
-</form>
+    <div class="inner-block container"id ="itemcont">
+        <form action="addorder.php" method="post" autocomplete="off">
+            Please enter the ID <b>or</b> name of a <b>single product at a time</b>. In the case of multiple items with the same name, the item with the smallest ID wins.
+            <br><br>
+            Customers must be added to the customer system in order to work with autocomplete and the overdue notification system, but can be entered free-form under time constraints.
+            <br><br>
+            <div class="content">
+                <label for="name">Device name:</label>
+                <input class ="search tb5" id ="searchitem" type="text" name="orddevicename">&nbsp;&nbsp;<br><br>
+                <div id="resultitem"></div>
+                <label for="id">ID:</label>
+                <input  class ="ui-autocomplete-input tb5"  type="text" name="ordID"  value="" ><br><br>
+                <label for="from">From Date:</label>
+                <input class ="tb5" name="from" type="text" id="from" size="10" />
+                <br><br>
+                <label for="to">To Date:</label>
+                <input class ="tb5" name="to" type="text" id="to" size="10"/>
+                <br><br>
+                <label for="custname">Customer name:</label>
+                <input  class ="searchC tb5"  id ="searchcust" type="text" name="ordcustname" required>&nbsp;&nbsp;<br><br>
+                <div id="resultcust"></div>
+                <input class ="tb5"  type= "submit" value="Submit" name='submitt'>
+        </form>
 
-</div>
-</body>
+    </div>
+    </body>
 
 <?php
 if(isset($_POST['submitt']))
@@ -76,7 +78,13 @@ if(isset($_POST['submitt']))
         $conn->close();
 
     }else{
-         echo "This object is not available." ;
+        echo '<div id="boxes">
+              <div id="dialog" class="window">
+
+              <h1>This object is unavailable</h1>
+              </div>
+              <div id="mask"></div>
+              </div>';
     }
 }
 ?>

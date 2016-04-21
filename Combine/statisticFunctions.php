@@ -15,24 +15,7 @@ function getStatistic($category, $company_name){
 
         $objectsTaken = $conn->query("SELECT * FROM objects WHERE category = '$category' AND manufacturer = '$company_name' AND (client IS NOT NULL OR client != '') ");
         $nbTakenObj = mysqli_num_rows($objectsTaken);
-        //echo $nbTakenObj . "<br>" ;
 
-		//echo $nbTotalObj . "<br>" ;
-
-		//echo "<table> <th>Items:</th> </tr>";
-        // while ( $rows= $allObjects->fetch_assoc())
-        // {
-            //$itemName=$rows['name'];
-            
-
-            //echo"<tr> <td class=\"editable-col\"  contenteditable=\"true\">$itemName </td> " ;
-
-        //}
-        //echo"</table>";
-
-		
-
-        //echo "number of total objects of this company: " . $nbTotalObj . " nb of taken obj of this company: " . $nbTakenObj . "<br>";
         if ($nbTotalObj == 0)
             return 0;
         else
@@ -56,8 +39,6 @@ function getCompanies($category){
          array_push($companies, $company);
          $nb = getStatistic($category, $company);
          echo "<p> <em>$company:</em><strong> $nb% </strong><i>of objects</i></p>";
-         //echo"<tr> <td class=\"editable-col\"  contenteditable=\"true\">$company: $nb </td> " ;
-         //echo"<tr> <td class=\"editable-col\"  contenteditable=\"true\"> </td> " ;
         }
         
     }

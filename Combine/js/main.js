@@ -26,7 +26,7 @@ var jQuery_1_8_2 = $.noConflict();
 })(jQuery_1_8_2);
 
 
-	$(document).ready(function() {
+$(document).ready(function() {
 
 		var id = '#dialog';
 

@@ -20,9 +20,7 @@ $table='clients';
 
 	<link href="table.css" rel="stylesheet" type="text/css">
 	<link href="css/buttons.css" rel="stylesheet" type="text/css" media="all">
-<!-- try adding table sorter-->
-
-
+<!-- added table sorter-->
 		<script type="text/javascript" src="tablesort.js"></script>
 		<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
 </head>

@@ -65,8 +65,7 @@ error_reporting(0);
 			</div>
 
 		</form>
-		<!-- </div>
-	</div>-->
+
 
 <br /><br /><br />
 <table width="500" border="1" cellspacing="0" cellpadding="4" id="tableitem" class="table tablesort">
@@ -146,9 +145,6 @@ if (mysqli_num_rows($sql_result)>0) {
 				echo "<td><span class=\"label label-info\">Available</span></td>"
 		?>
 
-	  <!-- <td> <form $row  id ='checkbox $i' action="" method="post">
-			  <input type="checkbox" name=<?php echo "box "+$row["id"]?> value="Available" class="group1" >
-			  </td>-->
   </tr>
 <?php
 	}

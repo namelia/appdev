@@ -3,13 +3,12 @@
     <meta charset="UTF-8">
     <meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
     <title>Add Customer</title>
-    <link href="additemstyle.css" type="text/css" rel="stylesheet">
-    <script src="js/jquery.validate.min.js"></script>
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="js/jquery-1.8.2.min.js"></script>
-    <script src="js/jquery.validate.min.js"></script>
-    <script src="js/main.js"></script>
+        <link href="additemstyle.css" type="text/css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script src="js/jquery-1.8.2.min.js"></script>
+        <script src="js/jquery.validate.min.js"></script>
+        <script type ="text/javascript" src="js/main.js"></script>
 </head>
 
 <body>
@@ -68,51 +67,7 @@ if(isset($_POST['submit'])) {
     $conn->close();
 }
 ?>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script>
-$(document).ready(function() {
 
-var id = '#dialog';
-
-//Get the screen height and width
-var maskHeight = $(document).height();
-var maskWidth = $(window).width();
-
-//Set heigth and width to mask to fill up the whole screen
-$('#mask').css({'width':maskWidth,'height':maskHeight});
-
-//transition effect
-$('#mask').fadeIn(500);
-$('#mask').fadeTo("slow",0.9);
-
-//Get the window height and width
-var winH = $(window).height();
-var winW = $(window).width();
-
-//Set the popup window to center
-$(id).css('top',  winH/2-$(id).height()/2);
-$(id).css('left', winW/2-$(id).width()/2);
-
-//transition effect
-$(id).fadeIn(2000);
-
-//if close button is clicked
-$('.window .close').click(function (e) {
-//Cancel the link behavior
-e.preventDefault();
-
-$('#mask').hide();
-$('.window').hide();
-});
-
-//if mask is clicked
-$('#mask').click(function () {
-$(this).hide();
-$('.window').hide();
-});
-
-});
-</script>
 </body>
 
 </html>

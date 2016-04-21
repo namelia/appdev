@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Add Product</title>
     <link href="additemstyle.css" type="text/css" rel="stylesheet">
+    <script type ="text/javascript" src="js/main.js"></script>
 </head>
 <div id =sidebar class="visible">
     <?php include("sidebar.php"); ?>
@@ -79,7 +80,7 @@ if(isset($_POST['submitt']))
 }
 ?>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>
     $(document).ready(function() {
 
