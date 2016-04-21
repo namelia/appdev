@@ -50,7 +50,7 @@ if(isset($_POST['submit'])) {
     $details_ = $_POST['details'];
     $phone_ =$_POST['phoneno'];
     $address_ =$_POST['address'];
-    $sql = "INSERT INTO $table (name,email,category,details,phone,address) VALUES ('$cust_name','$email_','$category_','$details_','$phone_','$address_')";
+    $sql = "INSERT INTO clients (name,email,category,details,phone,address) VALUES ('$cust_name','$email_','$category_','$details_','$phone_','$address_')";
 
     if ($conn->query($sql) === TRUE) {
         echo '<div id="boxes">
