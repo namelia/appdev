@@ -26,10 +26,10 @@
             <option value="Others">Others</option>
         </select>
         <br><br>
-        Device Name: <input   class ="tb5" type="text" name="devicename" required value="<?php echo $_GET['name']?>" ><br><br>
+        Device Name: <input   class ="tb5" type="text" name="devicename" required value="<?php echo $_GET['name']?>"><br><br>
         ID: <input  class ="tb5"  type="text" name="ID" required  value="<?php echo $_GET['id']?>" readonly><br><br>
-        Manufacturer: <input   class ="tb5" type="text" name="manufacturer" value="<?php echo $_GET['Manufacturer']?>" ><br><br>
-        Operating System : <input   class ="tb5" type="text" name="OS" value="<?php echo $_GET['OS']?>" ><br><br>
+        Manufacturer: <input   class ="tb5" type="text" name="manufacturer" value="<?php echo $_GET['Manufacturer']?>"><br><br>
+        Operating System : <input   class ="tb5" type="text" name="OS" value="<?php echo $_GET['OS']?>"><br><br>
         UDID: <input   class ="tb5" type="text" name="udid"  value="<?php echo $_GET['UDID']?>"> <br><br>
         Description:
         <br>
