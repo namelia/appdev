@@ -6,7 +6,7 @@ function getOverdueItems($clientName){
 		 $conn=New mysqli('localhost','root','','mobiledevicelendingproject');
         //include("../config.php");
 		$todayy = date("Y-m-d") ;
-		$resultOverdue= $conn->query("SELECT * FROM objects WHERE DATE(endDate) < '$todayy' AND client = '$clientName' ");
+		$resultOverdue= $conn->query("SELECT * FROM objects WHERE DATE(endDate) <= '$todayy' AND client = '$clientName' ");
 		$overdueItems = array();
 		echo $clientName ;
 

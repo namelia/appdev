@@ -6,12 +6,12 @@ include("config.php");
 ?>
 
 <?php if (!(isset($_SESSION['user_info']) && is_array($_SESSION['user_info']))) {
-    header("Location:logout.php");
+    header("Location:index.php?ac=timeout");
     exit();
 }?>
 
 <head>
-    <title>Mobile Device Lending Project</title>
+    <title>UCL Device Lab</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -38,7 +38,7 @@ include("config.php");
 <div id="sidebar" class="sidebar-menu" >
     <div id class="menu">
         <ul id="menu" >
-            <li id="menu-home" ><a href="index.php"><i class="fa fa-tachometer"></i><span>Dashboard</span></a></li>
+            <li id="menu-home" ><a href="dashboard.php"><i class="fa fa-tachometer"></i><span>Dashboard</span></a></li>
             <li><a href="addorder.php"><i class="fa fa-plus"></i><span>Add Order</span></span></a>
             <li id="menu-comunicacao" ><a href="#"><i class="fa fa-tablet nav_icon"></i><span>Products</span><span class="fa fa-angle-right" style="float: right"></span></a>
                 <ul id="menu-comunicacao-sub" >
@@ -62,7 +62,7 @@ include("config.php");
 
             <li><a href="statistics.php"><i class="fa fa-star"></i><span>Statistics</a>
 
-            <li><a href="inbox.php"><i class="fa fa-envelope"></i><span>Returns</a>
+            <li><a href="returns.php"><i class="fa fa-envelope"></i><span>Returns</a>
 
             </li>
             <li id="menu--comunicacao" ><a href="#"><i class="fa fa-download"></i><span>Download</span><span class="fa fa-angle-right" style="float: right"></span></a>
@@ -73,8 +73,8 @@ include("config.php");
             </li>
             <li><a href="#"><i class="fa fa-user-plus"></i><span>Administrator</span><span class="fa fa-angle-right" style="float: right"></span></a>
                 <ul id="menu-academico-sub" >
-                    <li> <a href="profile.php"><i class="fa fa-user-plus"></i>Profile</a> </li>
-                    <li> <a href="logout.php?ac=logout"><i class="fa fa-sign-out"></i>Logout</a> </li>
+                    <li> <a href="administratorinfo.php"><i class="fa fa-user-plus"></i>Profile</a> </li>
+                    <li> <a href="index.php?ac=logout"><i class="fa fa-sign-out"></i>Logout</a> </li>
                 </ul>
             </li>
         </ul>

@@ -15,12 +15,13 @@ $table='clients';
 
 
 <body>
-<div id ="sidebar" class="container">
-	<?php include("sidebar.php"); ?>
-</div>
+<div class = "row">
+	<div class = "sidebar" class="container">
+		<?php include("sidebar.php"); ?>
+	</div>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
 <script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-<div id="table" class="container" style="overflow-x:auto;">
+<div id="table" class="inner-block container" style="overflow-x:auto;">
 <form id="form1" name="form1" method="post" action="viewtablecust.php" autocomplete="off">
  <label>Search:</label>
 <input type="text" name="string" id="string" value="<?php echo stripcslashes($_REQUEST["string"]); ?>" />
@@ -61,13 +62,6 @@ if ($_REQUEST["string"]<>'') {
 if ($_REQUEST["category"]<>'') {
 	$search_category = " AND category= '".mysqli_real_escape_string($conn,$_REQUEST["category"])."'".$search_string.$search_category;
 }
-
-/*($_REQUEST["from"]<>'' and $_REQUEST["to"]<>'')*/
-/* $sql = "SELECT * FROM $table WHERE from_date >= '".mysqli_real_escape_string($conn,$_REQUEST["from"])."' AND to_date <= '".mysqli_real_escape_string($conn,$_REQUEST["to"])."'".$search_string.$search_category;
-} else if ($_REQUEST["from"]<>'') {SE from_date >= '".mysqli_real_escape_string($conn,$_REQUEST["from"])."'".$search_string.$search_category;
-} else if ($_REQUEST["to"]<>'') {
-	$sql = "SELECT * FROM $table WHERE to_date <= '".mysqli_real_escape_string($conn,$_REQUEST["to"])."'".$search_string.$search_category;
-} else {*/
 	$sql = "SELECT * FROM $table WHERE id>0".$search_string .$search_category;
 
 
@@ -93,6 +87,7 @@ if (mysqli_num_rows($sql_result)>0) {
 }
 ?>
 </table>
+</div>
 	</tbody>
 
 <script type="text/javascript">

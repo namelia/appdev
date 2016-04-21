@@ -1,5 +1,8 @@
-<?php include("sidebar.php")?>
 <!DOCTYPE HTML>
+<div id =sidebar class="visible">
+    <?php include("sidebar.php"); ?>
+</div>
+
 <html>
 <head>
     <title>Mobile Device Lending Project</title>
@@ -38,7 +41,7 @@
     <!--//skycons-icons-->
 </head>
 <body>
-    <div class="container">
+    <div class="inner-block container">
         <div class="inbox" style="padding-left:100px ">
             <h2>Returns</h2>
 
@@ -46,7 +49,11 @@
                 <div class="inbox-details-default">
                     <div class="inbox-details-body">
                         <div class="alert alert-info" >
+<<<<<<< HEAD:Combine/inbox.php
                             Currently Overdue items:
+=======
+                            Currently due items:
+>>>>>>> 9bc0e65c3c98b9e8414768c9f905aad0c7fb7ad9:Combine/returns.php
                         </div>
 
 
@@ -64,20 +71,25 @@
                             </thead>
                             <tbody>
                                 <?php
-                                $someID = 0;
-                                if(isset($_POST['submit'])) { $someID = $_GET['id']; }
+                                $someID = -1;
+                                if(isset($_POST['submit'])) {
+                                    $someID = $_GET['id'];
+                                }
                                 $todayy = date("Y-m-d") ;
-                                $sql = "SELECT * FROM $tableobjects WHERE client IS NOT NULL AND ID != $someID AND DATE(endDate) <= '$todayy' ORDER BY endDate";
+                                $sql = "SELECT * FROM $tableobjects WHERE client IS NOT NULL AND DATE(endDate) <= '$todayy' ORDER BY endDate";
+                                if(isset($_POST['submit']) && ($someID != 0)) {
+                                    $sql = "SELECT * FROM $tableobjects WHERE client IS NOT NULL AND ID != $someID AND DATE(endDate) <= '$todayy' ORDER BY endDate";
+                                }
                                 $sql_result =$conn->query($sql) or die ('request "Could not execute SQL query" '.$sql);
 
-                                if ($sql_result-> num_rows!=0)
+                                if (($sql_result-> num_rows!=0) && ($someID != 0))
                                 {
                                     while ( $row= $sql_result->fetch_assoc()) {
                                         $id_ = $row['id'];
                                         $name_ = $row['name'];
                                         $client_ = $row['client'];
                                         $endDate_ = $row['endDate'];
-                                        $url_ = "inbox.php?id=$id_";
+                                        $url_ = "returns.php?id=$id_";
                                         echo "
                                             <tr>
                                             <td>$id_</td>
@@ -88,37 +100,30 @@
                                             <form action=\"$url_ \" method=\"POST\">
                                             <input type=\"submit\" name=\"submit\" value=\"Return item\"> </input></form></td>";
                                         }
+                                    echo "<form action=\"returns.php?id=0\" method=\"POST\">
+                                            <input type=\"submit\" name=\"submit\" value=\"Return all items\"> </input></form></td><br></br>";
                                     }
                                     ?>
 
                                 </tbody>
                             </table>
+<<<<<<< HEAD:Combine/inbox.php
                             <form action="mailing/someTest.php">
                                 <button type="submit" class="button"> Return All</button>
                             </form>
                             <form action="mailing/someTest.php">
                                 <button type="submit" class="button"> Email all clients with overdue items</button>
+=======
+
+                            <form action="mailing/emailsystem.php">
+                                <button type="submit" class="button"> Email all clients with due items</button>
+>>>>>>> 9bc0e65c3c98b9e8414768c9f905aad0c7fb7ad9:Combine/returns.php
                             </form>
 
 
                         </div>
-                    <!-- <form class="com-mail">
-                        <input type="text" value="To :" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'To';}">
-                        <input type="text" value="Subject :" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Subject';}">
 
-                        <textarea rows="6" value="Message :" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}">Message </textarea> -->
-                        <!-- <div class="form-group">
-                            <div class="btn btn-default btn-file">
-                                <i class="fa fa-paperclip"> </i> Attachment
-                                <input type="file" name="attachment">
-                            </div>
-                        </div> -->
-                        <!-- <input type="submit" value="Send Message">
-                    </form> -->
-
-
-
-            <div class="clearfix"> </div>
+                        
         </div>
 
     </div>
@@ -129,10 +134,13 @@
     </div>
     <?php
     if(isset($_POST['submit'])) {
-        $someID = $_GET['id'];
         $beginDate_ = " ";
         $endDate_ = " ";
-        $sql = "UPDATE objects SET client=NULL,beginDate='$beginDate_',endDate='$endDate_' WHERE id =$someID";
+        if ($someID != 0) {
+            $sql = "UPDATE objects SET client=NULL,beginDate='$beginDate_',endDate='$endDate_' WHERE id =$someID";
+        } else {
+            $sql = "UPDATE objects SET client=NULL,beginDate='$beginDate_',endDate='$endDate_'";
+        }
         if ($conn->query($sql) === TRUE) {
             echo '<div id="boxes">
               <div id="dialog" class="window">
@@ -157,7 +165,7 @@
             var maskHeight = $(document).height();
             var maskWidth = $(window).width();
 
-//Set heigth and width to mask to fill up the whole screen
+//Set height and width to mask to fill up the whole screen
             $('#mask').css({'width':maskWidth,'height':maskHeight});
 
 //transition effect

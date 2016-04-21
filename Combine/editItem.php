@@ -11,7 +11,7 @@
 <body>
 
 
-<div class="container">
+<div class="inner-block container">
     <form action="editItem.php?id=<?php echo $_GET['id']?>&name=<?php echo $_GET['name']?>&description=<?php echo $_GET['description']?>&category=<?php echo $_GET['category']?>&OS=<?php echo $_GET['OS']?>&IMEI=<?php echo $_GET['IMEI']?>&Serial=<?php echo $_GET['Serial']?>&UDID=<?php echo $_GET['UDID']?>&Manufacturer=<?php echo $_GET['Manufacturer']?>" method="post" autocomplete="off">
         Category:
         <select  class ="tb5"name="category">
@@ -33,7 +33,7 @@
         UDID: <input   class ="tb5" type="text" name="udid"  value="<?php echo $_GET['UDID']?>"> <br><br>
         Description:
         <br>
-        <textarea  class ="tb6" name="message"rows="10"cols="20" class="form-control" rows="10"><?php echo $_GET['description']?></textarea>
+        <textarea  class ="tb6" name="message"rows="11"cols="20" class="form-control" rows="11"><?php echo $_GET['description']?></textarea>
         <br><br>
         <button type="button" style=" border-radius:10px;   border:2px solid #456879;" data-toggle="collapse" data-target="#more">
             <span data-toggle="tooltip" data-placement="right" title="Add more Details"> Add More Details</span>
@@ -43,7 +43,7 @@
             IMEI: <input   class ="tb5" type="text" name="imei"  value=" <?php echo $_GET['IMEI']?>" ><br><br>
             Serial Number: <input   class ="tb5" type="text" name="serialno" value="<?php echo $_GET['Serial']?> " ><br><br>
         </div>
-        <input type= "submit" value="Update" name="Update">
+        <input class ="tb5" type= "submit" value="Update" name="Update">
     </form>
 
 </div>

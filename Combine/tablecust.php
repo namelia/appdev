@@ -1,5 +1,4 @@
 <?php
-
 error_reporting(0);
 include("config.php");
 $table='clients';
@@ -30,12 +29,13 @@ $table='clients';
 
 
 <body>
-<div id ="sidebar" class="container">
-	<?php include("sidebar.php"); ?>
-</div>
+<div class = "row">
+	<div class = "sidebar" class="container">
+		<?php include("sidebar.php"); ?>
+	</div>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
 <script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-<div id="table" class="container" style="overflow-x:auto;">
+<div id="table" class="inner-block container" style="overflow-x:auto;">
 <form id="form1" name="form1" method="post" action="tablecust.php" autocomplete="off">
 	<label>Search:</label>
 	<input type="text" name="string" id="string" value="<?php echo stripcslashes($_REQUEST["string"]); ?>" />
@@ -101,27 +101,11 @@ if (mysqli_num_rows($sql_result)>0) {
 	  <td> $address_</td>
 	  <td> $details_</td>
 	  <td><form action=\"editCustomer.php?category=$category_&customername=$name_&email=$email_&phone=$phone_&address=$address_&details=$details_&id=$id_ \" method=\"POST\">
-		  <input type=\"submit\" name=\"submitec\" value=\"Edit\"> </input></form></td>
+		  <input type=\"submit\" name=\"submitec\" value=\"Edit\" class = \"tb5\"> </input></form></td>
 
 	  <td><form action=\"tablecust.php?id=$id_\" method=\"POST\">
-			  <input type=\"submit\" name=\"submitrc\" value=\"Remove\"> </input></form></td>
+			  <input type=\"submit\" name=\"submitrc\" value=\"Remove\" class = \"tb5\"> </input></form></td>
 			    </tr>
-		<!--<?php if ($count==1)
-		{
-		<div class=\"cd-popup\" role=\"alert\">
-		  <div class=\"cd-popup-container\">
-			  <p>Are you sure you want to delete this element?</p>
-			  <ul class=\"cd-buttons\">
-			  <form action=\"tablecust.php ? id = $id_\" method=\"POST\">
-				  <input type=\"submit\" name=\"submitrc\" value=\"YES\"> </input></form></td>
-			   	  </tr>
-				  <li><a href=\"tablecust.php?id=$id_;\">Yes</a></li>
-				  <li><a href=\"tablecust.php\">No</a></li>
-			  </ul>
-			  <a  class=\"cd-popup-close img-replace\">Close</a>
-		  </div>
-
-		}-->
 ";
 
 
@@ -130,9 +114,6 @@ if (mysqli_num_rows($sql_result)>0) {
 
 <?php
 	}
-
-
-
 } else {
 ?>
 <tr><td colspan="9">No results found.</td>
@@ -141,6 +122,7 @@ if (mysqli_num_rows($sql_result)>0) {
 ?>
 	</tbody>
 </table>
+</div>
 
 
 
@@ -157,8 +139,6 @@ if (mysqli_num_rows($sql_result)>0) {
 <script type="text/javascript src="simple-confirmation-popup/js/main.js"></script> <!-- Resource jQuery -->
 
 <?php
-
-include("config.php");
 if(isset ($_POST['submitrc'])) {
 		if ($conn->connect_error) {
 			die("Connection failed: " . $conn->connect_error);

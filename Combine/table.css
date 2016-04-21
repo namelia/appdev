@@ -1,3 +1,10 @@
+.tb5 {
+    border:2px solid #456879;
+    border-radius:10px;
+    height: 30px;
+    width: 100px;
+}
+
 .tablesorter-default {
     width: 100%;
     font: 15px/18px Arial, Sans-serif;
