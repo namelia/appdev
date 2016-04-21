@@ -1,7 +1,7 @@
 div.card {
      /*display: inline-block;*/
      font-family: 'Trebuchet MS';
-     width: 650px;
+     width: 600px;
      margin: 321px;
      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
      text-align: left;
@@ -9,14 +9,14 @@ div.card {
 div.cardmin {
     /*display: inline-block;*/
     font-family: 'Trebuchet MS';
-    width: 650px;
-    margin: 30px;
+    width: 550px;
+    margin: 15px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     text-align: left;
 }
 
 div.mega {
-  width: 1000px;
+  width: 600px;
   padding-bottom: 10px;
   margin-top: 60px;
 }

@@ -1,6 +1,5 @@
 <?php
 error_reporting(0);
-$table='objects';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,15 +7,13 @@ $table='objects';
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>View Products</title>
 
-
 	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
 	<link href="table.css" rel="stylesheet" type="text/css">
 
 </head>
 
-
 <body>
-<div class="row">
+	<div class="row">
 		<div id ="sidebar" class="container">
 			<?php include("sidebar.php"); ?>
 		</div>
@@ -44,7 +41,7 @@ $table='objects';
 				<select name="category" id="cat">
 				<option value="">--</option>
 				<?php
-					$query= $conn->query("SELECT * FROM $table GROUP BY category ORDER BY category")or die ('request "Could not execute SQL query" '.$sql);
+					$query= $conn->query("SELECT * FROM objects GROUP BY category ORDER BY category")or die ('request "Could not execute SQL query" '.$sql);
 					while ($row = $query->fetch_assoc()) {
 						echo "<option value='".$row["category"]."'".($row["category"]==$_REQUEST["category"] ? " selected" : "").">".$row["category"]."</option>";
 					}
@@ -80,7 +77,7 @@ $table='objects';
       <th width="159">Name</th>
 	  <th width="95">OS</th>
 	  <th width="95">UDID</th>
-	  <th width="95"> Start Date</th>
+	  <th width="95">Start Date</th>
 	  <th width="95">End Date</th>
       <th width="191">Client</th>
 	  <th width="30">Status</th>
@@ -98,28 +95,28 @@ if ($_REQUEST["category"]<>'') {
 
 if ($_REQUEST["from"]<>'' and $_REQUEST["to"]<>'')
 {
-	$sql = "SELECT * FROM $table WHERE beginDate >= '".mysqli_real_escape_string($conn,$_REQUEST["from"])."' AND endDate <= '".mysqli_real_escape_string($conn,$_REQUEST["to"])."'".$search_string.$search_category;
+	$sql = "SELECT * FROM objects WHERE beginDate >= '".mysqli_real_escape_string($conn,$_REQUEST["from"])."' AND endDate <= '".mysqli_real_escape_string($conn,$_REQUEST["to"])."'".$search_string.$search_category;
 } else if ($_REQUEST["from"]<>'')
 {
-	$sql = "SELECT * FROM $table WHERE beginDate >= '".mysqli_real_escape_string($conn,$_REQUEST["from"])."'".$search_string.$search_category;
+	$sql = "SELECT * FROM objects WHERE beginDate >= '".mysqli_real_escape_string($conn,$_REQUEST["from"])."'".$search_string.$search_category;
 } else if ($_REQUEST["to"]<>'')
 {
-	$sql = "SELECT * FROM $table WHERE endDate<= '".mysqli_real_escape_string($conn,$_REQUEST["to"])."'".$search_string.$search_category;
+	$sql = "SELECT * FROM objects WHERE endDate<= '".mysqli_real_escape_string($conn,$_REQUEST["to"])."'".$search_string.$search_category;
 }else if($_REQUEST["status"]=="Available")
 {
-	$sql = "SELECT * FROM $table WHERE client IS NULL".$search_string.$search_category;
+	$sql = "SELECT * FROM objects WHERE client IS NULL".$search_string.$search_category;
 }
 else if($_REQUEST["status"]=="On Loan")
 {
 
-	$sql = "SELECT * FROM $table WHERE client IS NOT NULL AND CURDATE()< endDate ".$search_string.$search_category ;
+	$sql = "SELECT * FROM objects WHERE client IS NOT NULL AND CURDATE()<=endDate ".$search_string.$search_category ;
 }
 else if($_REQUEST["status"]=="Overdue")
 {
-	$sql = "SELECT * FROM $table WHERE client IS NOT NULL AND CURDATE()>endDate ".$search_string.$search_category ;
+	$sql = "SELECT * FROM objects WHERE client IS NOT NULL AND CURDATE()>endDate ".$search_string.$search_category ;
 }
 else {
-	$sql = "SELECT * FROM $table WHERE id>0".$search_string.$search_category;
+	$sql = "SELECT * FROM objects WHERE id>0".$search_string.$search_category;
 }
 
 $sql_result =$conn->query($sql) or die ('request "Could not execute SQL query" '.$sql);

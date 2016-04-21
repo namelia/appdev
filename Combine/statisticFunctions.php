@@ -55,7 +55,7 @@ function getCompanies($category){
         if (!in_array($company, $companies)){
          array_push($companies, $company);
          $nb = getStatistic($category, $company);
-         echo "<h3> <em>$company:</em><strong> $nb% </strong><i>of objects</i></h3>";
+         echo "<p> <em>$company:</em><strong> $nb% </strong><i>of objects</i></p>";
          //echo"<tr> <td class=\"editable-col\"  contenteditable=\"true\">$company: $nb </td> " ;
          //echo"<tr> <td class=\"editable-col\"  contenteditable=\"true\"> </td> " ;
         }

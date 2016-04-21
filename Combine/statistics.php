@@ -9,15 +9,12 @@ include("statisticFunctions.php");
    <div class="mega card">
 
        <div class="header">
-
            <h1> Statistics </h1> <br>
        </div>
 
        <div class="containerr">
            <h4><em>(units expressed in % of devices of each company currently in use) </em> </h4>
        </div>
-       
-       
        <?php
 
         $resultCategories= $conn->query("SELECT category FROM objects ");
@@ -37,20 +34,17 @@ include("statisticFunctions.php");
         $lengthA = count($categories); 
         for ($i=0; $i < $lengthA; $i++) { //for each category...
             //...find all the companies/manufacturers (eg Apple ,Samsung..) and their percentage of use
-
-            //echo "<br>"."<br>" ;
-
             echo "<div class='cardmin'>" ; //beginning of a card
                 echo "<div class='header'>"; //beginning of title
 
-                    echo "<h2> $categories[$i]: </h2>" ;
+                    echo "<em> $categories[$i]: </em>" ;
 
                 echo "</div>"; //end of title
-                echo "<div class='containerr'>"; //beginning of content
+                echo "<div class='containerr'><h4>"; //beginning of content
 
                     getCompanies($categories[$i]);
 
-                echo "</div>"; //end of content
+                echo "</h4></div>"; //end of content
             echo"</div>"; // end of a card
         }
         
