@@ -24,11 +24,11 @@
                 <option value="Others">Others</option>
             </select>
             <br><br>
-            Device Name:       <input   class ="tb5" type="text" name="devicename" required value=" " ><br><br>
-            ID:                <input  class ="tb5"  type="text" name="ID" required  value=" " ><br><br>
-            Manufacturer:      <input   class ="tb5" type="text" name="manufacturer" value=" " ><br><br>
-            Operating System : <input   class ="tb5" type="text" name="OS" value=" " ><br><br>
-            UDID:              <input   class ="tb5" type="text" name="udid"  value=" " ><br><br>
+            Device Name:       <input   class ="tb5" type="text" name="devicename" required value="" ><br><br>
+            ID:                <input  class ="tb5"  type="text" name="ID" required  value="" ><br><br>
+            Manufacturer:      <input   class ="tb5" type="text" name="manufacturer" value="" ><br><br>
+            Operating System : <input   class ="tb5" type="text" name="OS" value="" ><br><br>
+            UDID:              <input   class ="tb5" type="text" name="udid"  value="" ><br><br>
             Description:
             <br>
             <textarea  class ="tb6" name="message"rows="10"cols="20" class="form-control" rows="10"></textarea>
@@ -38,8 +38,8 @@
             </button>
             <br><br>
             <div id="more" class="collapse" >
-            IMEI:            <input   class ="tb5" type="text" name="imei"  value=" " ><br><br>
-            Serial Number:   <input   class ="tb5" type="text" name="serialno" value=" " ><br><br>
+            IMEI:            <input   class ="tb5" type="text" name="imei"  value="" ><br><br>
+            Serial Number:   <input   class ="tb5" type="text" name="serialno" value="" ><br><br>
             </div>
             <input class ="tb5"  type= "submit" value="Submit" name='submitt'>
         </form>

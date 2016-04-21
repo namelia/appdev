@@ -20,8 +20,8 @@
             <option value="External Other Customer">External Other Customer</option>
         </select>
         <br><br>
-            Customer name: <input   class ="tb5" type="text" name="customername" required value="<?php echo $_GET['customername']?> " ><br><br>
-            Email address: <input  class ="form-control required tb5" type="email" name="email" required  value="<?php echo $_GET['email']?> "><br><br>
+            Customer name: <input   class ="tb5" type="text" name="customername" required value="<?php echo $_GET['customername']?>" ><br><br>
+            Email address: <input  class ="form-control required tb5" type="email" name="email" required  value="<?php echo $_GET['email']?>"><br><br>
             Phone: <input   class ="tb5" type="text" name="phone" value="<?php echo $_GET['phone']?>" ><br><br>
             Address: <input   class ="tb5" type="text" name="address"  value="<?php echo $_GET['address']?>"> <br><br>
             Other details:

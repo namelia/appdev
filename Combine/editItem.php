@@ -15,7 +15,7 @@
     <form action="editItem.php?id=<?php echo $_GET['id']?>&name=<?php echo $_GET['name']?>&description=<?php echo $_GET['description']?>&category=<?php echo $_GET['category']?>&OS=<?php echo $_GET['OS']?>&IMEI=<?php echo $_GET['IMEI']?>&Serial=<?php echo $_GET['Serial']?>&UDID=<?php echo $_GET['UDID']?>&Manufacturer=<?php echo $_GET['Manufacturer']?>" method="post" autocomplete="off">
         Category:
         <select  class ="tb5"name="category">
-            <option value="<?php echo $_GET['category']?>"> <?php echo $_GET["category"]; ?></option>
+            <option value="<?php echo $_GET['category']?>"> <?php echo $_GET["category"];?></option>
             <option value="Development Kit">Development Kit</option>
             <option value="iBeacon">iBeacon</option>
             <option value="iPod">iPod</option>
@@ -26,8 +26,8 @@
             <option value="Others">Others</option>
         </select>
         <br><br>
-        Device Name: <input   class ="tb5" type="text" name="devicename" required value="<?php echo $_GET['name']?> " ><br><br>
-        ID: <input  class ="tb5"  type="text" name="ID" required  value="<?php echo $_GET['id']?> " readonly><br><br>
+        Device Name: <input   class ="tb5" type="text" name="devicename" required value="<?php echo $_GET['name']?>" ><br><br>
+        ID: <input  class ="tb5"  type="text" name="ID" required  value="<?php echo $_GET['id']?>" readonly><br><br>
         Manufacturer: <input   class ="tb5" type="text" name="manufacturer" value="<?php echo $_GET['Manufacturer']?>" ><br><br>
         Operating System : <input   class ="tb5" type="text" name="OS" value="<?php echo $_GET['OS']?>" ><br><br>
         UDID: <input   class ="tb5" type="text" name="udid"  value="<?php echo $_GET['UDID']?>"> <br><br>
@@ -40,8 +40,8 @@
         </button>
         <br><br>
         <div id="more" class="collapse" >
-            IMEI: <input   class ="tb5" type="text" name="imei"  value=" <?php echo $_GET['IMEI']?>" ><br><br>
-            Serial Number: <input   class ="tb5" type="text" name="serialno" value="<?php echo $_GET['Serial']?> " ><br><br>
+            IMEI: <input   class ="tb5" type="text" name="imei"  value="<?php echo $_GET['IMEI']?>"><br><br>
+            Serial Number: <input   class ="tb5" type="text" name="serialno" value="<?php echo $_GET['Serial']?>" ><br><br>
         </div>
         <input class ="tb5" type= "submit" value="Update" name="Update">
     </form>
