@@ -49,11 +49,9 @@
                 <div class="inbox-details-default">
                     <div class="inbox-details-body">
                         <div class="alert alert-info" >
-<<<<<<< HEAD:Combine/inbox.php
+
                             Currently Overdue items:
-=======
-                            Currently due items:
->>>>>>> 9bc0e65c3c98b9e8414768c9f905aad0c7fb7ad9:Combine/returns.php
+
                         </div>
 
 
@@ -107,17 +105,10 @@
 
                                 </tbody>
                             </table>
-<<<<<<< HEAD:Combine/inbox.php
-                            <form action="mailing/someTest.php">
-                                <button type="submit" class="button"> Return All</button>
-                            </form>
-                            <form action="mailing/someTest.php">
-                                <button type="submit" class="button"> Email all clients with overdue items</button>
-=======
 
                             <form action="mailing/emailsystem.php">
                                 <button type="submit" class="button"> Email all clients with due items</button>
->>>>>>> 9bc0e65c3c98b9e8414768c9f905aad0c7fb7ad9:Combine/returns.php
+
                             </form>
 
 
