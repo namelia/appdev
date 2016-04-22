@@ -14,8 +14,8 @@
 <body>
     <div class="inner-block container"id ="itemcont">
         <form action="additem.php" method="post" autocomplete="off">
-            Please enter the category, name and ID of a single product. The other fields are not required, but make management easier.
-            <br><br>
+            <div style ="font-size:15px">Please enter the category, name and ID of a single product. The other fields are not required, but make management easier.
+            <br><br></div>
             Category:
             <select  class ="tb5"name="category">
                 <option value="Phone">Phone</option>

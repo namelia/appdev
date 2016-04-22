@@ -15,27 +15,38 @@
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
 <script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-
+<?php
+if (isset($_POST['submitt'])) {
+    $from_ = $_POST['from'];
+    $to_ = $_POST['to'];
+    $client_ = $_POST['ordcustname'];
+} else {
+    $from_ = "";
+    $to_ = "";
+    $client_ = "";
+}?>
     <div class="inner-block container"id ="itemcont">
         <form action="addorder.php" method="post" autocomplete="off">
-            Please enter the ID <b>or</b> name of a <b>single product at a time</b>. In the case of multiple items with the same name, the item with the smallest ID wins.
+            <div style ="font-size:15px"> Please enter the ID <b>or</b> name of a <b>single product at a time</b>. In the case of multiple items with the same name, the item with the smallest ID wins.
             <br><br>
-            Customers must be added to the customer system in order to work with autocomplete and the overdue notification system, but can be entered free-form under time constraints.
+            If the client wants to order multiple items at the same time, do them one by one; the From, To and Customer fields will stay filled between submissions and the Returns page will link them.
             <br><br>
+            Customers must be added to the customer database in order to work with autocomplete and the overdue notification system, but can be entered free-form first and then associated with customers later.
+            <br><br></div>
             <div class="content">
                 <label for="name">Device name:</label>
                 <input class ="search tb5" id ="searchitem" type="text" name="orddevicename">&nbsp;&nbsp;<br><br>
                 <div id="resultitem"></div>
                 <label for="id">ID:</label>
                 <input  class ="ui-autocomplete-input tb5"  type="text" name="ordID"  value="" ><br><br>
-                <label for="from">From Date:</label>
-                <input class ="tb5" name="from" type="text" id="from" size="10" />
+                <label for="from">From date:</label>
+                <input class ="tb5" name="from" type="text" id="from" size="10" value="<?php echo $from_;?>" />
                 <br><br>
-                <label for="to">To Date:</label>
-                <input class ="tb5" name="to" type="text" id="to" size="10"/>
+                <label for="to">To date:</label>
+                <input class ="tb5" name="to" type="text" id="to" size="10" value="<?php echo $to_;?>" />
                 <br><br>
                 <label for="custname">Customer name:</label>
-                <input  class ="searchC tb5"  id ="searchcust" type="text" name="ordcustname" required>&nbsp;&nbsp;<br><br>
+                <input  class ="searchC tb5"  id ="searchcust" type="text" name="ordcustname" required value="<?php echo $client_;?>">&nbsp;&nbsp;<br><br>
                 <div id="resultcust"></div>
                 <input class ="tb5"  type= "submit" value="Submit" name='submitt'>
         </form>

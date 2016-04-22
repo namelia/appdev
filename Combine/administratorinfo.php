@@ -40,6 +40,10 @@ if(isset($_POST['Update']))
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
+    echo '<div id="boxes">
+              <div id="dialog" class="window">
+
+              <h1>';
     $oldpass_ = md5($_POST['oldpass']);
     $id_ = $_SESSION['user_info']['id'];
     $current_ = $conn->query("SELECT * FROM login WHERE `id` = '$id_'") or die ('request "Could not execute SQL query" '.$sql);
@@ -61,41 +65,23 @@ if(isset($_POST['Update']))
                 if(!empty($user)) {
                     $_SESSION['user_info'] = $user;
                 }
-                echo '<div id="boxes">
-                  <div id="dialog" class="window">
-    
-                  <h1>Details have been modified!</h1>
-                  </div>
-                  <div id="mask"></div>
-                  </div>';
+                echo 'Details have been modified!';
 
             } else {
-                echo '<div id="boxes">
-              <div id="dialog" class="window">
-
-              <h1>Error: '. $sql . '<br>' . $conn->error .'</h1>
-              </div>
-              <div id="mask"></div>
-              </div>';
+                echo '<Error: '. $sql . '<br>' . $conn->error;
             }
         }
         else {
-            echo '<div id="boxes">
-                <div id="dialog" class="window">
-                <h1>New passwords do not match...</h1>
-                </div>
-                <div id="mask"></div>
-                </div>';
+            echo 'New passwords do not match...';
         }
     }
     else {
-        echo '<div id="boxes">
-                <div id="dialog" class="window">
-                <h1>Old password does not match records...</h1>
-                </div>
-                <div id="mask"></div>
-                </div>';
+        echo 'Old password does not match records...';
     }
+    echo '</h1>
+              </div>
+              <div id="mask"></div>
+              </div>';
 }
 $conn->close();
 ?>
