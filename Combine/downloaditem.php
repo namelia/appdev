@@ -12,7 +12,7 @@ header('Content-Disposition: attachment; filename=product.csv');
 $output = fopen('php://output', 'w');
 
 // Headings...
-fputcsv($output, array('category','name', 'id', 'os','manufacturer', 'description','UDID','IMEI','serial'));
+fputcsv($output, array('Category','Name','ID','OS','Manufacturer','Description','UDID','IMEI','serial'));
 
 // ...and rows!
 while ($rows = $resultSet->fetch_assoc()) fputcsv($output, $rows);

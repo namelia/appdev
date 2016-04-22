@@ -2,7 +2,7 @@
 // Written by Pierce.
 include("config.php");
 // Query...
-$resultSet= $conn->query("SELECT id,name,category,email,phone,address,details FROM clients");
+$resultSet= $conn->query("SELECT name,category,email,phone,address,details FROM clients");
 
 // Don't look... Download!
 header('Content-Type: text/csv; charset=utf-8');
@@ -12,7 +12,7 @@ header('Content-Disposition: attachment; filename=customer.csv');
 $output = fopen('php://output', 'w');
 
 // Headings...
-fputcsv($output, array('id','name','category', 'email', 'phone','address', 'details'));
+fputcsv($output, array('Name','Category','Email','Phone','Address','Details'));
 
 // ...and rows!
 while ($rows = $resultSet->fetch_assoc()) fputcsv($output, $rows);
