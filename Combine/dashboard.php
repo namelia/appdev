@@ -85,7 +85,7 @@ $tableclients='clients';
 <!--market updates updates-->
 	 <div class="market-updates">
 			<div class="col-md-4 market-update-gd">
-				<div class="market-update-block clr-block-1" onclick=window.location.href="tableItem.php">
+				<div class="market-update-block clr-block-1" onclick=window.location.href="returns.php">
 					<div class="col-md-8 market-update-left" >
 						<?php
 						$sql2 ="SELECT * FROM objects WHERE beginDate=CURDATE()";
