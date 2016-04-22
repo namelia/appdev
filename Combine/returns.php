@@ -94,7 +94,7 @@
                                             $emailbutton_ = "";
                                         } else {
                                             $client_prev = strtoupper($client_);
-                                            echo "<tr><td></td></tr>";
+                                            echo "<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>";
                                         }
                                         echo "
                                             <tr>
