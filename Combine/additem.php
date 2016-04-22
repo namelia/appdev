@@ -5,10 +5,12 @@
     <title>Add Product</title>
     <link href="additemstyle.css" type="text/css" rel="stylesheet">
     <script type ="text/javascript" src="js/main.js"></script>
+
 </head>
 <div id =sidebar class="visible">
     <?php include("sidebar.php"); ?>
 </div>
+
 <body>
     <div class="inner-block container"id ="itemcont">
         <form action="additem.php" method="post" autocomplete="off">
@@ -43,6 +45,7 @@
             <input class ="tb5"  type= "submit" value="Submit" name='submitt'>
         </form>
     </div>
+
 </body>
 
 
