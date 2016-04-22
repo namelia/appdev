@@ -11,4 +11,4 @@ Now you will be able to access the Mobile Device Lending System via http://local
 
 If you ever lose access to the system, the email is stored in plaintext in the login database and the password is hashed with PHP's default md5().
 
-Please note that if you change the login settings of the phpMyAdmin server, you will need to update these in the file "appdev/Combine/config.php".
+Please note that if you change the login settings of the phpMyAdmin server, you will need to update these in the file "appdev/Combine/config.php". The email mailer, meanwhile, is configured in /mailing/sendemail.php, and is currently using a generic gmail account - it is up to you whether it is worth configuring a new local email address to send from.
