@@ -85,8 +85,8 @@ $tableclients='clients';
 <!--market updates updates-->
 	 <div class="market-updates">
 			<div class="col-md-4 market-update-gd">
-				<div class="market-update-block clr-block-1">
-					<div class="col-md-8 market-update-left">
+				<div class="market-update-block clr-block-1" onclick=window.location.href="tableItem.php">
+					<div class="col-md-8 market-update-left" >
 						<?php
 						$sql2 ="SELECT * FROM objects WHERE beginDate=CURDATE()";
 						$sql  ="SELECT * FROM objects WHERE client IS NOT NULL";
@@ -105,8 +105,8 @@ $tableclients='clients';
 				  <div class="clearfix"> </div>
 				</div>
 			</div>
-			<div class="col-md-4 market-update-gd">
-				<div class="market-update-block clr-block-2">
+			<div class="col-md-4 market-update-gd" >
+				<div class="market-update-block clr-block-2" onclick=window.location.href="tablecust.php" >
 				 <div class="col-md-8 market-update-left">
 					 <?php
 					 $sql = "SELECT * FROM $tableclients";
@@ -122,8 +122,8 @@ $tableclients='clients';
 				  <div class="clearfix"> </div>
 				</div>
 			</div>
-			<div class="col-md-4 market-update-gd">
-				<div class="market-update-block clr-block-3">
+			<div class="col-md-4 market-update-gd" >
+				<div class="market-update-block clr-block-3" onclick=window.location.href="tableItem.php">
 					<?php
 					$sql3 = "SELECT * FROM $tableobjects";
 					$sql = "SELECT * FROM $tableobjects WHERE client is NULL";

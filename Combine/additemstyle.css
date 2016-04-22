@@ -1,3 +1,5 @@
+
+
 .container :not(.subut)
 {
     width:500px;
@@ -28,16 +30,18 @@ div#responseitem {
     border-radius:10px;
     height: 30px;
     width: 222px;
+    background: #fafafa;
+    padding-left:30px;
 }
 .tb6 {
     border:2px solid #456879;
     border-radius:10px;
     height: 80px;
     width: 230px;
+    padding-left:30px;
+    background: #fafafa
 }
-.inner-block {
-    background: #fafafa;
-}
+
 
 #searchitem,#searchcust
 {
@@ -108,4 +112,11 @@ form
     bottom: 0px;
     width: 250px;
     left: 250px;
+}
+body
+{
+    background: #00bf8f; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #00bf8f , #001510); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #00bf8f , #001510); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
