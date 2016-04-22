@@ -43,7 +43,7 @@
                     <div class="inbox-details-body">
                         <div class="alert alert-info" >
 
-                            Currently overdue items:
+                            Currently overdue items, grouped by customer:
 
                         </div>
 
