@@ -17,6 +17,10 @@
 </div>
 <div class="inner-block container"id=custcont" >
     <form action="addcustomer.php" method="post" autocomplete="off">
+        Please enter the name, email address and category of a single customer. The other fields are not required, but make management easier.
+        <br><br>
+        Please note that the order system cannot distinguish between two customers with the same name.
+        <br><br>
         Customer name: <input  class ="tb5" type="text" name="custname" required><br><br>
         Email address: <input  class =" form-control required tb5 " type="email" name="custemail"" required><br><br>
         Category:

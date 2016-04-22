@@ -169,12 +169,19 @@ $tableclients='clients';
 									$sql_result =$conn->query($sql) or die ('request "Could not execute SQL query" '.$sql);
 									if ($sql_result-> num_rows!=0)
 									{
+										$client_prev = "";
 										while ( $row= $sql_result->fetch_assoc())
 										{
 											$id=$row['id'];
 											$name=$row['name'];
 											$client=$row['client'];
 											$endDate=$row['endDate'];
+											if ($client_prev == strtoupper($client)) {
+												$client = "";
+											} else {
+												$client_prev = strtoupper($client);
+												echo "<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>";
+											}
 									        echo"
 											<tr>
 											<td>$id</td>

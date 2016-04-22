@@ -14,6 +14,10 @@ if (!isset($_POST['Update']))
 {?>
 <div class="inner-block container">
     <form action="editCustomer.php?category=<?php echo $_GET['category']?>&customername=<?php echo $_GET['customername']?>&email=<?php echo $_GET['email']?>&phone=<?php echo $_GET['phone']?>&address=<?php echo $_GET['address']?>&details=<?php echo $_GET['details']?>&id=<?php echo $_GET['id']?>" method="post" autocomplete="off">
+        This page will update the client database as well as every order that is currently made under that customer's name.
+        <br><br>
+        Please note that the order system cannot distinguish between two customers with the same name.
+        <br><br>
         Category:
         <select  class ="tb5"name="category">
             <option value="<?php echo $_GET['category']?>"> <?php echo $_GET["category"]; ?></option>
@@ -36,6 +40,10 @@ if (!isset($_POST['Update']))
 <?php } else { ?>
     <div class="inner-block container">
         <form action="editCustomer.php?category=<?php echo $_POST['category']?>&customername=<?php echo $_POST['customername']?>&email=<?php echo $_POST['email']?>&phone=<?php echo $_POST['phone']?>&address=<?php echo $_POST['address']?>&details=<?php echo $_POST['details']?>&id=<?php echo $_POST['id']?>" method="post" autocomplete="off">
+            This page will update the client database as well as every order that is currently made under that customer's name.
+                <br><br>
+                Please note that the order system cannot distinguish between two customers with the same name.
+            <br><br>
             Category:
             <select  class ="tb5"name="category">
                 <option value="<?php echo $_POST['category']?>"> <?php echo $_POST["category"]; ?></option>
@@ -64,7 +72,6 @@ if (!isset($_POST['Update']))
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-         //$someID = $_GET['id'];
          $category_ = $_POST['category'];
          $email_ = $_POST['email'];
          $customername_ = $_POST['customername'];
@@ -74,11 +81,14 @@ if (!isset($_POST['Update']))
          $details_ = $_POST['details'];
          
          $id_ = ($_GET['id']);
+         $prevcustomername_ = $_GET['customername'];
          
          
 
-    $sql = "UPDATE clients SET name = '$customername_', email ='$email_' ,category=' $category_',category='$category_',address='$address_',phone='$phone_',details=' $details_'WHERE id = '$id_' ";
-    if ($conn->query($sql) === TRUE) {
+    $sql = "UPDATE clients SET name = '$customername_', email ='$email_' ,category=' $category_',category='$category_',address='$address_',phone='$phone_',details=' $details_'WHERE id = '$id_'";
+    $sql2 = "UPDATE objects SET client = '$customername_' WHERE client = '$prevcustomername_'";
+
+    if (($conn->query($sql) === TRUE) && ($conn->query($sql2) === TRUE)) {
 
         echo '<div id="boxes">
               <div id="dialog" class="window">

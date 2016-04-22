@@ -15,6 +15,8 @@ if (!isset($_POST['Update']))
 {?>
     <div class="inner-block container">
         <form action="editItem.php?id=<?php echo $_GET['id']?>&name=<?php echo $_GET['name']?>&description=<?php echo $_GET['description']?>&category=<?php echo $_GET['category']?>&OS=<?php echo $_GET['OS']?>&IMEI=<?php echo $_GET['IMEI']?>&Serial=<?php echo $_GET['Serial']?>&UDID=<?php echo $_GET['UDID']?>&Manufacturer=<?php echo $_GET['Manufacturer']?>" method="post" autocomplete="off">
+            Modifying details for product ID <?php echo $_GET['id']?>:
+            <br><br>
             Category:
             <select  class ="tb5"name="category">
                 <option value="<?php echo $_GET['category']?>"> <?php echo $_GET["category"];?></option>
@@ -28,7 +30,6 @@ if (!isset($_POST['Update']))
                 </select>
             <br><br>
             Device Name: <input   class ="tb5" type="text" name="devicename" required value="<?php echo $_GET['name']?>"><br><br>
-            ID: <input  class ="tb5"  type="text" name="ID" required  value="<?php echo $_GET['id']?>" readonly><br><br>
             Manufacturer: <input   class ="tb5" type="text" name="manufacturer" value="<?php echo $_GET['Manufacturer']?>"><br><br>
             Operating System : <input   class ="tb5" type="text" name="OS" value="<?php echo $_GET['OS']?>"><br><br>
             UDID: <input   class ="tb5" type="text" name="udid"  value="<?php echo $_GET['UDID']?>"> <br><br>
@@ -50,6 +51,8 @@ if (!isset($_POST['Update']))
 <?php } else { ?>
     <div class="inner-block container">
         <form action="editItem.php?id=<?php echo $_POST['id']?>&name=<?php echo $_POST['name']?>&description=<?php echo $_POST['description']?>&category=<?php echo $_POST['category']?>&OS=<?php echo $_POST['OS']?>&IMEI=<?php echo $_POST['IMEI']?>&Serial=<?php echo $_POST['Serial']?>&UDID=<?php echo $_POST['UDID']?>&Manufacturer=<?php echo $_POST['Manufacturer']?>" method="post" autocomplete="off">
+            Modifying details for product ID <?php echo $_GET['id']?>:
+            <br><br>
             Category:
             <select  class ="tb5"name="category">
                 <option value="<?php echo $_POST['category']?>"> <?php echo $_POST["category"];?></option>
@@ -64,7 +67,6 @@ if (!isset($_POST['Update']))
             </select>
             <br><br>
             Device Name: <input   class ="tb5" type="text" name="devicename" required value="<?php echo $_POST['devicename']?>"><br><br>
-            ID: <input  class ="tb5"  type="text" name="ID" required  value="<?php echo $_POST['ID']?>" readonly><br><br>
             Manufacturer: <input   class ="tb5" type="text" name="manufacturer" value="<?php echo $_POST['manufacturer']?>"><br><br>
             Operating System : <input   class ="tb5" type="text" name="OS" value="<?php echo $_POST['OS']?>"><br><br>
             UDID: <input   class ="tb5" type="text" name="udid"  value="<?php echo $_POST['udid']?>"> <br><br>
@@ -92,12 +94,11 @@ if (!isset($_POST['Update']))
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-         $someID = $_GET['id'];
          $device_name = $_POST['devicename'];
          $os_ = $_POST['OS'];
          $details_ = $_POST['message'];
          $category_ = $_POST['category'];
-         $id_ = ($_GET['id']);
+         $id_ = $_GET['id'];
          $manu_ = $_POST['manufacturer'];
          $udid_ = $_POST['udid'];
          $serial_ = $_POST['serialno'];
@@ -114,9 +115,6 @@ if (!isset($_POST['Update']))
               </div>
               <div id="mask"></div>
               </div>';
-        /*echo 'Details have been modified in the database! In the entry: ';
-        echo $someID ;*/
-
     } else {
         echo '<div id="boxes">
               <div id="dialog" class="window">
