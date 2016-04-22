@@ -70,9 +70,14 @@ if(isset($_POST['Update']))
                   </div>';
 
             } else {
-                echo "Error: " . $sql . "<br>" . $conn->error;
+                echo '<div id="boxes">
+              <div id="dialog" class="window">
+
+              <h1>Error: '. $sql . '<br>' . $conn->error .'</h1>
+              </div>
+              <div id="mask"></div>
+              </div>';
             }
-            $conn->close();
         }
         else {
             echo '<div id="boxes">
@@ -92,6 +97,7 @@ if(isset($_POST['Update']))
                 </div>';
     }
 }
+$conn->close();
 ?>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>

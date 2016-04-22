@@ -118,7 +118,13 @@ if (!isset($_POST['Update']))
         echo $someID ;*/
 
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo '<div id="boxes">
+              <div id="dialog" class="window">
+
+              <h1>Error: '. $sql . '<br>' . $conn->error .'</h1>
+              </div>
+              <div id="mask"></div>
+              </div>';
     }
     $conn->close();
     }

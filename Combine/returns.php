@@ -144,7 +144,13 @@
               <div id="mask"></div>
               </div>';
         } else {
-            echo "Error: " . $sql_ . "<br>" . $conn->error;
+            echo '<div id="boxes">
+              <div id="dialog" class="window">
+
+              <h1>Error: '. $sql . '<br>' . $conn->error .'</h1>
+              </div>
+              <div id="mask"></div>
+              </div>';
         }
     } elseif(isset($_POST['email'])) {
         echo '<div id="boxes">
