@@ -81,7 +81,7 @@ textarea {
   box-sizing: border-box;
 }
 body {
-  background: #333333 url(../img/bg.jpg) no-repeat center bottom fixed;
+  /*background: #333333 url(../img/bg.jpg) no-repeat center bottom fixed;*/
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

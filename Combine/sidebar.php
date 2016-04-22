@@ -15,50 +15,41 @@ include("config.php");
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
-    <!-- Custom Theme files -->
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
-    <!--js-->
     <script src="js/jquery-2.1.1.min.js"></script>
-    <!--icons-css-->
     <link href="css/font-awesome.css" rel="stylesheet">
-    <!--Google Fonts-->
     <link href='//fonts.googleapis.com/css?family=Carrois+Gothic' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Work+Sans:400,500,600' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!--static chart-->
-    <!--skycons-icons-->
     <script src="js/skycons.js"></script>
-    <!--//skycons-icons-->
 </head>
 <body>
 
-<!--slider menu-->
 <div id="sidebar" class="sidebar-menu" >
     <div id class="menu">
         <ul id="menu" >
             <li id="menu-home" ><a href="dashboard.php"><i class="fa fa-tachometer"></i><span>Dashboard</span></a></li>
             <li id="menu-comunicacao" ><a href="#"><i class="fa fa-tablet nav_icon"></i><span>Products</span><span class="fa fa-angle-right" style="float: right"></span></a>
                 <ul id="menu-comunicacao-sub" >
-                    <li id="menu-arquivos" ><a href="additem.php"><i class="fa fa-plus"></i>Add</a></li>
-                    <li id="menu-arquivos" ><a href="tableItem.php"><i class="fa fa-table"></i>Manage</a></li>
-                    <li id="menu-arquivos" ><a href="downloaditem.php"><i class="fa fa-download"></i>Download</a></li>
+                    <li id="menu-arquivos" ><a href="addproduct.php"><i class="fa fa-plus"></i>Add</a></li>
+                    <li id="menu-arquivos" ><a href="tableproducts.php"><i class="fa fa-table"></i>Manage</a></li>
+                    <li id="menu-arquivos" ><a href="downloadproducts.php"><i class="fa fa-download"></i>Download</a></li>
                 </ul>
             </li>
             <li id="menu--comunicacao" ><a href="#"><i class="fa fa-user nav_icon"></i><span>Customers</span><span class="fa fa-angle-right" style="float: right"></span></a>
                 <ul id="menu-comunicacao-sub" >
-                    <li id="menu-arquivos" ><a href="addcustomer.php"><i class="fa fa-plus"></i>Add</a></li>
-                    <li id="menu-arquivos" ><a href="tablecust.php"><i class="fa fa-table"></i>Manage</a></li>
-                    <li id="menu-arquivos" ><a href="downloadcust.php"><i class="fa fa-download"></i>Download</a></li>
+                    <li id="menu-arquivos" ><a href="addclient.php"><i class="fa fa-plus"></i>Add</a></li>
+                    <li id="menu-arquivos" ><a href="tableclients.php"><i class="fa fa-table"></i>Manage</a></li>
+                    <li id="menu-arquivos" ><a href="downloadclients.php"><i class="fa fa-download"></i>Download</a></li>
                 </ul>
             </li>
 
-            <li><a href="#"><i class="fa fa-list"></i><span>Orders</span></span><span class="fa fa-angle-right" style="float: right"></span></a>
+            <li><a href="#"><i class="fa fa-list"></i><span>Orders</span><span class="fa fa-angle-right" style="float: right"></span></a>
                 <ul id="menu-academico-sub" >
                     <li><a href="addorder.php"><i class="fa fa-plus"></i><span>Add</span></span></a>
-                    <li><a href="statistics.php"><i class="fa fa-star"></i><span>Statistics</a>
                     <li><a href="returns.php"><i class="fa fa-refresh"></i><span>Returns</a>
+                    <li><a href="statistics.php"><i class="fa fa-star"></i><span>Statistics</a>
                 </ul>
             </li>
 
@@ -81,6 +72,40 @@ include("config.php");
 
 <script type="text/javascript"  src="js/bootstrap.js"> </script>
 
-<!-- mother grid end here-->
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var id = '#dialog';
+//Get the screen height and width
+        var maskHeight = $(document).height();
+        var maskWidth = $(window).width();
+        var mask = $('#mask');
+//Set heigth and width to mask to fill up the whole screen
+        mask.css({'width':maskWidth,'height':maskHeight});
+//transition effect
+        mask.fadeIn(500);
+        mask.fadeTo("slow",0.9);
+//Get the window height and width
+        var winH = $(window).height();
+        var winW = $(window).width();
+//Set the popup window to center
+        $(id).css('top',  winH/2-$(id).height()/2);
+        $(id).css('left', winW/2-$(id).width()/2);
+//transition effect
+        $(id).fadeIn(2000);
+//if close button is clicked
+        $('.window .close').click(function (e) {
+//Cancel the link behavior
+            e.preventDefault();
+            $('#mask').hide();
+            $('.window').hide();
+        });
+//if mask is clicked
+        mask.click(function () {
+            $(this).hide();
+            $('.window').hide();
+        });
+    });
+</script>
 
 </body>

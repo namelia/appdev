@@ -1,11 +1,3 @@
-<?php
-error_reporting(0);
-if(isset($_POST["submitri"])) {
-	$someID = $_GET['id'];
-} else {
-	$someID = 0;
-}
-?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <head>
@@ -17,17 +9,41 @@ if(isset($_POST["submitri"])) {
 	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
 </head>
 
+<div id ="sidebar" class="container">
+	<?php include("sidebar.php"); ?>
+</div>
+
 <body>
-	<div class="row">
-		<div id ="sidebar" class="container">
-			<?php include("sidebar.php"); ?>
-		</div>
-		</div>
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-		<script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+<script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+
+<?php
+error_reporting(0);
+if(isset($_POST["deleteproduct"])) {
+	$delete_id = $_GET['id'];
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+	$sql = "DELETE FROM objects WHERE `objects`.`id` = $delete_id ";
+	echo '<div id="boxes">
+              <div id="dialog" class="window">
+              <h1>';
+	if ($conn->query($sql) === TRUE) {
+		echo 'Product has been deleted.';
+	} else {
+		echo 'Error: '. $sql . '<br>' . $conn->error;
+	}
+	echo '</h1>
+              </div>
+              <div id="mask"></div>
+              </div>';
+} else {
+	$delete_id = 0;
+}
+?>
 
 	<div id="table" class="inner-block container ">
-	<form id="form1" name="form1" method="post" action="tableItem.php" autocomplete="off">
+	<form id="form1" name="form1" method="post" action="tableproducts.php" autocomplete="off">
 		<div class ="row">
 			<div class="col-xs-1">
 				<label for="from">From:</label>
@@ -65,7 +81,7 @@ if(isset($_POST["submitri"])) {
 			<div  class="col-xs-4">
 				<input type="submit" name="button" class="button"  value="Filter" />
 				</label>
-				<a href="tableItem.php?id=$id_" class="buttonReset" role="button">Reset</a>
+				<a href="tableproducts.php?id=$id_" class="buttonReset" role="button">Reset</a>
 				
 			</div>
 
@@ -124,7 +140,7 @@ else if($_REQUEST["status"]=="Overdue")
 	$sql = "SELECT * FROM objects WHERE client IS NOT NULL AND CURDATE()>endDate ".$search_string.$search_category ;
 }
 else {
-	$sql = "SELECT * FROM objects WHERE id != $someID".$search_string.$search_category;
+	$sql = "SELECT * FROM objects WHERE id != $delete_id".$search_string.$search_category;
 }
 
 $sql_result =$conn->query($sql) or die ('request "Could not execute SQL query" '.$sql);
@@ -155,8 +171,7 @@ if (mysqli_num_rows($sql_result)>0) {
 				$status_ = "<span class=\"label label-success\">On Loan</span>";
 			}
 		}
-		echo"
- 	  <tr>
+		echo"<tr>
 	  <td>$category_</td>
 	  <td>$id_</td>
       <td>$name_</td>
@@ -170,19 +185,16 @@ if (mysqli_num_rows($sql_result)>0) {
 	  <td>$begin_</td>
       <td>$end_</td>
 	  <td>$status_</td>
-	  
-	  <td><form action=\"editItem.php?id=$id_&name=$name_&description=$description_&category=$category_&OS=$OS_&UDID=$UDID_&IMEI=$IMEI_&Serial=$serial_&Manufacturer=$manufacturer_\" method=\"POST\">
+	  <td><form action=\"editproduct.php?id=$id_&name=$name_&description=$description_&category=$category_&os=$OS_&udid=$UDID_&imei=$IMEI_&serial=$serial_&manufacturer=$manufacturer_\" method=\"POST\">
 			 <input type=\"submit\" name=\"submitec\" value=\"Edit\" class = \"tb5-2\"> </input></form></td>
-	  <td><form action=\"tableItem.php?id=$id_\" method=\"POST\">
-			  <input type=\"submit\" name=\"submitri\" value=\"X\" class = \"tb5\"> </input></form></td>
-  </tr>";
-
+	  <td><form action=\"tableproducts.php?id=$id_\" method=\"POST\">
+			  <input type=\"submit\" name=\"deleteproduct\" value=\"X\" class = \"tb5\"> </input></form></td>
+  		</tr>";
 	}
 } else {
-?>
-<tr><td colspan="14">No results found.</td>
-<?php	
+echo '<tr><td colspan="14">No results found.</td>';
 }
+$conn->close();
 ?>
 
 	</tbody>
@@ -232,81 +244,7 @@ if (mysqli_num_rows($sql_result)>0) {
 	</script>
 	<script type="text/javascript" src="tablesort.js"></script>
 	<div id = resp>
-<?php
-if(isset($_POST["submitri"])) {
-	if ($conn->connect_error) {
-		die("Connection failed: " . $conn->connect_error);
-	}
-	$sql = "DELETE FROM objects WHERE `objects`.`id` = $someID ";
-	if ($conn->query($sql) === TRUE) {
-		echo '<div id="boxes">
-              <div id="dialog" class="window">
 
-              <h1>Entry has been deleted!</h1>
-              </div>
-              <div id="mask"></div>
-              </div>';
-
-
-	} else {
-		echo '<div id="boxes">
-              <div id="dialog" class="window">
-
-              <h1>Error: '. $sql . '<br>' . $conn->error .'</h1>
-              </div>
-              <div id="mask"></div>
-              </div>';
-	}
-	$conn->close();
-}
-?>
-
-
-
-<script type="text/javascript">
-	$(document).ready(function() {
-
-		var id = '#dialog';
-
-//Get the screen height and width
-		var maskHeight = $(document).height();
-		var maskWidth = $(window).width();
-
-//Set heigth and width to mask to fill up the whole screen
-		$('#mask').css({'width':maskWidth,'height':maskHeight});
-
-//transition effect
-		$('#mask').fadeIn(500);
-		$('#mask').fadeTo("slow",0.9);
-
-//Get the window height and width
-		var winH = $(window).height();
-		var winW = $(window).width();
-
-//Set the popup window to center
-		$(id).css('top',  winH/2-$(id).height()/2);
-		$(id).css('left', winW/2-$(id).width()/2);
-
-//transition effect
-		$(id).fadeIn(2000);
-
-//if close button is clicked
-		$('.window .close').click(function (e) {
-//Cancel the link behavior
-			e.preventDefault();
-
-			$('#mask').hide();
-			$('.window').hide();
-		});
-
-//if mask is clicked
-		$('#mask').click(function () {
-			$(this).hide();
-			$('.window').hide();
-		});
-
-	});
-</script>
 	<script type="text/javascript">
 		$(function() {
 			var dates = $( "#from, #to" ).datepicker({

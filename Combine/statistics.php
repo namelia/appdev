@@ -1,9 +1,9 @@
-<link href="statStyle.css" rel="stylesheet">
-<div id =sidebar class="visible">
+<link href="statisticstyle.css" rel="stylesheet">
+<div id= page-wrap class="visible">
     <?php include("sidebar.php"); ?>
 </div>
 <?php
-include("statisticFunctions.php");
+include("statisticfunctions.php");
 ?>
    <!--Statistics Page starts here-->
    <div class="mega card">

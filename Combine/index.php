@@ -34,7 +34,7 @@ include("config.php");
 	{
 	die("Connection failed: " . $conn->connect_error);
 	}
-	if(isset($_POST['is_login'])){
+	if(isset($_POST['login'])){
 		$query= $conn->query("SELECT * FROM login WHERE `email` = '$email'  AND `passhash` = '$passhash'")or die ('request "Could not execute SQL query" '.$sql);
 		$user= $query->fetch_assoc();
 		if(!empty($user)){
@@ -64,7 +64,7 @@ include("config.php");
 		exit();
 	} else { ?>
 	    <form id="login-form" class="login-form" name="form1" method="post" action="index.php">
-	    	<input type="hidden" name="is_login" value="1">
+	    	<input type="hidden" name="login" value="1">
 	        <div class="h1">UCL Device Lab</div>
 	        <div id="form-content">
 	            <div class="group">
