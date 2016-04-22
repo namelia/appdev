@@ -58,7 +58,6 @@ if(isset($_POST["submitri"])) {
 
 <table  border="0" cellspacing="0" cellpadding="4" class="table tablesorter" id="tablecust">
 <thead>
-	  <th> ID</th>
 	  <th> Category</th>
       <th> Name</th>
 	  <th> Email</th>
@@ -94,7 +93,6 @@ if (mysqli_num_rows($sql_result)>0) {
   <tr>
 
 
-	  <td> $id_</td>
 	  <td> $category_</td>
 	  <td> $name_</td>
 	  <td> $email_</td>
