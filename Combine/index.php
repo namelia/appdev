@@ -65,7 +65,7 @@ include("config.php");
 	} else { ?>
 	    <form id="login-form" class="login-form" name="form1" method="post" action="index.php">
 	    	<input type="hidden" name="is_login" value="1">
-	        <div class="h1">Login </div>
+	        <div class="h1">UCL Device Lab</div>
 	        <div id="form-content">
 	            <div class="group">
 	                <label for="email">Email</label>

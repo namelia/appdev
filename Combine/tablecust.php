@@ -1,7 +1,10 @@
 <?php
 error_reporting(0);
-include("config.php");
-$table='clients';
+if(isset($_POST["submitri"])) {
+	$someID = $_GET['id'];
+} else {
+	$someID = 0;
+}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en" class="no-js">
@@ -41,7 +44,7 @@ $table='clients';
 	<select name="category">
 	<option value="">--</option>
 	<?php
-		$query= $conn->query("SELECT * FROM $table GROUP BY category ORDER BY category")or die ('request "Could not execute SQL query here" '.$sql);
+		$query= $conn->query("SELECT * FROM clients GROUP BY category ORDER BY category")or die ('request "Could not execute SQL query here" '.$sql);
 		while ($row = $query->fetch_assoc()) {
 			echo "<option value='".$row["category"]."'".($row["category"]==$_REQUEST["category"] ? " selected" : "").">".$row["category"]."</option>";
 		}
@@ -74,7 +77,7 @@ if ($_REQUEST["string"]<>'')  {
 if ($_REQUEST["category"]<>'') {
 	$search_category = " AND category= '".mysqli_real_escape_string($conn,$_REQUEST["category"])."'".$search_string.$search_category;
 }
-	$sql = "SELECT * FROM $table WHERE id>0".$search_string .$search_category;
+	$sql = "SELECT * FROM clients WHERE id != $someID".$search_string .$search_category;
 	$sql_result =$conn->query($sql) or die ('request "Could not execute SQL query" '.$sql);
 if (mysqli_num_rows($sql_result)>0) {
 	$count=0;
@@ -141,9 +144,6 @@ if(isset ($_POST['submitrc'])) {
 		if ($conn->connect_error) {
 			die("Connection failed: " . $conn->connect_error);
 		}
-		$someID = $_GET['id'];
-
-
 		$sql = "DELETE FROM clients WHERE `id` = $someID ";
 		if ($conn->query($sql) === TRUE) {
 			echo '<div id="boxes">

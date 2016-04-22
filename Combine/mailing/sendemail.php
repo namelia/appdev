@@ -1,7 +1,7 @@
 <?php
 
 
-function sendEmail($emailTo, $msg){
+function sendEmail($emailTo, $name, $msg, $echo){
 	
 	/**
 	 * This example shows settings to use when sending via Google's Gmail servers.
@@ -50,17 +50,17 @@ function sendEmail($emailTo, $msg){
 	$mail->Password = "adminpassword";
 
 	//Set who the message is to be sent from
-	$mail->setFrom("", 'admin');
+	$mail->setFrom("itemsreminder@gmail.com", 'UCL Device Lab');
 
 	//Set an alternative reply-to address
 	//$mail->addReplyTo('akselcakmak@gmail.com', 'Aksel Cakmak');
 
 	//Set who the message is to be sent to
 
-	$mail->addAddress($emailTo, 'Customer');
+	$mail->addAddress($emailTo, $name);
 
 	//Set the subject line
-	$mail->Subject = 'Overdue Items from UCL APPLAB';
+	$mail->Subject = 'Overdue items from UCL Device Lab';
 
 	//Read an HTML message body from an external file, convert referenced images to embedded,
 	//convert HTML into a basic plain-text alternative body
@@ -71,12 +71,11 @@ function sendEmail($emailTo, $msg){
 	
 
 	//send the message, check for errors
-	if (!$mail->send()) {
-	    echo "Mailer Error: " . $mail->ErrorInfo;
-	} else {
-	    echo "Message sent!" . "<br>" ;
-	}
-
+		if (!$mail->send()) {
+			echo "Mailer Error: " . $mail->ErrorInfo;
+		} elseif (!($echo == 0)) {
+			echo "Message sent to " . $emailTo . "!";
+		}
 
 }
 

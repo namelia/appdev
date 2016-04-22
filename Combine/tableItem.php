@@ -1,5 +1,10 @@
 <?php
 error_reporting(0);
+if(isset($_POST["submitri"])) {
+	$someID = $_GET['id'];
+} else {
+	$someID = 0;
+}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -119,7 +124,7 @@ else if($_REQUEST["status"]=="Overdue")
 	$sql = "SELECT * FROM objects WHERE client IS NOT NULL AND CURDATE()>endDate ".$search_string.$search_category ;
 }
 else {
-	$sql = "SELECT * FROM objects WHERE id>0".$search_string.$search_category;
+	$sql = "SELECT * FROM objects WHERE id != $someID".$search_string.$search_category;
 }
 
 $sql_result =$conn->query($sql) or die ('request "Could not execute SQL query" '.$sql);
@@ -232,7 +237,6 @@ if(isset($_POST["submitri"])) {
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}
-	$someID = $_GET['id'];
 	$sql = "DELETE FROM objects WHERE `objects`.`id` = $someID ";
 	if ($conn->query($sql) === TRUE) {
 		echo '<div id="boxes">
