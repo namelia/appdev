@@ -18,15 +18,14 @@ if (!isset($_POST['Update']))
             Category:
             <select  class ="tb5"name="category">
                 <option value="<?php echo $_GET['category']?>"> <?php echo $_GET["category"];?></option>
-                <option value="Development Kit">Development Kit</option>
-                <option value="iBeacon">iBeacon</option>
-                <option value="iPod">iPod</option>
                 <option value="Phone">Phone</option>
                 <option value="Tablet">Tablet</option>
+                <option value="iBeacon">iBeacon</option>
+                <option value="Media Player">iPod</option>
                 <option value="Smart Glasses">Smart Glasses</option>
-                <option value="Tv">Tv</option>
+                <option value="Development Kit">Development Kit</option>
                 <option value="Others">Others</option>
-            </select>
+                </select>
             <br><br>
             Device Name: <input   class ="tb5" type="text" name="devicename" required value="<?php echo $_GET['name']?>"><br><br>
             ID: <input  class ="tb5"  type="text" name="ID" required  value="<?php echo $_GET['id']?>" readonly><br><br>

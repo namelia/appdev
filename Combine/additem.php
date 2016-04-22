@@ -14,14 +14,12 @@
         <form action="additem.php" method="post" autocomplete="off">
             Category:
             <select  class ="tb5"name="category">
-                <option value="none"></option>
-                <option value="Development Kit">Development Kit</option>
-                <option value="iBeacon">iBeacon</option>
-                <option value="iPod">iPod</option>
                 <option value="Phone">Phone</option>
                 <option value="Tablet">Tablet</option>
+                <option value="iBeacon">iBeacon</option>
+                <option value="Media Player">iPod</option>
                 <option value="Smart Glasses">Smart Glasses</option>
-                <option value="Tv">Tv</option>
+                <option value="Development Kit">Development Kit</option>
                 <option value="Others">Others</option>
             </select>
             <br><br>
