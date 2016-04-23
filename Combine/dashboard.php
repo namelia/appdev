@@ -116,7 +116,7 @@
 					$sql2 = "SELECT * FROM objects";
 					$sql = "SELECT * FROM objects WHERE client is NULL";
 					$sql_result =$conn->query($sql) or die ($sql);
-					$sql_result3 =$conn->query($sql2) or die ($sql2);
+					$sql_result2 =$conn->query($sql2) or die ($sql2);
 					$numberita=(mysqli_num_rows($sql_result));
 					$numberitems=(mysqli_num_rows($sql_result2))?>
 					<div class="col-md-8 market-update-left">
