@@ -31,3 +31,6 @@
 a:link, .buttonReset>a:link {
     color: rgb(110,110,110);
 }
+input.button {
+    height: 55px;
+}

@@ -106,7 +106,7 @@ $tableclients='clients';
 				</div>
 			</div>
 			<div class="col-md-4 market-update-gd" >
-				<div class="market-update-block clr-block-2" onclick=window.location.href="tablecust.php" >
+				<div class="market-update-block clr-block-2" onclick=window.location.href="tableclients.php" >
 				 <div class="col-md-8 market-update-left">
 					 <?php
 					 $sql = "SELECT * FROM $tableclients";
@@ -123,7 +123,7 @@ $tableclients='clients';
 				</div>
 			</div>
 			<div class="col-md-4 market-update-gd" >
-				<div class="market-update-block clr-block-3" onclick=window.location.href="tableItem.php">
+				<div class="market-update-block clr-block-3" onclick=window.location.href="tableproducts.php">
 					<?php
 					$sql3 = "SELECT * FROM $tableobjects";
 					$sql = "SELECT * FROM $tableobjects WHERE client is NULL";
