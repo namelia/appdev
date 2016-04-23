@@ -40,7 +40,7 @@ if(isset($_POST["deleteclient"])) {
               <div id="dialog" class="window">
               <h1>';
 	if ($conn->query($sql) === TRUE) {
-		echo '<Client has been deleted.';
+		echo 'Client has been deleted.';
 	} else {
 		echo 'Error: '. $sql . '<br>' . $conn->error;
 	}
@@ -117,7 +117,7 @@ if (mysqli_num_rows($sql_result)>0) {
 	  <td><form action=\"editclient.php?category=$category_&customername=$name_&email=$email_&phone=$phone_&address=$address_&details=$details_&id=$id_ \" method=\"POST\">
 		  <input type=\"submit\" name=\"submitec\" value=\"Edit\" class = \"tb5-2\"> </input></form></td>
 	  <td><form action=\"tableclients.php?id=$id_\" method=\"POST\">
-			  <input type=\"submit\" name=\"submitrc\" value=\"X\" class = \"tb5\"> </input></form></td>
+			  <input type=\"submit\" name=\"deleteclient\" value=\"X\" class = \"tb5\"> </input></form></td>
 			    </tr>";
 	}
 } else {

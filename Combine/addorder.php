@@ -70,7 +70,7 @@ $conn->close();
             <div class="content">
                 <label for="name">Device name:</label>
                 <input class ="search tb5" id ="searchitem" type="text" name="name">&nbsp;&nbsp;<br><br>
-                <div id="resultitem"></div>
+                <div id="resultproduct"></div>
                 <label for="id">ID:</label>
                 <input  class ="ui-autocomplete-input tb5"  type="text" name="id"  value="" ><br><br>
                 <label for="from">From date:</label>
@@ -81,7 +81,7 @@ $conn->close();
                 <br><br>
                 <label for="custname">Customer name:</label>
                 <input  class ="searchC tb5"  id ="searchcust" type="text" name="client" required value="<?php echo $client_;?>">&nbsp;&nbsp;<br><br>
-                <div id="resultcust"></div>
+                <div id="resultclient"></div>
                 <input class ="tb5"  type= "submit" value="Submit" name='addorder'>
         </form>
 
@@ -118,17 +118,17 @@ $conn->close();
                 {
                     $.ajax({
                         type: "POST",
-                        url: "resultitem.php",
+                        url: "resultproduct.php",
                         data: dataString,
                         cache: false,
                         success: function(html)
                         {
-                            $("#resultitem").html(html).show();
+                            $("#resultproduct").html(html).show();
                         }
                     });
                 }return false;
             });
-            jQuery("#resultitem").live("click",function(e){
+            jQuery("#resultproduct").live("click",function(e){
                 var $clicked = $(e.target);
                 var $name = $clicked.find('.name').html();
                 var decoded = $("<div/>").html($name).text();
@@ -137,11 +137,11 @@ $conn->close();
             jQuery(document).live("click", function(e) {
                 var $clicked = $(e.target);
                 if (! $clicked.hasClass("search")){
-                    jQuery("#resultitem").fadeOut();
+                    jQuery("#resultproduct").fadeOut();
                 }
             });
             $('#searchitem').click(function(){
-            jQuery("#resultitem").fadeIn();
+            jQuery("#resultproduct").fadeIn();
         });
         });
     </script>
@@ -156,18 +156,18 @@ $conn->close();
                 {
                     $.ajax({
                         type: "POST",
-                        url: "resultcust.php",
+                        url: "resultclient.php",
                         data: dataString,
                         cache: false,
                         success: function(html)
                         {
-                            $("#resultcust").html(html).show();
+                            $("#resultclient").html(html).show();
                         }
                     });
                 }return false;
             });
 
-            jQuery("#resultcust").live("click",function(e){
+            jQuery("#resultclient").live("click",function(e){
                 var $clicked = $(e.target);
                 var $name = $clicked.find('.name').html();
                 var decoded = $("<div/>").html($name).text();
@@ -176,11 +176,11 @@ $conn->close();
             jQuery(document).live("click", function(e) {
                 var $clicked = $(e.target);
                 if (! $clicked.hasClass("searchC")){
-                    jQuery("#resultcust").fadeOut();
+                    jQuery("#resultclient").fadeOut();
                 }
             });
             $('#searchcust').click(function(){
-                jQuery("#resultcust").fadeIn();
+                jQuery("#resultclient").fadeIn();
             });
         });
     </script>
