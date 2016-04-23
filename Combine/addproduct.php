@@ -71,13 +71,13 @@ if(isset($_POST['addproduct']))
     if ($conn->query($sql) === TRUE) {
        echo 'Product has been created!';
     } else {
-        echo 'Error: '. $sql . '<br>' . $conn->error;
+        echo $conn->error;
     }
     echo '</h1>
               </div>
               <div id="mask"></div>
               </div>';
-    $conn->close();
 }
+$conn->close();
 ?>
 </html>

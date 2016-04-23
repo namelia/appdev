@@ -43,7 +43,7 @@ if (isset($_POST['addorder'])) {
         if ($conn->query($sql) === TRUE) {
             echo 'Order has been created!';
         } else {
-            echo 'Error: '. $sql . '<br>' . $conn->error;
+            echo $conn->error;
         }
     } else {
         echo 'This object is unavailable...';

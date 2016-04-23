@@ -8,12 +8,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
-<!-- Custom Theme files -->
 	<link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
 	<link href="css/clndr.css" rel="stylesheet" type="text/css" media="all"/>
-<!--js-->
 	<script type="text/javascript" src="js/clndr.js"></script>
 	<script type="text/javascript" src="js/underscore-min.js"></script>
 	<script type="text/javascript" src="js/moment-2.2.1.js"></script>
@@ -23,19 +20,10 @@
 	<script type="text/javascript"  src="js/jquery-2.1.1.min.js"></script>
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
-<!--icons-css-->
 <link href="css/font-awesome.css" rel="stylesheet">
-<!--Google Fonts-->
 <link href='//fonts.googleapis.com/css?family=Carrois+Gothic' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Work+Sans:400,500,600' rel='stylesheet' type='text/css'>
-<!--calendar-->
-<?php
-$tableobjects='objects';
-$tableclients='clients';
-?>
-<!--skycons-icons-->
 
-<!--//skycons-icons-->
 </head>
 <body>
 <div class="page-container">
@@ -90,8 +78,8 @@ $tableclients='clients';
 						<?php
 						$sql2 ="SELECT * FROM objects WHERE beginDate=CURDATE()";
 						$sql  ="SELECT * FROM objects WHERE client IS NOT NULL";
-						$sql_result =$conn->query($sql) or die ('request "Could not execute SQL query" '.$sql);
-						$sql_result2 =$conn->query($sql2) or die ('request "Could not execute SQL query" '.$sql);
+						$sql_result =$conn->query($sql) or die ($sql);
+						$sql_result2 =$conn->query($sql2) or die ($sql2);
 						$totalorder=(mysqli_num_rows($sql_result));
 						$todayorder=(mysqli_num_rows($sql_result2))?>
 
@@ -109,8 +97,8 @@ $tableclients='clients';
 				<div class="market-update-block clr-block-2" onclick=window.location.href="tableclients.php" >
 				 <div class="col-md-8 market-update-left">
 					 <?php
-					 $sql = "SELECT * FROM $tableclients";
-					 $sql_result =$conn->query($sql) or die ('request "Could not execute SQL query" '.$sql);
+					 $sql = "SELECT * FROM clients";
+					 $sql_result =$conn->query($sql) or die ($sql);
 					 $numbercust=(mysqli_num_rows($sql_result))?>
 					<h3> <?php echo $numbercust;?> </h3>
 					<h4>Total Customers</h4>
@@ -125,12 +113,12 @@ $tableclients='clients';
 			<div class="col-md-4 market-update-gd" >
 				<div class="market-update-block clr-block-3" onclick=window.location.href="tableproducts.php">
 					<?php
-					$sql3 = "SELECT * FROM $tableobjects";
-					$sql = "SELECT * FROM $tableobjects WHERE client is NULL";
-					$sql_result =$conn->query($sql) or die ('request "Could not execute SQL query" '.$sql);
-					$sql_result3 =$conn->query($sql3) or die ('request "Could not execute SQL query" '.$sql);
+					$sql2 = "SELECT * FROM objects";
+					$sql = "SELECT * FROM objects WHERE client is NULL";
+					$sql_result =$conn->query($sql) or die ($sql);
+					$sql_result3 =$conn->query($sql2) or die ($sql2);
 					$numberita=(mysqli_num_rows($sql_result));
-					$numberitems=(mysqli_num_rows($sql_result3))?>
+					$numberitems=(mysqli_num_rows($sql_result2))?>
 					<div class="col-md-8 market-update-left">
 						<h3><?php echo $numberita;?> </h3>
 						<h4>Items Available</h4>
@@ -165,7 +153,7 @@ $tableclients='clients';
                               </thead>
                               <tbody>
 									<?php
-									$sql = "SELECT * FROM $tableobjects WHERE client IS NOT NULL ORDER BY endDate";
+									$sql = "SELECT * FROM objects WHERE client IS NOT NULL ORDER BY endDate";
 									$sql_result =$conn->query($sql) or die ('request "Could not execute SQL query" '.$sql);
 									if ($sql_result-> num_rows!=0)
 									{

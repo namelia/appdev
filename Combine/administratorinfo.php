@@ -43,7 +43,7 @@ if(isset($_POST['updateadmin'])) {
                 echo 'Details have been modified!';
 
             } else {
-                echo '<Error: '. $sql . '<br>' . $conn->error;
+                echo $conn->error;
             }
         }
         else {

@@ -42,7 +42,7 @@ if(isset($_POST["deleteclient"])) {
 	if ($conn->query($sql) === TRUE) {
 		echo 'Client has been deleted.';
 	} else {
-		echo 'Error: '. $sql . '<br>' . $conn->error;
+		echo $conn->error;
 	}
 	echo '</h1>
               </div>

@@ -31,7 +31,7 @@ if(isset($_POST["deleteproduct"])) {
 	if ($conn->query($sql) === TRUE) {
 		echo 'Product has been deleted.';
 	} else {
-		echo 'Error: '. $sql . '<br>' . $conn->error;
+		echo $conn->error;
 	}
 	echo '</h1>
               </div>

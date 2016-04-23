@@ -60,7 +60,7 @@ if(isset($_POST['addcustomer'])) {
         echo 'Client has been created!';
     }
     else {
-        echo 'Error: '. $sql . '<br>' . $conn->error;
+        echo $conn->error;
     }
     echo '</h1>
               </div>

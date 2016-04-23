@@ -136,22 +136,18 @@
         } else {
             $sql_ = $sql_." WHERE DATE(endDate) <= '$todayy'";
         }
+        echo '<div id="boxes">
+        <div id="dialog" class="window">
+        <h1>';
         if ($conn->query($sql_) === TRUE) {
-            echo '<div id="boxes">
-              <div id="dialog" class="window">
-              <h1>Database has been updated!</h1>
-              </div>
-              <div id="mask"></div>
-              </div>';
+            echo 'Database has been updated!';
         } else {
-            echo '<div id="boxes">
-              <div id="dialog" class="window">
-
-              <h1>Error: '. $sql . '<br>' . $conn->error .'</h1>
-              </div>
-              <div id="mask"></div>
-              </div>';
+            echo $conn->error;
         }
+        echo '</h1>
+        </div>
+        <div id="mask"></div>
+        </div>';
     } elseif(isset($_POST['email'])) {
         echo '<div id="boxes">
         <div id="dialog" class="window">
