@@ -74,10 +74,10 @@ $conn->close();
                 <label for="id">ID:</label>
                 <input  class ="ui-autocomplete-input tb5"  type="text" name="id"  value="" ><br><br>
                 <label for="from">From date:</label>
-                <input class ="tb5" name="from" type="text" id="from" size="10" value="<?php echo $from_;?>" />
+                <input class ="tb5" name="from" type="text" id="from" size="10" required value="<?php echo $from_;?>" />
                 <br><br>
                 <label for="to">To date:</label>
-                <input class ="tb5" name="to" type="text" id="to" size="10" value="<?php echo $to_;?>" />
+                <input class ="tb5" name="to" type="text" id="to" size="10" required value="<?php echo $to_;?>" />
                 <br><br>
                 <label for="custname">Customer name:</label>
                 <input  class ="searchC tb5"  id ="searchcust" type="text" name="client" required value="<?php echo $client_;?>">&nbsp;&nbsp;<br><br>
